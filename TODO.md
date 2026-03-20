@@ -11,8 +11,8 @@
 - [x] **`rename_page` ne gère pas les slugs dupliqués** (`views.py:233`)
   Logique de déduplication ajoutée (identique à `create_page`, avec `.exclude(id=page.id)` pour ignorer la page elle-même).
 
-- [ ] **`bare except:` dans 4 vues** (`views.py:110, 541, 703, 710`)
-  Les blocs `except:` sans type capturent tous les cas (y compris `KeyboardInterrupt`). Remplacer par `except Exception`.
+- [x] **`bare except:` dans 4 vues** (`views.py:110, 541, 703, 710`)
+  Remplacés par `except Exception` dans `update_widget_order`, `update_page_order` et `get_network_info`.
 
 - [ ] **`print()` de debug en production** (`views.py:519, 625`)
   Deux `print()` actifs dans `open_local_file` et `run_command`. Remplacer par un logger Django.

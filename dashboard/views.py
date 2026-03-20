@@ -107,7 +107,7 @@ def update_widget_order(request):
             widget = get_object_or_404(Widget, id=widget_id)
             widget.order = index
             widget.save()
-        except:
+        except Exception:
             continue
 
     return HttpResponse(status=200)
@@ -543,7 +543,7 @@ def update_page_order(request):
             page = get_object_or_404(Page, id=page_id)
             page.order = index
             page.save()
-        except:
+        except Exception:
             continue
 
     return HttpResponse(status=200)
@@ -705,13 +705,13 @@ def get_network_info(request):
         s.connect(("8.8.8.8", 80))
         local_ip = s.getsockname()[0]
         s.close()
-    except:
+    except Exception:
         local_ip = "127.0.0.1"
 
     # 2. IP Publique (via API externe rapide)
     try:
         public_ip = requests.get('https://api.ipify.org', timeout=2).text
-    except:
+    except Exception:
         public_ip = "Indisponible"
 
     return render(request, 'partials/network_info.html', {
