@@ -2,8 +2,8 @@
 
 ## 🐛 Bugs & Qualité du code
 
-- [ ] **`Link.url` mauvais type de champ** (`models.py:74`)
-  Le champ est `URLField` mais stocke aussi des chemins locaux (`/home/...`) et des commandes shell. Migrer vers `TextField` ou `CharField(max_length=500)`.
+- [x] **`Link.url` mauvais type de champ** (`models.py:74`)
+  Migré de `URLField` vers `CharField(max_length=500)` — migration `0009_link_url_charfield`.
 
 - [ ] **`icon_url` inutilisé** (`models.py:75`)
   Le champ existe dans le modèle mais n'est jamais utilisé côté frontend. Supprimer ou implémenter.
