@@ -119,29 +119,21 @@ def update_widget_order(request):
 @csrf_exempt
 @require_POST
 def move_link_to_page(request, link_id):
-    """Déplace un lien vers une autre page via le menu contextuel.
-
-    Le lien est déplacé vers le premier widget disponible de la page cible.
+    """Déplace un lien vers un widget spécifique via le menu contextuel.
 
     Args:
-        request (HttpRequest): La requête POST doit contenir 'target_page_id'.
+        request (HttpRequest): La requête POST doit contenir 'target_widget_id'.
         link_id (int): L'ID du lien à déplacer.
 
     Returns:
-        HttpResponse: Statut 200 si succès, 400 si aucun widget cible trouvé.
+        HttpResponse: Statut 200 si succès.
     """
     link = get_object_or_404(Link, id=link_id)
-    target_page_id = request.POST.get('target_page_id')
-    target_page = get_object_or_404(Page, id=target_page_id)
-
-    # On déplace vers le premier widget de la page cible par défaut
-    target_widget = target_page.widgets.first()
-
-    if target_widget:
-        link.widget = target_widget
-        link.save()
-        return HttpResponse(status=200)
-    return HttpResponse(status=400)
+    target_widget_id = request.POST.get('target_widget_id')
+    target_widget = get_object_or_404(Widget, id=target_widget_id)
+    link.widget = target_widget
+    link.save()
+    return HttpResponse(status=200)
 
 
 @require_POST
@@ -439,13 +431,8 @@ def system_monitor(request):
     cpu = psutil.cpu_percent(interval=None)
     ram = psutil.virtual_memory()
 
-    # 2. DISQUES (CONFIGURATION À ADAPTER ICI)
-    # Remplacez les chemins par VOS points de montage (ceux trouvés avec df -h)
-    disks_to_check = [
-        {'name': 'Système', 'path': '/'},
-        {'name': 'Data 3TB', 'path': '/media/nimzo/3tb'},  # <--- Mettez votre chemin ici
-        {'name': 'Fast 120GB', 'path': '/media/120gb'},  # <--- Mettez votre chemin ici
-    ]
+    # 2. DISQUES — configurés via MONITOR_DISKS dans .env
+    disks_to_check = settings.MONITOR_DISKS
 
     disks_info = []
     for d in disks_to_check:

@@ -36,6 +36,14 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
+# Disques surveillés par le widget système — format : "Nom:/chemin|Nom:/chemin"
+_raw_disks = os.getenv('MONITOR_DISKS', 'Système:/')
+MONITOR_DISKS = [
+    {'name': part.split(':')[0], 'path': part.split(':')[1]}
+    for part in _raw_disks.split('|')
+    if ':' in part
+]
+
 # Application definition
 
 INSTALLED_APPS = [

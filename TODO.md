@@ -17,11 +17,11 @@
 - [x] **`print()` de debug en production** (`views.py:519, 625`)
   4 `print()` remplacés par `logger = logging.getLogger(__name__)` avec les niveaux appropriés (`warning`, `debug`, `error`, `exception`).
 
-- [ ] **Chemins de disques hardcodés** (`views.py:437-440`)
-  Les chemins `/media/nimzo/3tb` et `/media/120gb` sont en dur dans `system_monitor()`. Les déplacer dans `.env` ou `settings.py`.
+- [x] **Chemins de disques hardcodés** (`views.py:437-440`)
+  Déplacés dans `.env` via `MONITOR_DISKS="Nom:/chemin|Nom:/chemin"`, parsé dans `settings.py`.
 
-- [ ] **`move_link_to_page` cible toujours le 1er widget** (`views.py:135`)
-  Quand on déplace un lien vers une autre page, il atterrit dans `widgets.first()` sans que l'utilisateur puisse choisir le widget cible.
+- [x] **`move_link_to_page` cible toujours le 1er widget** (`views.py:135`)
+  Sous-menu à deux niveaux (Page → Widgets). La vue utilise `target_widget_id` directement.
 
 ---
 
