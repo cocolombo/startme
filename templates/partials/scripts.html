@@ -150,16 +150,11 @@
         const clockEl = document.getElementById('clock-display');
         const dateEl = document.getElementById('date-display');
 
-        // Horloges additionnelles
-        const clockParis = document.getElementById('clock-paris');
-        const clockSF = document.getElementById('clock-sf');
-        const clockPekin = document.getElementById('clock-pekin');
-
-        if (!clockEl) return;
+            if (!clockEl) return;
 
         const now = new Date();
 
-        // Heure locale (Montréal)
+        // Heure locale
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         clockEl.textContent = `${hours}:${minutes}`;
@@ -175,9 +170,10 @@
             }).format(now);
         };
 
-        if(clockParis) clockParis.textContent = getForeignTime('Europe/Paris');
-        if(clockSF) clockSF.textContent = getForeignTime('America/Los_Angeles');
-        if(clockPekin) clockPekin.textContent = getForeignTime('Asia/Shanghai');
+        // Horloges additionnelles (configurées via CLOCK_TIMEZONES dans .env)
+        document.querySelectorAll('.clock-secondary[data-timezone]').forEach(el => {
+            el.textContent = getForeignTime(el.dataset.timezone);
+        });
     }
 
     if(document.getElementById('clock-display')) {
@@ -186,8 +182,8 @@
     }
 
 
-    // Configuration Open-Meteo pour Montréal
-    const API_URL = "https://api.open-meteo.com/v1/forecast?latitude=45.5017&longitude=-73.5673&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=America%2FToronto&forecast_days=4";
+    // Configuration Open-Meteo (ville configurée via WEATHER_* dans .env)
+    const API_URL = `https://api.open-meteo.com/v1/forecast?latitude={{ weather_lat }}&longitude={{ weather_lon }}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=${encodeURIComponent("{{ weather_timezone }}")}&forecast_days=4`;
 
     function getWeatherIcon(code) {
         const icons = {

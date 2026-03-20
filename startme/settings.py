@@ -44,6 +44,20 @@ MONITOR_DISKS = [
     if ':' in part
 ]
 
+# Widget Météo
+WEATHER_CITY = os.getenv('WEATHER_CITY', 'Montréal, QC')
+WEATHER_LAT = os.getenv('WEATHER_LAT', '45.5017')
+WEATHER_LON = os.getenv('WEATHER_LON', '-73.5673')
+WEATHER_TIMEZONE = os.getenv('WEATHER_TIMEZONE', 'America/Toronto')
+
+# Widget Horloges — format : "Label:Timezone/IANA|Label:Timezone/IANA"
+_raw_clocks = os.getenv('CLOCK_TIMEZONES', 'Paris:Europe/Paris|SF:America/Los_Angeles|Pékin:Asia/Shanghai')
+CLOCK_TIMEZONES = [
+    {'label': part.split(':')[0], 'timezone': ':'.join(part.split(':')[1:])}
+    for part in _raw_clocks.split('|')
+    if ':' in part
+]
+
 # Application definition
 
 INSTALLED_APPS = [

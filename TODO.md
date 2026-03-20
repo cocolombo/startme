@@ -38,17 +38,17 @@
 
 ## ⚙️ Configuration
 
-- [ ] **Météo** : Ville codée en dur dans `widgets_infos.html` (`Montréal, QC`). Rendre configurable via `.env`.
-- [ ] **Horloges** : Fuseaux (Paris, SF, Pékin) hardcodés dans le HTML. Rendre configurables.
-- [ ] **Port** : Actuellement `8800` dans les scripts de lancement, documenter clairement dans `.env.example`.
+- [x] **Météo** : Ville et coordonnées configurables via `WEATHER_CITY`, `WEATHER_LAT`, `WEATHER_LON`, `WEATHER_TIMEZONE` dans `.env`.
+- [x] **Horloges** : Fuseaux configurables via `CLOCK_TIMEZONES` dans `.env`. Le JS utilise `data-timezone` au lieu d'IDs fixes.
+- [x] **Port** : Aligné sur `8800` dans les deux scripts. Documenté dans `.env.example`.
 
 ---
 
 ## ✨ Fonctionnalités à envisager
 
-- [ ] **Authentification** : Le dashboard est accessible sans mot de passe. Ajouter une protection basique (`LOGIN_REQUIRED` ou `.env` avec token).
-- [ ] **Import de favoris** : Importer un fichier HTML d'export de navigateur (Chrome/Firefox) pour peupler les liens en masse.
-- [ ] **Choix du widget cible** lors d'un déplacement de lien vers une autre page (voir bug ci-dessus).
+- [-] **Authentification** : Non nécessaire (usage local uniquement sur 127.0.0.1).
+- [-] **Import de favoris** : Importer un fichier HTML d'export de navigateur (Chrome/Firefox) pour peupler les liens en masse.
+- [x] **Choix du widget cible** lors d'un déplacement de lien vers une autre page (voir bug ci-dessus).
 - [ ] **Mode Clair / Sombre** toggle (actuellement dark mode fixe).
 - [ ] **Favicon automatique** : Récupérer et afficher le favicon de chaque lien (`https://www.google.com/s2/favicons?domain=...`).
-- [ ] **Déploiement** : Documenter la mise en production (systemd service ou Docker Compose).
+- [-] **Déploiement** : Non applicable (usage local uniquement).

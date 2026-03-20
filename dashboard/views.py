@@ -43,6 +43,11 @@ def index(request, slug=None):
     context = {
         'pages': pages,
         'active_page': active_page,
+        'weather_city': settings.WEATHER_CITY,
+        'weather_lat': settings.WEATHER_LAT,
+        'weather_lon': settings.WEATHER_LON,
+        'weather_timezone': settings.WEATHER_TIMEZONE,
+        'clock_timezones': settings.CLOCK_TIMEZONES,
     }
     return render(request, 'dashboard/index.html', context)
 
