@@ -14,8 +14,8 @@
 - [x] **`bare except:` dans 4 vues** (`views.py:110, 541, 703, 710`)
   Remplacés par `except Exception` dans `update_widget_order`, `update_page_order` et `get_network_info`.
 
-- [ ] **`print()` de debug en production** (`views.py:519, 625`)
-  Deux `print()` actifs dans `open_local_file` et `run_command`. Remplacer par un logger Django.
+- [x] **`print()` de debug en production** (`views.py:519, 625`)
+  4 `print()` remplacés par `logger = logging.getLogger(__name__)` avec les niveaux appropriés (`warning`, `debug`, `error`, `exception`).
 
 - [ ] **Chemins de disques hardcodés** (`views.py:437-440`)
   Les chemins `/media/nimzo/3tb` et `/media/120gb` sont en dur dans `system_monitor()`. Les déplacer dans `.env` ou `settings.py`.

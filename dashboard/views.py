@@ -13,9 +13,12 @@ import requests
 
 import zipfile
 import io
+import logging
 from datetime import datetime
 from django.conf import settings
 from django.http import FileResponse
+
+logger = logging.getLogger(__name__)
 
 def index(request, slug=None):
     """Affiche la page principale du tableau de bord.
@@ -521,7 +524,7 @@ def open_local_file(request, link_id):
         subprocess.Popen(['xdg-open', path], start_new_session=True)
         return HttpResponse(status=204) # 204 = Succès, ne fais rien sur la page
     else:
-        print(f"Erreur: Fichier introuvable -> {path}")
+        logger.warning("Fichier introuvable : %s", path)
         return HttpResponse(status=404)
 
 
@@ -627,7 +630,7 @@ def run_command(request, link_id):
     link = get_object_or_404(Link, id=link_id)
     command = link.url.strip()
 
-    print(f"--- TENTATIVE D'EXÉCUTION : {command} ---")
+    logger.debug("Tentative d'exécution : %s", command)
 
     if not command:
         return HttpResponse(status=400)
@@ -636,7 +639,7 @@ def run_command(request, link_id):
     terminal_path = shutil.which('mate-terminal') or shutil.which('gnome-terminal') or shutil.which('xterm') or shutil.which('konsole')
 
     if not terminal_path:
-        print("ERREUR: Aucun terminal compatible trouvé.")
+        logger.error("Aucun terminal compatible trouvé")
         return HttpResponse(status=500)
 
     try:
@@ -690,7 +693,7 @@ def run_command(request, link_id):
         return HttpResponse(status=204)
 
     except Exception as e:
-        print(f"ERREUR CRITIQUE PYTHON: {e}")
+        logger.exception("Erreur lors du lancement du terminal")
         return HttpResponse(status=500)
 
 def get_network_info(request):
