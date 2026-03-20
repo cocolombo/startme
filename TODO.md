@@ -8,8 +8,8 @@
 - [x] **`icon_url` inutilisé** (`models.py:75`)
   Champ supprimé du modèle, de `link_item.html` et de `import_json.py` — migration `0010_remove_link_icon_url`.
 
-- [ ] **`rename_page` ne gère pas les slugs dupliqués** (`views.py:233`)
-  `create_page` a une logique de déduplication de slug (`ma-page`, `ma-page-2`, etc.) mais `rename_page` ne l'a pas — risque de collision.
+- [x] **`rename_page` ne gère pas les slugs dupliqués** (`views.py:233`)
+  Logique de déduplication ajoutée (identique à `create_page`, avec `.exclude(id=page.id)` pour ignorer la page elle-même).
 
 - [ ] **`bare except:` dans 4 vues** (`views.py:110, 541, 703, 710`)
   Les blocs `except:` sans type capturent tous les cas (y compris `KeyboardInterrupt`). Remplacer par `except Exception`.

@@ -229,8 +229,13 @@ def rename_page(request, page_id):
 
     if new_name:
         page.name = new_name
-        # Mise à jour du slug
-        page.slug = slugify(new_name)
+        base_slug = slugify(new_name)
+        slug = base_slug
+        counter = 1
+        while Page.objects.filter(slug=slug).exclude(id=page.id).exists():
+            slug = f"{base_slug}-{counter}"
+            counter += 1
+        page.slug = slug
         page.save()
         return redirect('index', slug=page.slug)
 
