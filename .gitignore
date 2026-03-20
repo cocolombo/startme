@@ -16,3 +16,9 @@ env/
 
 # Système
 .DS_Store
+
+# Archives et fichiers générés
+*.tar.gz
+*.zip
+startup.log
+data_export.json

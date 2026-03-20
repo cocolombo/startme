@@ -2,6 +2,26 @@
 
 Toutes les modifications notables de ce projet seront documentées dans ce fichier.
 
+## [2026-03-20] - Corrections et améliorations
+### Corrigé
+- `Link.url` migré de `URLField` vers `CharField(max_length=500)` pour supporter les chemins locaux et commandes shell.
+- Champ `icon_url` inutilisé supprimé du modèle `Link`.
+- `rename_page` : ajout de la déduplication de slug (évite les collisions).
+- `bare except:` remplacés par `except Exception` dans 4 vues.
+- `print()` de debug remplacés par un logger Django (`logging.getLogger(__name__)`).
+- Sous-menu "Déplacer vers..." : choix du widget cible (au lieu du premier widget par défaut).
+
+### Configuration
+- Chemins de disques surveillés déplacés dans `.env` via `MONITOR_DISKS`.
+- Changement de port : `8888` → `8800`.
+
+## [2026-02] - Nouvelles fonctionnalités
+### Ajouté
+- Widget **Réseau** : affichage de l'IP locale et de l'IP publique (WAN).
+- Widget **Minuteur** : compte à rebours avec alarme sonore et presets (5-60 min).
+- Widget **Calculatrice** : calculatrice intégrée avec historique.
+- Chaînes YouTube IA ajoutées via script `scripts/add_ia_links.py`.
+
 ## [Non publié] - En cours de développement
 ### Ajouté
 - Fichier `CHANGELOG.md` pour le suivi de l'historique.

@@ -61,9 +61,9 @@ git clone [https://github.com/cocolombo/dashboard.git](https://github.com/cocolo
 cd dashboard
 
 # Créer un environnement virtuel
-python -m venv .venv
-source .venv/bin/activate  # Sur Linux/Mac
-# .venv\Scripts\activate   # Sur Windows
+python -m venv venv
+source venv/bin/activate  # Sur Linux/Mac
+# venv\Scripts\activate   # Sur Windows
 
 # Installer les dépendances
 pip install -r requirements.txt

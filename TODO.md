@@ -27,12 +27,12 @@
 
 ## 🧹 Nettoyage du dépôt
 
-- [ ] Supprimer `templates/partials/widgets_infos.html.bak` (fichier de sauvegarde commité)
-- [ ] Supprimer ou archiver `startme_20260210.tar.gz` de la racine du projet (archive volumineuse)
-- [ ] Archiver les scripts one-shot (`add_ia_links.py`, `install_dashboard.py`) dans un dossier `scripts/`
-- [ ] Mettre à jour le `changelog` (widget Réseau, chaînes YT IA, changement de port non documentés)
-- [ ] Corriger le README : référence à `.venv` alors que le projet utilise `venv/`
-- [ ] Ajouter `venv/`, `*.tar.gz`, `startup.log`, `data_export.json` dans `.gitignore`
+- [x] Supprimer `templates/partials/widgets_infos.html.bak` (fichier de sauvegarde commité)
+- [x] Supprimer ou archiver `startme_20260210.tar.gz` de la racine du projet (archive volumineuse)
+- [x] Archiver les scripts one-shot (`add_ia_links.py`, `install_dashboard.py`) dans un dossier `scripts/`
+- [x] Mettre à jour le `changelog` (widget Réseau, chaînes YT IA, changement de port non documentés)
+- [x] Corriger le README : référence à `.venv` → `venv/`
+- [x] Ajouter `*.tar.gz`, `startup.log`, `data_export.json` dans `.gitignore`
 
 ---
 
