@@ -51,7 +51,6 @@ class Command(BaseCommand):
                     # link_data est une liste : [Titre, URL, IconURL]
                     title = link_data[0]
                     url = link_data[1]
-                    icon = link_data[2] if len(link_data) > 2 else ""
 
                     # 3. Créer le Lien (éviter doublons basés sur l'URL)
                     Link.objects.get_or_create(
@@ -59,7 +58,6 @@ class Command(BaseCommand):
                         widget=widget,
                         defaults={
                             'title': title,
-                            'icon_url': icon,
                             'order': link_order
                         }
                     )

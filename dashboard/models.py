@@ -66,13 +66,11 @@ class Link(models.Model):
     Attributes:
         title (CharField): Le texte affiché pour le lien.
         url (CharField): L'URL cible, le chemin du fichier local, ou la commande shell.
-        icon_url (URLField): L'URL d'une icône personnalisée (non utilisé actuellement).
         widget (ForeignKey): Le widget parent auquel ce lien appartient.
         order (IntegerField): La position du lien dans la liste du widget.
     """
     title = models.CharField(max_length=200)
     url = models.CharField(max_length=500, blank=True, null=True)
-    icon_url = models.URLField(blank=True, null=True)
     widget = models.ForeignKey(Widget, on_delete=models.CASCADE, related_name='links')
     order = models.IntegerField(default=0)
 

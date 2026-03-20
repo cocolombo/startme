@@ -8,11 +8,7 @@
 
     {% elif "http" in link.url %}
         <a href="{{ link.url }}" target="_blank" class="flex items-center flex-1 min-w-0 mr-2 cursor-pointer">
-            {% if link.icon_url %}
-                <img src="{{ link.icon_url }}" class="w-3 h-3 mr-2" alt="icon" onerror="this.style.display='none'">
-            {% else %}
-                <img src="https://www.google.com/s2/favicons?domain={{ link.url }}" class="w-3 h-3 mr-2 opacity-70" alt="icon">
-            {% endif %}
+            <img src="https://www.google.com/s2/favicons?domain={{ link.url }}" class="w-3 h-3 mr-2 opacity-70" alt="icon">
             <span class="truncate text-gray-200 text-xs font-medium hover:text-blue-400 transition-colors">{{ link.title }}</span>
         </a>
 

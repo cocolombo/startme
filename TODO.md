@@ -5,8 +5,8 @@
 - [x] **`Link.url` mauvais type de champ** (`models.py:74`)
   Migré de `URLField` vers `CharField(max_length=500)` — migration `0009_link_url_charfield`.
 
-- [ ] **`icon_url` inutilisé** (`models.py:75`)
-  Le champ existe dans le modèle mais n'est jamais utilisé côté frontend. Supprimer ou implémenter.
+- [x] **`icon_url` inutilisé** (`models.py:75`)
+  Champ supprimé du modèle, de `link_item.html` et de `import_json.py` — migration `0010_remove_link_icon_url`.
 
 - [ ] **`rename_page` ne gère pas les slugs dupliqués** (`views.py:233`)
   `create_page` a une logique de déduplication de slug (`ma-page`, `ma-page-2`, etc.) mais `rename_page` ne l'a pas — risque de collision.
