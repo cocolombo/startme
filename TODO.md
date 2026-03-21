@@ -23,6 +23,15 @@
 - [x] **`move_link_to_page` cible toujours le 1er widget** (`views.py:135`)
   Sous-menu à deux niveaux (Page → Widgets). La vue utilise `target_widget_id` directement.
 
+- [-] **Route orpheline `toggle_widget_collapse`** (`urls.py:31`)
+  Vérification faite : la route n'est pas présente dans `urls.py`. Fausse alerte.
+
+- [x] **`requirements.txt` incomplet**
+  Ajout de `psutil==7.2.1`, `requests==2.32.5`, `django-htmx==1.27.0` (versions installées dans le venv).
+
+- [ ] **`link_form.html` utilise `location.reload()`** (`link_form.html:23`)
+  Le bouton Annuler (✕) déclenche une rechargement complet de la page au lieu de remplacer le DOM via HTMX. À remplacer par un `hx-get` vers le `link_item` original.
+
 ---
 
 ## 🧹 Nettoyage du dépôt
@@ -50,5 +59,13 @@
 - [-] **Import de favoris** : Importer un fichier HTML d'export de navigateur (Chrome/Firefox) pour peupler les liens en masse.
 - [x] **Choix du widget cible** lors d'un déplacement de lien vers une autre page (voir bug ci-dessus).
 - [ ] **Mode Clair / Sombre** toggle (actuellement dark mode fixe).
-- [ ] **Favicon automatique** : Récupérer et afficher le favicon de chaque lien (`https://www.google.com/s2/favicons?domain=...`).
+- [x] **Favicon automatique** : Implémenté via `https://www.google.com/s2/favicons?domain=...` dans `link_item.html`. Fonctionne pour les URLs web ; sans effet sur les chemins locaux ou commandes (comportement attendu).
 - [-] **Déploiement** : Non applicable (usage local uniquement).
+
+---
+
+## 🔍 Observations (passe du 2026-03-21)
+
+- **Recherche live** (`scripts.html:338`) : Le sélecteur `.group\/widget` (avec antislash d'échappement JS) cible la classe Tailwind `group/widget`. À valider en situation réelle car les slashes dans les classes Tailwind peuvent causer des surprises selon la version utilisée.
+- **Gestion d'erreur météo** (`scripts.html:254`) : En cas d'échec de l'API météo, l'interface affiche juste "Erreur" sans détail. Un message plus informatif (ex : clé manquante, ville inconnue) serait utile.
+- **Page Infos et recherche** : Le filtre live search ne s'applique pas à la page "Infos" (widgets spéciaux hors grille normale). Comportement cohérent mais à documenter.
