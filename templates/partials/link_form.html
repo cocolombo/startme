@@ -20,7 +20,9 @@
                     OK
                 </button>
                 <button type="button"
-                        onclick="location.reload()"
+                        hx-get="{% url 'cancel_edit_link' link.id %}"
+                        hx-target="#link-{{ link.id }}"
+                        hx-swap="outerHTML"
                         class="btn-cancel bg-gray-700 hover:bg-gray-600 text-gray-300 text-[9px] px-2 py-1 rounded text-center">
                     X
                 </button>

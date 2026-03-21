@@ -421,6 +421,16 @@ def edit_link(request, pk):
     return render(request, 'partials/link_form.html', {'link': link})
 
 
+def cancel_edit_link(request, pk):
+    """Annulation de l'édition : retourne le link_item sans modification."""
+    link = get_object_or_404(Link, pk=pk)
+    if link.widget.widget_type == 'command':
+        return render(request, 'partials/command_item.html', {'link': link})
+    elif link.widget.widget_type == 'snippet':
+        return render(request, 'partials/snippet_item.html', {'link': link})
+    return render(request, 'partials/link_item.html', {'link': link})
+
+
 # dashboard/views.py
 
 def get_gpu_stats():

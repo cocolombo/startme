@@ -30,6 +30,7 @@ urlpatterns = [
     path('link/add/<int:widget_id>/', views.add_link, name='add_link'),
     path('link/delete/<int:link_id>/', views.delete_link, name='delete_link'),
     path('link/<int:pk>/edit/', views.edit_link, name='edit_link'),
+    path('link/<int:pk>/cancel/', views.cancel_edit_link, name='cancel_edit_link'),
     path('link/run/<int:link_id>/', views.run_command, name='run_command'),
     path('link/open-local/<int:link_id>/', views.open_local_file, name='open_local_file'),
 

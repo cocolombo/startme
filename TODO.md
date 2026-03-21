@@ -29,8 +29,8 @@
 - [x] **`requirements.txt` incomplet**
   Ajout de `psutil==7.2.1`, `requests==2.32.5`, `django-htmx==1.27.0` (versions installées dans le venv).
 
-- [ ] **`link_form.html` utilise `location.reload()`** (`link_form.html:23`)
-  Le bouton Annuler (✕) déclenche une rechargement complet de la page au lieu de remplacer le DOM via HTMX. À remplacer par un `hx-get` vers le `link_item` original.
+- [x] **`link_form.html` utilise `location.reload()`** (`link_form.html:23`)
+  Remplacé par un `hx-get` vers la nouvelle vue `cancel_edit_link`. Retourne le bon partial selon le `widget_type` (link, command, snippet).
 
 ---
 
