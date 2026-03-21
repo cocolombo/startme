@@ -1,4 +1,4 @@
-<li id="link-{{ link.id }}" data-id="{{ link.id }}" class="bg-gray-700 hover:bg-gray-600 rounded py-0.5 px-2 mb-0.5 flex justify-between items-center group transition-colors select-none">
+<li id="link-{{ link.id }}" data-id="{{ link.id }}" class="bg-gray-700 hover:bg-gray-600 rounded py-0.5 px-2 mb-0.5 flex justify-between items-center group transition-colors select-none" oncontextmenu="showContextMenu(event, '{{ link.id }}'); return false;">
 
     {% if not link.url %}
         <div class="flex items-center flex-1 min-w-0 mr-2 opacity-60 cursor-default" title="Aucune URL définie">
@@ -27,10 +27,7 @@
         <button hx-get="{% url 'edit_link' link.id %}" hx-target="#link-{{ link.id }}" hx-swap="outerHTML" class="text-gray-400 hover:text-yellow-400 p-0.5" title="Modifier">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
         </button>
-        <button onclick="showContextMenu(event, '{{ link.id }}')" class="text-gray-400 hover:text-blue-400 p-0.5 cursor-context-menu" title="Déplacer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
-        </button>
-        <button onclick="confirmDeleteLink('{{ link.id }}')" class="text-gray-400 hover:text-red-500 p-0.5" title="Supprimer">
+<button onclick="confirmDeleteLink('{{ link.id }}')" class="text-gray-400 hover:text-red-500 p-0.5" title="Supprimer">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
     </div>

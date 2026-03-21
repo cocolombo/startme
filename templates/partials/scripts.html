@@ -132,17 +132,28 @@
 
     // --- MENU CONTEXTUEL : LIENS (Clic Droit) ---
     const linkMenu = document.getElementById('context-menu');
+    let currentLinkId = null;
+
     function showContextMenu(e, linkId) {
         e.preventDefault();
+        currentLinkId = linkId;
         linkMenu.style.left = e.pageX + 'px';
         linkMenu.style.top = e.pageY + 'px';
         linkMenu.style.display = 'block';
+    }
 
-        document.querySelectorAll('form[hx-post]').forEach(form => {
-            let url = form.getAttribute('hx-post').replace(/\d+$/, linkId);
-            form.setAttribute('hx-post', url);
-            if (typeof htmx !== 'undefined') htmx.process(form);
-        });
+    function moveLink(widgetId, pageId) {
+        if (!currentLinkId) return;
+        linkMenu.style.display = 'none';
+        const csrfToken = JSON.parse(document.body.getAttribute('hx-headers'))['X-CSRFToken'];
+        const formData = new FormData();
+        if (widgetId) formData.append('target_widget_id', widgetId);
+        if (pageId)   formData.append('target_page_id', pageId);
+        fetch(`/api/move-link/${currentLinkId}/`, {
+            method: 'POST',
+            headers: {'X-CSRFToken': csrfToken},
+            body: formData
+        }).then(() => location.reload());
     }
 
     // --- HORLOGE DIGITALE ---

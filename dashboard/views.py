@@ -124,18 +124,31 @@ def update_widget_order(request):
 @csrf_exempt
 @require_POST
 def move_link_to_page(request, link_id):
-    """Déplace un lien vers un widget spécifique via le menu contextuel.
+    """Déplace un lien vers un widget ou une page via le menu contextuel.
 
     Args:
-        request (HttpRequest): La requête POST doit contenir 'target_widget_id'.
+        request (HttpRequest): La requête POST doit contenir soit
+            'target_widget_id' (widget précis) soit 'target_page_id'
+            (premier widget de la page).
         link_id (int): L'ID du lien à déplacer.
 
     Returns:
-        HttpResponse: Statut 200 si succès.
+        HttpResponse: Statut 200 si succès, 400 si aucun widget trouvé.
     """
     link = get_object_or_404(Link, id=link_id)
     target_widget_id = request.POST.get('target_widget_id')
-    target_widget = get_object_or_404(Widget, id=target_widget_id)
+    target_page_id = request.POST.get('target_page_id')
+
+    if target_widget_id:
+        target_widget = get_object_or_404(Widget, id=target_widget_id)
+    elif target_page_id:
+        target_page = get_object_or_404(Page, id=target_page_id)
+        target_widget = target_page.widgets.first()
+        if not target_widget:
+            return HttpResponse(status=400)
+    else:
+        return HttpResponse(status=400)
+
     link.widget = target_widget
     link.save()
     return HttpResponse(status=200)
