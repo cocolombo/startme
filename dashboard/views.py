@@ -166,12 +166,13 @@ def add_link(request, widget_id):
         HttpResponseRedirect: Redirige vers la page précédente (HTTP_REFERER).
     """
     widget = get_object_or_404(Widget, id=widget_id)
-    title = request.POST.get('title')
-    url = request.POST.get('url')
+    title = request.POST.get('title', '')
+    url = request.POST.get('url', '')
 
-    # MODIFICATION : On vérifie seulement si 'title' existe.
-    if title:
-        # Si l'URL est vide, on s'assure que c'est bien None ou une chaîne vide
+    if widget.widget_type == 'snippet':
+        if url:
+            Link.objects.create(title=title, url=url, widget=widget, order=999)
+    elif title:
         Link.objects.create(title=title, url=url, widget=widget, order=999)
 
     return redirect(request.META.get('HTTP_REFERER', '/'))
@@ -295,6 +296,14 @@ def move_widget_to_page(request, widget_id):
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
+def toggle_widget_width(request, widget_id):
+    """Bascule le widget entre 1 colonne et 2 colonnes."""
+    widget = get_object_or_404(Widget, id=widget_id)
+    widget.is_wide = not widget.is_wide
+    widget.save()
+    return redirect(request.META.get('HTTP_REFERER', '/'))
+
+
 def delete_widget(request, widget_id):
     """Supprime un widget (catégorie) et tous les liens ou notes qu'il contient.
 
@@ -403,6 +412,8 @@ def edit_link(request, pk):
         # Sinon, on renvoie une LIGNE DE LISTE.
         if link.widget.widget_type == 'command':
             return render(request, 'partials/command_item.html', {'link': link})
+        elif link.widget.widget_type == 'snippet':
+            return render(request, 'partials/snippet_item.html', {'link': link})
         else:
             return render(request, 'partials/link_item.html', {'link': link})
 

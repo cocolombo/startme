@@ -11,7 +11,7 @@
         widgetMenu.style.top = e.clientY + 'px';
         widgetMenu.classList.remove('hidden');
 
-        document.querySelectorAll('.widget-move-form').forEach(form => {
+        document.querySelectorAll('.widget-move-form, .widget-width-form').forEach(form => {
             let baseAction = form.getAttribute('action');
             let newAction = baseAction.replace(/\/\d+\/$/, '/' + widgetId + '/');
             form.setAttribute('action', newAction);
@@ -154,6 +154,17 @@
             headers: {'X-CSRFToken': csrfToken},
             body: formData
         }).then(() => location.reload());
+    }
+
+    // --- COPIER SNIPPET ---
+    function copySnippet(btn) {
+        const cmd = btn.dataset.cmd;
+        navigator.clipboard.writeText(cmd).then(() => {
+            btn.classList.add('text-green-400');
+            const icon = btn.innerHTML;
+            btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';
+            setTimeout(() => { btn.innerHTML = icon; btn.classList.remove('text-green-400'); }, 1500);
+        });
     }
 
     // --- HORLOGE DIGITALE ---

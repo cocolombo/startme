@@ -41,6 +41,7 @@ class Widget(models.Model):
         ('list', 'Liste de liens'),
         ('note', 'Bloc-notes'),
         ('command', 'Lanceur de scripts'),
+        ('snippet', 'Bloc de commandes'),
     ]
 
     title = models.CharField(max_length=100)
@@ -49,7 +50,8 @@ class Widget(models.Model):
 
     # Nouveaux champs
     widget_type = models.CharField(max_length=10, choices=TYPE_CHOICES, default='list')
-    content = models.TextField(blank=True, null=True)  # Pour stocker le texte de la note
+    content = models.TextField(blank=True, null=True)
+    is_wide = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['order']

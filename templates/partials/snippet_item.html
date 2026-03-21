@@ -1,0 +1,26 @@
+<li id="link-{{ link.id }}" data-id="{{ link.id }}"
+    class="bg-gray-900 hover:bg-gray-800 rounded px-3 py-2 mb-1 flex items-center justify-between group transition-colors"
+    oncontextmenu="showContextMenu(event, '{{ link.id }}'); return false;">
+
+    <div class="flex-1 min-w-0 mr-2">
+        {% if link.title %}
+        <div class="text-gray-500 text-[10px] mb-0.5">{{ link.title }}</div>
+        {% endif %}
+        <div class="font-mono text-xs text-green-400 truncate">{{ link.url }}</div>
+    </div>
+
+    <div class="flex items-center space-x-0.5 shrink-0">
+        <button onclick="copySnippet(this)" data-cmd="{{ link.url }}"
+                class="text-gray-500 hover:text-green-400 p-1 transition-colors" title="Copier">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        </button>
+        <button hx-get="{% url 'edit_link' link.id %}" hx-target="#link-{{ link.id }}" hx-swap="outerHTML"
+                class="text-gray-500 hover:text-yellow-400 p-1 opacity-0 group-hover:opacity-100 transition-all" title="Modifier">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+        </button>
+        <button onclick="confirmDeleteLink('{{ link.id }}')"
+                class="text-gray-500 hover:text-red-500 p-1 opacity-0 group-hover:opacity-100 transition-all" title="Supprimer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </div>
+</li>

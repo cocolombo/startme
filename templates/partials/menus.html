@@ -32,8 +32,15 @@
 <div id="widget-context-menu" class="bg-gray-800 border border-gray-600 text-gray-200 rounded shadow-2xl w-56 py-1 text-sm fixed z-50 hidden">
     <!-- ... Options du menu contextuel pour les widgets ... -->
     <div class="px-4 py-2 font-bold border-b border-gray-700 text-orange-400 text-xs uppercase bg-gray-900">
-            Déplacer la catégorie vers...
+            Options catégorie
         </div>
+        <form action="{% url 'toggle_widget_width' 0 %}" method="POST" class="widget-width-form">
+            {% csrf_token %}
+            <button type="submit" class="w-full text-left px-4 py-2 hover:bg-blue-600 border-b border-gray-700 text-sm flex items-center gap-2">
+                ↔ Largeur 2 colonnes
+            </button>
+        </form>
+        <div class="px-4 py-1 text-gray-600 text-[10px] uppercase border-b border-gray-700">Déplacer vers</div>
         {% for page in pages %}
             {% if page != active_page %}
             <form action="{% url 'move_widget' 0 %}" method="POST" class="widget-move-form">

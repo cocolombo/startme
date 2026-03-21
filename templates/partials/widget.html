@@ -1,4 +1,4 @@
-<div class="bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-700 flex flex-col group/widget mb-6 transition-all duration-300 h-full relative"
+<div class="bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-700 flex flex-col group/widget mb-6 transition-all duration-300 h-full relative {% if widget.is_wide %}col-span-2{% endif %}"
      id="widget-{{ widget.id }}"
      data-id="{{ widget.id }}">
 
@@ -22,7 +22,7 @@
                     class="text-gray-500 hover:text-red-500 font-bold text-lg px-2 transition-colors cursor-pointer"
                     title="Supprimer">🗑</button>
 
-            {% if widget.widget_type != 'note' %}
+            {% if widget.widget_type != 'note' and widget.widget_type != 'snippet' %}
             <button onclick="toggleForm('form-{{ widget.id }}')"
                     class="text-gray-500 hover:text-green-400 font-bold text-2xl leading-none px-2 transition-colors cursor-pointer"
                     title="Ajouter">+</button>
@@ -86,6 +86,25 @@
                     {% include "partials/command_item.html" %}
                 {% endfor %}
             </div>
+
+        {% elif widget.widget_type == 'snippet' %}
+
+            <button onclick="toggleForm('form-{{ widget.id }}')"
+                    class="text-gray-500 hover:text-green-400 font-bold text-2xl leading-none px-2 transition-colors cursor-pointer absolute top-3 right-3"
+                    title="Ajouter une commande">+</button>
+
+            <form id="form-{{ widget.id }}" action="{% url 'add_link' widget.id %}" method="POST" class="hidden mb-3 bg-gray-900 p-3 rounded border border-gray-600 absolute top-0 left-0 right-0 z-10 shadow-xl">
+                {% csrf_token %}
+                <input type="text" name="title" placeholder="Description (optionnel)" class="w-full mb-2 bg-gray-800 text-white px-2 py-1 rounded border border-gray-700 text-sm">
+                <input type="text" name="url" placeholder="Commande (ex: git status --short)" required class="w-full mb-2 bg-gray-800 text-green-400 px-2 py-1 rounded border border-gray-700 font-mono text-xs">
+                <button type="submit" class="w-full bg-green-700 hover:bg-green-600 text-white py-1 rounded text-sm">Ajouter</button>
+            </form>
+
+            <ul class="sortable-list space-y-0 flex-1 min-h-[20px] overflow-y-auto custom-scrollbar" data-widget-id="{{ widget.id }}">
+                {% for link in widget.links.all %}
+                    {% include "partials/snippet_item.html" %}
+                {% endfor %}
+            </ul>
 
         {% endif %}
 

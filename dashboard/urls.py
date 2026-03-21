@@ -22,6 +22,7 @@ urlpatterns = [
     path('widget/delete/<int:widget_id>/', views.delete_widget, name='delete_widget'),
     path('widget/<int:pk>/rename/', views.rename_widget, name='rename_widget'),
     path('widget/move/<int:widget_id>/', views.move_widget_to_page, name='move_widget'),
+    path('widget/toggle-width/<int:widget_id>/', views.toggle_widget_width, name='toggle_widget_width'),
 
     # =================================
     # ACTIONS SUR LES LIENS
