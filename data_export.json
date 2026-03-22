@@ -1,960 +1,4344 @@
+[
 {
-    "Extracted Page": {
-        "Habituel": [
-            [
-                "Raindrop.io",
-                "https://app.raindrop.io/my/-1",
-                "https://f.start.me/app.raindrop.io"
-            ],
-            [
-                "AI agents for beginners",
-                "https://github.com/cocolombo/ai-agents-for-beginners",
-                "https://f.start.me/github.com"
-            ],
-            [
-                "Cloudskillsboost.google",
-                "https://www.cloudskillsboost.google/?show_innovator_form=true",
-                "https://f.start.me/www.cloudskillsboost.google"
-            ],
-            [
-                "Google Gemini (2)",
-                "https://gemini.google.com/gem/61070db28f17/ea4d82a9e8114b1b",
-                "https://f.start.me/gemini.google.com"
-            ],
-            [
-                "ProtonMail",
-                "https://account.proton.me/mail",
-                "https://f.start.me/account.proton.me"
-            ],
-            [
-                "XXX",
-                "https://x.com/notifications",
-                "https://f.start.me/x.com"
-            ],
-            [
-                "Google",
-                "https://www.google.ca/",
-                "https://f.start.me/www.google.ca"
-            ],
-            [
-                "Online Timer",
-                "https://www.timeanddate.com/timer/",
-                "https://f.start.me/www.timeanddate.com"
-            ],
-            [
-                "Synonymes",
-                "https://www.synonymo.fr/",
-                "https://www.google.com/s2/favicons?domain=www.synonymo.fr"
-            ],
-            [
-                "DeepL",
-                "https://www.deepl.com/translator",
-                "https://f.start.me/www.deepl.com"
-            ],
-            [
-                "Mes Signets",
-                "https://cocolombo.github.io/mes_sites/",
-                "https://f.start.me/cocolombo.github.io"
-            ],
-            [
-                "reddit thermopompe",
-                "https://www.reddit.com/r/heatpumps/comments/1iryebj/comment/mdckgsu/?context=3",
-                "https://f.start.me/www.reddit.com"
-            ],
-            [
-                "- YouTube",
-                "https://www.youtube.com/watch?v=pTaSDVz0gok",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "Discord",
-                "https://discord.com/channels/@me",
-                "https://f.start.me/discord.com"
-            ]
-        ],
-        "Météo": [
-            [
-                "Radar météo",
-                "https://www.accuweather.com/fr/ca/montreal/h3a/weather-radar/56186",
-                "https://f.start.me/www.accuweather.com"
-            ],
-            [
-                "HurricaneCenter",
-                "https://www.nhc.noaa.gov/",
-                "https://f.start.me/www.nhc.noaa.gov"
-            ],
-            [
-                "Latest Earthquakes",
-                "https://earthquake.usgs.gov/earthquakes/map/?extent=-85.72811,-402.1875&extent=85.78017,286.17188&sort=largest&listOnlyShown=true",
-                "https://f.start.me/earthquake.usgs.gov"
-            ],
-            [
-                "Paris (France, Île-de-France)",
-                "https://weather.com/weather/today/l/48.85339,2.34864",
-                "https://f.start.me/weather.com"
-            ],
-            [
-                "Climate Reanalyzer",
-                "https://climatereanalyzer.org/clim/t2_daily/?dm_id=world",
-                "https://f.start.me/climatereanalyzer.org"
-            ],
-            [
-                "10-Jours",
-                "https://weather.com/fr-CA/weather/tenday/l/45.53,-73.52",
-                "https://f.start.me/weather.com"
-            ],
-            [
-                "31-Jours",
-                "https://weather.com/fr-CA/weather/monthly/l/45.53,-73.52",
-                "https://f.start.me/weather.com"
-            ],
-            [
-                "MONTRÉAL",
-                "https://weather.com/weather/today/l/45.50884,-73.58781",
-                "https://static.start.me/weather/10d.png"
-            ]
-        ],
-        "Achats": [
-            [
-                "Costco",
-                "https://www.costco.ca/",
-                "https://f.start.me/www.costco.ca"
-            ],
-            [
-                "Amazon.ca",
-                "https://www.amazon.ca/",
-                "https://f.start.me/www.amazon.ca"
-            ],
-            [
-                "Audible",
-                "https://audible.ca/",
-                "https://f.start.me/audible.ca"
-            ],
-            [
-                "Metro.ca",
-                "https://www.metro.ca/",
-                "https://f.start.me/www.metro.ca"
-            ],
-            [
-                "Superc",
-                "https://www.superc.ca/circulaire",
-                "https://f.start.me/www.superc.ca"
-            ],
-            [
-                "IGA",
-                "https://www.iga.net/fr/circulaire/circulaire",
-                "https://f.start.me/www.iga.net"
-            ],
-            [
-                "Wal-Mart",
-                "https://www.walmart.ca/",
-                "https://f.start.me/www.walmart.ca"
-            ],
-            [
-                "Popotesmontreal",
-                "https://popotesmontreal.org/bon-de-commande/",
-                "https://f.start.me/popotesmontreal.org"
-            ],
-            [
-                "Home Depot",
-                "https://homedepot.ca/",
-                "https://f.start.me/homedepot.ca"
-            ],
-            [
-                "renodepot",
-                "https://www.rona.ca/fr",
-                "https://f.start.me/www.rona.ca"
-            ],
-            [
-                "Canadian Tire",
-                "https://www.canadiantire.ca/fr.html",
-                "https://f.start.me/www.canadiantire.ca"
-            ],
-            [
-                "Quincaillerie Lavoie",
-                "https://www.pagesjaunes.ca/bus/Quebec/Montreal/Quincaillerie-Lavoie/3574242.html",
-                "https://f.start.me/www.pagesjaunes.ca"
-            ],
-            [
-                "Prime",
-                "https://www.amazon.ca/gp/primecentral?ref_=ya_d_c_prime",
-                "https://f.start.me/www.amazon.ca"
-            ],
-            [
-                "Sico Proluxe SRD RE Wood Finish 009 Chêne Foncé Dark Oak",
-                "https://www.google.com/search?num=10&newwindow=1&sca_esv=fe6362944b97d7fe&udm=28&fbs=AIIjpHx4nJjfGojPVHhEACUHPiMQ0USrjQeSRDpr8WJmue1kyJIi69nSjs5aaK1oUgwDnpkgZC2aHQ_bKKzGRPKjyluqTPAjXx8nriGuBmviG_hOTJd451uakYUU1EqO7s2J_u6SlSnO7-spKBIRbIJvB937k_7aYed7e6gmTlM81eRUfjtCmqGEHDtLLfN-Cgi5NewyKde2rOujhNe-yC9OkvWxvxHSYw&q=sico+srd+re+wood+finish&ved=1t:220175&ictx=111&biw=1008&bih=459&dpr=1.91#ip=1",
-                "https://f.start.me/www.google.com"
-            ]
-        ],
-        "Musique": [
-            [
-                "- YouTube",
-                "https://youtu.be/mdJU5ogrPMY",
-                "https://f.start.me/youtu.be"
-            ],
-            [
-                "- YouTube",
-                "https://www.youtube.com/watch?v=Ie5GGRkjSXE",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "- YouTube",
-                "https://www.youtube.com/watch?v=f_FSWEg9Wgk",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "Philip Glass",
-                "https://www.youtube.com/watch?v=heu9tD0dzkY",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "- YouTube",
-                "https://www.youtube.com/watch?v=QPgSaUufaVU&t=11s",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "- YouTube",
-                "https://www.youtube.com/watch?v=E__Ty2GcbMM",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "- YouTube (2)",
-                "https://www.youtube.com/watch?v=DJahmKqFSIM",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "Handel",
-                "https://www.youtube.com/watch?v=hxrywXCuIdU",
-                "https://f.start.me/www.youtube.com"
-            ]
-        ],
-        "Maison": [
-            [
-                "moteur fournaise",
-                "https://www.youtube.com/watch?v=HN-05sOh92s",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "Thermostat Lennox",
-                "https://www.youtube.com/watch?v=OQ8YkMBKlk0&t=2s",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "- YouTube",
-                "https://www.youtube.com/watch?v=6FufO9tDq9w",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "- YouTube",
-                "https://www.youtube.com/watch?v=wfWfidb27xM",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "Thermopompe",
-                "https://docs.google.com/spreadsheets/d/1B9b2ZpxAwHFoc5pxLOV9RncVQsdfcVjrzfJ9BZsyzbY/edit?gid=0#gid=0",
-                "https://f.start.me/spreadsheets.google.com"
-            ]
-        ],
-        "Visu": [
-            [
-                "YouTube",
-                "https://www.youtube.com/",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "ICI Rdi en direct",
-                "https://www.coolstreaming.us/channelnew/fr/61965/ICIRdi.html",
-                "https://f.start.me/www.coolstreaming.us"
-            ],
-            [
-                "CNews",
-                "https://www.cnews.fr/les-replays",
-                "https://www.google.com/s2/favicons?domain=www.cnews.fr"
-            ],
-            [
-                "Mordus de politique",
-                "https://ici.radio-canada.ca/rdi/mordus-de-politique/site",
-                "https://f.start.me/ici.radio-canada.ca"
-            ],
-            [
-                "Tou.tv",
-                "https://ici.tou.tv/en-direct?lectureauto=1",
-                "https://f.start.me/ici.tou.tv"
-            ],
-            [
-                "TVA",
-                "https://www.qub.ca/tvaplus/tva/en-direct",
-                "https://f.start.me/www.qub.ca"
-            ],
-            [
-                "QUB",
-                "https://www.qub.ca/",
-                "https://f.start.me/www.qub.ca"
-            ],
-            [
-                "Tv5unis.ca",
-                "https://www.tv5unis.ca/",
-                "https://f.start.me/www.tv5unis.ca"
-            ],
-            [
-                "CNN",
-                "https://www.cnn.com/videos/live",
-                "https://f.start.me/www.cnn.com"
-            ],
-            [
-                "helix.videotron.com",
-                "https://helix.videotron.com/",
-                "https://f.start.me/helix.videotron.com"
-            ]
-        ],
-        "Audio": [
-            [
-                "98.5 FM",
-                "https://www.985fm.ca/",
-                "https://f.start.me/www.985fm.ca"
-            ],
-            [
-                "995.fm",
-                "https://995.fm/",
-                "https://f.start.me/995.fm"
-            ],
-            [
-                "CBC Music",
-                "https://www.cbc.ca/listen/live-radio",
-                "https://f.start.me/www.cbc.ca"
-            ],
-            [
-                "Direct.radiovm.com",
-                "https://direct.radiovm.com/",
-                "https://f.start.me/direct.radiovm.com"
-            ],
-            [
-                "Richard Martineau",
-                "https://www.qub.ca/radio/balado/richard-martineau?audio=1099160126",
-                "https://f.start.me/www.qub.ca"
-            ]
-        ],
-        "Journaux": [
-            [
-                "Le Devoir",
-                "https://www.ledevoir.com/",
-                "https://f.start.me/www.ledevoir.com"
-            ],
-            [
-                "La Presse",
-                "https://www.lapresse.ca/",
-                "https://f.start.me/www.lapresse.ca"
-            ],
-            [
-                "The New York Times",
-                "https://www.nytimes.com/",
-                "https://f.start.me/www.nytimes.com"
-            ],
-            [
-                "The Washington Post",
-                "https://www.washingtonpost.com/",
-                "https://f.start.me/www.washingtonpost.com"
-            ],
-            [
-                "The Globe and Mail",
-                "https://www.theglobeandmail.com/",
-                "https://f.start.me/www.theglobeandmail.com"
-            ],
-            [
-                "Le Journal de Montréal",
-                "https://www.journaldemontreal.com/",
-                "https://f.start.me/www.journaldemontreal.com"
-            ]
-        ],
-        "Langue": [
-            [
-                "Champ lexical",
-                "https://www.rimessolides.com/motscles.aspx",
-                "https://f.start.me/www.rimessolides.com"
-            ],
-            [
-                "DeepL",
-                "https://www.deepl.com/translator",
-                "https://f.start.me/www.deepl.com"
-            ],
-            [
-                "Synonymes",
-                "https://www.synonymo.fr/",
-                "https://www.google.com/s2/favicons?domain=www.synonymo.fr"
-            ],
-            [
-                "Scribens reformulation",
-                "https://www.scribens.fr/?key=Rephrasep",
-                "https://f.start.me/www.scribens.fr"
-            ]
-        ],
-        "Divers": [
-            [
-                "HQ pannes",
-                "https://infopannes.solutions.hydroquebec.com/info-pannes/pannes/pannes-en-cours?langue=fr",
-                "https://f.start.me/infopannes.solutions.hydroquebec.com"
-            ],
-            [
-                "Lotto 6/49",
-                "https://loteries.espacejeux.com/fr/loteries/lotto-6-49",
-                "https://f.start.me/loteries.espacejeux.com"
-            ],
-            [
-                "LotoMax",
-                "https://loteries.espacejeux.com/fr/loteries/lotto-max",
-                "https://f.start.me/loteries.espacejeux.com"
-            ],
-            [
-                "Communauto",
-                "https://quebec.client.reservauto.net/",
-                "https://f.start.me/quebec.client.reservauto.net"
-            ],
-            [
-                "Communauto grille tarifaire",
-                "https://communauto.com/wp-content/uploads/pdf/qc/grille-tarifaire-qc.pdf",
-                "https://f.start.me/communauto.com"
-            ],
-            [
-                "TinEye",
-                "https://tineye.com/",
-                "https://f.start.me/tineye.com"
-            ],
-            [
-                "Bibliomontreal.com",
-                "https://bibliomontreal.com/",
-                "https://f.start.me/bibliomontreal.com"
-            ],
-            [
-                "www.quebecmunicipal.qc.ca",
-                "https://www.quebecmunicipal.qc.ca/",
-                "https://f.start.me/www.quebecmunicipal.qc.ca"
-            ],
-            [
-                "Board Editor",
-                "https://www.365chess.com/board_editor.php",
-                "https://f.start.me/www.365chess.com"
-            ],
-            [
-                "Google Drawings",
-                "https://docs.google.com/drawings",
-                "https://f.start.me/drawings.google.com"
-            ],
-            [
-                "Helix admin 10.0.0.1",
-                "https://10.0.0.1/",
-                "https://www.google.com/s2/favicons?domain=10.0.0.1"
-            ],
-            [
-                "Données ouvertes",
-                "https://donnees.montreal.ca/",
-                "https://f.start.me/donnees.montreal.ca"
-            ],
-            [
-                "Loading... (2)",
-                "https://connexion.solutions.hydroquebec.com/32bf9b91-0a36-4385-b231-d9a8fa3b05ab/b2c_1a_prd_signup_signin/oauth2/v2.0/authorize?response_type=code&client_id=09b0ae72-6db8-4ecc-a1be-041b67afc1cd&state=dHpWek42YW5wSUpGelRVYi00MjNkSWtQWGtsUUF4anZEZzkyUEM0WFdvVzBf%3B%257B%2522state%2522%253A%2522%257B%255C%2522url%255C%2522%253A%255C%2522%252Fclient%252Fgroup%252Frelation-affaires%255C%2522%257D%2522%252C%2522stateStore%2522%253A%2522url%2522%257D&redirect_uri=https%3A%2F%2Fsession.hydroquebec.com%2Foauth2%2Fcallback&scope=openid%20https%3A%2F%2Fconnexionhq.onmicrosoft.com%2Fhq-clientele%2FEspace.Client&code_challenge=e5LH2PqsdakB0xGnmMIVM3qXpcU2knSkNT7riUlEiE4&code_challenge_method=S256&nonce=dHpWek42YW5wSUpGelRVYi00MjNkSWtQWGtsUUF4anZEZzkyUEM0WFdvVzBf&ui_locales=fr&mobile=false",
-                "https://f.start.me/connexion.solutions.hydroquebec.com"
-            ]
-        ],
-        "Climat": [
-            [
-                "CO2 lags temperature",
-                "https://skepticalscience.com/co2-lags-temperature-intermediate.htm",
-                "https://f.start.me/skepticalscience.com"
-            ],
-            [
-                "How China plans to meet its 2030 renewables target by the end of this month",
-                "https://www.abc.net.au/news/science/2024-07-16/chinas-renewable-energy-boom-breaks-records/104086640",
-                "https://f.start.me/www.abc.net.au"
-            ],
-            [
-                "Climate-change-myth-debunker",
-                "https://chatgpt.com/g/g-MuFNfgDEB-climate-change-myth-debunker/c/67927e08-0c98-8011-b0ee-da69f99c80d9",
-                "https://f.start.me/chatgpt.com"
-            ]
-        ],
-        "Docu importante": [
-            [
-                "DocuIA",
-                "https://github.com/cocolombo/DocuIA",
-                "https://f.start.me/github.com"
-            ],
-            [
-                "Explications de LoRA (10/10)",
-                "https://g.co/gemini/share/49f1972951b2",
-                "https://f.start.me/g.co"
-            ],
-            [
-                "Réinstaller Jetbrains Toolbox",
-                "https://github.com/copilot/share/0a695128-4ba4-8894-9000-044960e200db",
-                "https://f.start.me/github.com"
-            ],
-            [
-                "NotebookLM",
-                "https://notebooklm.google.com/",
-                "https://f.start.me/notebooklm.google.com"
-            ],
-            [
-                "Gemini",
-                "https://gemini.google.com/app/de0d8c74bdb41684",
-                "https://f.start.me/gemini.google.com"
-            ],
-            [
-                "Google Photos",
-                "https://photos.google.com/",
-                "https://www.google.com/s2/favicons?domain=photos.google.com"
-            ],
-            [
-                "GoogleDrive",
-                "https://drive.google.com/drive/my-drive",
-                "https://f.start.me/drive.google.com"
-            ],
-            [
-                "Google AI Studio",
-                "https://aistudio.google.com/prompts/new_chat",
-                "https://f.start.me/aistudio.google.com"
-            ],
-            [
-                "Colab.google",
-                "https://colab.google/",
-                "https://f.start.me/colab.google"
-            ],
-            [
-                "Google Mes Notebooks",
-                "https://colab.research.google.com/",
-                "https://f.start.me/colab.research.google.com"
-            ],
-            [
-                "Gmail",
-                "https://mail.google.com/",
-                "https://f.start.me/mail.google.com"
-            ],
-            [
-                "Résilier abonnement à Google One",
-                "https://one.google.com/settings?expand=upgrade&hl=fr&g1_landing_page=1&utm_source=google-account&utm_medium=web",
-                "https://f.start.me/one.google.com"
-            ],
-            [
-                "Google Cloud Platform",
-                "https://console.cloud.google.com/welcome?hl=fr&inv=1&invt=Ab3irg&project=mes-sites-466617&supportedpurview=project,organizationId,folder",
-                "https://f.start.me/console.cloud.google.com"
-            ],
-            [
-                "Google allauth",
-                "https://console.cloud.google.com/auth/clients?inv=1&invt=Ab1SQA&project=redico-ai-464301&supportedpurview=project",
-                "https://f.start.me/console.cloud.google.com"
-            ],
-            [
-                "Google Chat",
-                "https://mail.google.com/chat/u/0/#chat/home",
-                "https://f.start.me/mail.google.com"
-            ],
-            [
-                "Modèles Gemini",
-                "https://docs.google.com/document/d/1NBI24f7LDbZ_fjqfHbHcTv6zcoRNn3NfrzvunHmL6rg/edit?addon_store&tab=t.0",
-                "https://f.start.me/docs.google.com"
-            ]
-        ],
-        "Cours IA": [
-            [
-                "Transformers, what can they do?",
-                "https://huggingface.co/learn/llm-course/chapter1/3",
-                "https://f.start.me/huggingface.co"
-            ],
-            [
-                "Sagemaker.aws",
-                "https://studiolab.sagemaker.aws/users/nimzo",
-                "https://f.start.me/studiolab.sagemaker.aws"
-            ],
-            [
-                "5-Day AI Agents Intensive Course with Google",
-                "https://www.kaggle.com/learn-guide/5-day-agents",
-                "https://f.start.me/www.kaggle.com"
-            ],
-            [
-                "http://tomlr.free.fr/Math%E9matiques/Math%20Complete/calculus/THEORY%20AND%20PROBLEMS%20OF%20DIFFERENTIAL%20AND%20INTEGRAL%20CALCULUS%20Third%20Edition%20-%20AYRES%20&%20MENDELSON.pdf",
-                "http://tomlr.free.fr/Math%E9matiques/Math%20Complete/calculus/THEORY%20AND%20PROBLEMS%20OF%20DIFFERENTIAL%20AND%20INTEGRAL%20CALCULUS%20Third%20Edition%20-%20AYRES%20&%20MENDELSON.pdf",
-                "https://f.start.me/tomlr.free.fr"
-            ]
-        ],
-        "IA": [
-            [
-                "Gemini",
-                "https://gemini.google.com/app/de0d8c74bdb41684",
-                "https://f.start.me/gemini.google.com"
-            ],
-            [
-                "Copilot",
-                "https://github.com/copilot",
-                "https://f.start.me/github.com"
-            ],
-            [
-                "Grok.com",
-                "https://grok.com/",
-                "https://f.start.me/grok.com"
-            ],
-            [
-                "Perplexity AI",
-                "https://www.perplexity.ai/?utm_source=blog&utm_medium=blog&utm_campaign=blog&utm_content=try-pplx",
-                "https://f.start.me/www.perplexity.ai"
-            ],
-            [
-                "Claude",
-                "https://claude.ai/new",
-                "https://f.start.me/claude.ai"
-            ],
-            [
-                "DeepSeek",
-                "https://chat.deepseek.com/a/chat",
-                "https://f.start.me/chat.deepseek.com"
-            ],
-            [
-                "Mistral AI",
-                "https://mistral.ai/",
-                "https://f.start.me/mistral.ai"
-            ],
-            [
-                "ChatGPT",
-                "https://chatgpt.com/",
-                "https://f.start.me/chatgpt.com"
-            ],
-            [
-                "Chat.qwen.ai",
-                "https://chat.qwen.ai/",
-                "https://f.start.me/chat.qwen.ai"
-            ],
-            [
-                "Sign in",
-                "https://aistudio.google.com/prompts/new_chat",
-                "https://f.start.me/aistudio.google.com"
-            ],
-            [
-                "z.ai",
-                "https://chat.z.ai/",
-                "https://f.start.me/chat.z.ai"
-            ]
-        ],
-        "Travail": [
-            [
-                "Desmos",
-                "https://www.desmos.com/calculator?lang=fr",
-                "https://f.start.me/www.desmos.com"
-            ],
-            [
-                "administration",
-                "https://admin.alwaysdata.com/site/",
-                "https://f.start.me/admin.alwaysdata.com"
-            ],
-            [
-                "Github Repo",
-                "https://github.com/cocolombo?tab=repositories",
-                "https://f.start.me/github.com"
-            ],
-            [
-                "GitHub Gist",
-                "https://gist.github.com/",
-                "https://f.start.me/gist.github.com"
-            ],
-            [
-                "Anthropic Console",
-                "https://console.anthropic.com/settings/billing",
-                "https://f.start.me/console.anthropic.com"
-            ],
-            [
-                "GoogleNotebookLM",
-                "https://notebooklm.google.com/?original_referer=https:%2F%2Fwww.google.ca%23&pli=1",
-                "https://f.start.me/notebooklm.google.com"
-            ],
-            [
-                "Google AI Studio",
-                "https://aistudio.google.com/prompts/new_chat",
-                "https://f.start.me/aistudio.google.com"
-            ],
-            [
-                "Le Redico",
-                "https://redico.alwaysdata.net/redicos/",
-                "https://f.start.me/redico.alwaysdata.net"
-            ],
-            [
-                "https://console.x.ai/team/8dc3e83d-9f14-41a1-a547-f2907f636f68/billing/credits",
-                "https://console.x.ai/team/8dc3e83d-9f14-41a1-a547-f2907f636f68/billing/credits",
-                "https://f.start.me/console.x.ai"
-            ],
-            [
-                "Authenticator.cursor.sh",
-                "https://authenticator.cursor.sh/",
-                "https://f.start.me/authenticator.cursor.sh"
-            ],
-            [
-                "fill out this form.",
-                "https://help.twitter.com/forms/privacy",
-                "https://f.start.me/help.twitter.com"
-            ]
-        ],
-        "Travail2": [
-            [
-                "Streamlit",
-                "https://storm.genie.stanford.edu/",
-                "https://f.start.me/storm.genie.stanford.edu"
-            ],
-            [
-                "HuggingChat",
-                "https://huggingface.co/chat/",
-                "https://f.start.me/huggingface.co"
-            ],
-            [
-                "Qwen",
-                "https://chat.qwenlm.ai/",
-                "https://f.start.me/chat.qwenlm.ai"
-            ],
-            [
-                "Qwant",
-                "https://www.qwant.com/?l=fr",
-                "https://f.start.me/www.qwant.com"
-            ],
-            [
-                "Bluesky Social",
-                "https://bsky.app/",
-                "https://f.start.me/bsky.app"
-            ],
-            [
-                "https://platform.openai.com/playground/chat?mode=chat&models=gpt-4o",
-                "https://platform.openai.com/playground/chat?mode=chat&models=gpt-4o",
-                "https://f.start.me/platform.openai.com"
-            ],
-            [
-                "https://www.cursor.com/en",
-                "https://www.cursor.com/en",
-                "https://f.start.me/www.cursor.com"
-            ],
-            [
-                "OpenHands README",
-                "https://github.com/All-Hands-AI/OpenHands/blob/main/README.md",
-                "https://f.start.me/github.com"
-            ]
-        ],
-        "Santé": [
-            [
-                "Carnet santé",
-                "https://carnetsante.gouv.qc.ca/",
-                "https://f.start.me/carnetsante.gouv.qc.ca"
-            ],
-            [
-                "portal",
-                "https://portal3.clicsante.ca/?serviceId=204&postalCode=H4H+2G6",
-                "https://f.start.me/portal3.clicsante.ca"
-            ],
-            [
-                "Clic Santé",
-                "https://clients3.clicsante.ca/8000/take-appt?portalPlace=102&portalPostalCode=H4H%202G6&lang=fr&portalServicesUnified=11,353&portalEst=257",
-                "https://f.start.me/clients3.clicsante.ca"
-            ],
-            [
-                "Prendre rdv MD",
-                "https://www.quebec.ca/sante/trouver-une-ressource/medecin-de-famille-prendre-rendez-vous-en-ligne",
-                "https://f.start.me/www.quebec.ca"
-            ]
-        ],
-        "Sciences": [
-            [
-                "Sciences.com",
-                "http://sciences.com/",
-                "https://f.start.me/sciences.com"
-            ],
-            [
-                "The Busy Beaver Challenge",
-                "https://bbchallenge.org/story#definition-of-bb",
-                "https://f.start.me/bbchallenge.org"
-            ]
-        ],
-        "Courriel/Drives": [
-            [
-                "Gmail",
-                "https://mail.google.com/",
-                "https://f.start.me/mail.google.com"
-            ],
-            [
-                "MS_Onedrive",
-                "https://photos.onedrive.com/",
-                "https://f.start.me/photos.onedrive.com"
-            ],
-            [
-                "ProtonMail",
-                "https://account.proton.me/mail",
-                "https://f.start.me/account.proton.me"
-            ],
-            [
-                "AmazonDrive",
-                "https://www.amazon.ca/photos/folders",
-                "https://f.start.me/www.amazon.ca"
-            ],
-            [
-                "Proton Drive",
-                "https://drive.proton.me/u/0/ExGzRTEvl9bDTgkiNfDoXadMwnTI5ktqAQwt4s8MEIEMy3KjNW8PpuOHenv4ShVF71_IcVkYge8F_PifY3BCtA==/folder/oUkAgveJIjjvM4CSNiJMsokGv_N5Cfn8mmzSMjP2Kxbpi6qqjtB9BkcUONcCLgBGBoqxvwyEjL8vMhjm6mVSGA==",
-                "https://f.start.me/drive.proton.me"
-            ],
-            [
-                "Yahoo Mail",
-                "https://mail.yahoo.com/",
-                "https://f.start.me/mail.yahoo.com"
-            ],
-            [
-                "Proton Pass",
-                "https://pass.proton.me/u/0/share/TbzT3wAlROHRgEbheNwtWRnlaxyOvHJJO2UuvbsqSh8bxvWCDleBa4MB4hHnup3RawojYzifqsJXq8BV1uweDg==/item/FLYNi4s5mTyXQOGeRYydHh27EPCFsOcKpsFbh9pw3L5DJow1XxTDyNB8NCEUZ5a18RleQmEjcylJgqG93hrmcA==?filters=eyJzZWFyY2giOiIiLCJzb3J0IjoicmVjZW50IiwidHlwZSI6IioiLCJzZWxlY3RlZFNoYXJlSWQiOm51bGx9",
-                "https://f.start.me/pass.proton.me"
-            ],
-            [
-                "wealthsimple",
-                "https://my.wealthsimple.com/app/home",
-                "https://f.start.me/my.wealthsimple.com"
-            ],
-            [
-                "Impôt2024",
-                "https://docs.google.com/spreadsheets/d/1YEeIupGXtvn5twRLnj5SvFKQOcE9t232Id7HPFATIts/edit#gid=0",
-                "https://f.start.me/spreadsheets.google.com"
-            ],
-            [
-                "Alim",
-                "https://docs.google.com/spreadsheets/d/1s-5zqMcZdOa3IemOHdgJuCMqlAqikulBg-SyLdGurq8/edit?ouid=110135700900220212475&usp=sheets_home&ths=true",
-                "https://f.start.me/spreadsheets.google.com"
-            ]
-        ],
-        "Abonnements": [
-            [
-                "Github",
-                "https://github.com/cocolombo/docu",
-                "https://f.start.me/github.com"
-            ],
-            [
-                "OpenAI",
-                "https://openai.com/",
-                "https://f.start.me/openai.com"
-            ],
-            [
-                "Audible.ca",
-                "https://www.audible.ca/",
-                "https://f.start.me/www.audible.ca"
-            ],
-            [
-                "BiblioMtl",
-                "https://bibliomontreal.com/",
-                "https://f.start.me/bibliomontreal.com"
-            ],
-            [
-                "AlwaysData",
-                "https://admin.alwaysdata.com/login/?next=/",
-                "https://f.start.me/admin.alwaysdata.com"
-            ],
-            [
-                "Espace client",
-                "https://www.videotron.com/client/residentiel/Espace-client",
-                "https://f.start.me/www.videotron.com"
-            ],
-            [
-                "Github abonnement",
-                "https://github.com/settings/billing/summary",
-                "https://f.start.me/github.com"
-            ]
-        ],
-        "Forums/Blogues": [
-            [
-                "Forum Sceptique",
-                "https://forum-sceptique.com/search.php?search_id=active_topics&sid=ce2292247112d05dc69dedb0534d8fee",
-                "https://f.start.me/forum-sceptique.com"
-            ],
-            [
-                "Quanta Magazine",
-                "https://www.quantamagazine.org/",
-                "https://f.start.me/www.quantamagazine.org"
-            ],
-            [
-                "International Skeptics",
-                "https://www.internationalskeptics.com/forums/",
-                "https://f.start.me/www.internationalskeptics.com"
-            ],
-            [
-                "Physics Forums",
-                "https://www.physicsforums.com/",
-                "https://f.start.me/www.physicsforums.com"
-            ],
-            [
-                "Reddit/r/Python",
-                "https://www.reddit.com/r/Python/",
-                "https://f.start.me/www.reddit.com"
-            ],
-            [
-                "reddit/r/django/",
-                "https://www.reddit.com/r/django/",
-                "https://f.start.me/www.reddit.com"
-            ],
-            [
-                "reddit/r/QuebecLibre",
-                "https://www.reddit.com/r/QuebecLibre",
-                "https://f.start.me/www.reddit.com"
-            ],
-            [
-                "/r/theydidthemath/",
-                "https://www.reddit.com/r/theydidthemath/",
-                "https://f.start.me/www.reddit.com"
-            ],
-            [
-                "Axiome",
-                "https://www.youtube.com/channel/UCNHFiyWgsnaSOsMtSoV_Q1A",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "MonsieurPhi",
-                "https://www.youtube.com/watch?v=dOF9vc5tLJ4",
-                "https://f.start.me/www.youtube.com"
-            ],
-            [
-                "Blog.pubpeer.com",
-                "https://blog.pubpeer.com/",
-                "https://f.start.me/blog.pubpeer.com"
-            ],
-            [
-                "Mostly Python",
-                "https://www.mostlypython.com/",
-                "https://f.start.me/www.mostlypython.com"
-            ],
-            [
-                "Le Redico",
-                "https://redico.alwaysdata.net/redicos/",
-                "https://f.start.me/redico.alwaysdata.net"
-            ],
-            [
-                "In Our Time",
-                "https://www.bbc.co.uk/programmes/p00545hk",
-                "https://f.start.me/www.bbc.co.uk"
-            ]
-        ],
-        "Python": [
-            [
-                "Real Python-Achats",
-                "https://realpython.com/account/purchases/",
-                "https://f.start.me/realpython.com"
-            ]
-        ],
-        "Cours des actions": [
-            [
-                "BTC-USD - Bitcoin USD (CCC)",
-                "https://finance.yahoo.com/quote/BTC-USD/",
-                "https://www.google.com/s2/favicons?domain=finance.yahoo.com"
-            ],
-            [
-                "^DJI - Dow Jones Industrial Average (DJI)",
-                "https://finance.yahoo.com/quote/%5EDJI/",
-                "https://www.google.com/s2/favicons?domain=finance.yahoo.com"
-            ],
-            [
-                "^GSPC - S&P 500 (SNP)",
-                "https://finance.yahoo.com/quote/%5EGSPC/",
-                "https://www.google.com/s2/favicons?domain=finance.yahoo.com"
-            ],
-            [
-                "^IXIC - NASDAQ Composite (NIM)",
-                "https://finance.yahoo.com/quote/%5EIXIC/",
-                "https://www.google.com/s2/favicons?domain=finance.yahoo.com"
-            ]
-        ]
-    }
+  "model": "dashboard.page",
+  "pk": 1,
+  "fields": {
+    "name": "Départ",
+    "slug": "depart",
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.page",
+  "pk": 2,
+  "fields": {
+    "name": "Politique",
+    "slug": "politique",
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.page",
+  "pk": 3,
+  "fields": {
+    "name": "Programmation",
+    "slug": "programmation",
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.page",
+  "pk": 7,
+  "fields": {
+    "name": "Perso",
+    "slug": "perso",
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.page",
+  "pk": 8,
+  "fields": {
+    "name": "Science",
+    "slug": "science",
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.page",
+  "pk": 10,
+  "fields": {
+    "name": "Infos",
+    "slug": "infos",
+    "order": 8
+  }
+},
+{
+  "model": "dashboard.page",
+  "pk": 11,
+  "fields": {
+    "name": "IA",
+    "slug": "ia",
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.page",
+  "pk": 14,
+  "fields": {
+    "name": "Médias",
+    "slug": "medias",
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.page",
+  "pk": 15,
+  "fields": {
+    "name": "Divers",
+    "slug": "divers",
+    "order": 9
+  }
+},
+{
+  "model": "dashboard.page",
+  "pk": 19,
+  "fields": {
+    "name": "Projet",
+    "slug": "projet",
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.page",
+  "pk": 20,
+  "fields": {
+    "name": "Outils",
+    "slug": "outils",
+    "order": 10
+  }
+},
+{
+  "model": "dashboard.page",
+  "pk": 21,
+  "fields": {
+    "name": "Commandes",
+    "slug": "commandes",
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 4,
+  "fields": {
+    "title": "Partis",
+    "page": 2,
+    "order": 0,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 5,
+  "fields": {
+    "title": "Dev",
+    "page": 3,
+    "order": 0,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 6,
+  "fields": {
+    "title": "Django",
+    "page": 3,
+    "order": 0,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 7,
+  "fields": {
+    "title": "Souvent",
+    "page": 1,
+    "order": 1,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 8,
+  "fields": {
+    "title": "Météo",
+    "page": 1,
+    "order": 8,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 9,
+  "fields": {
+    "title": "Achats",
+    "page": 7,
+    "order": 0,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 10,
+  "fields": {
+    "title": "Musique YT",
+    "page": 14,
+    "order": 0,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 11,
+  "fields": {
+    "title": "Maison",
+    "page": 7,
+    "order": 1,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 12,
+  "fields": {
+    "title": "Visu",
+    "page": 14,
+    "order": 1,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 13,
+  "fields": {
+    "title": "Audio",
+    "page": 14,
+    "order": 3,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 14,
+  "fields": {
+    "title": "Journaux",
+    "page": 14,
+    "order": 4,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 15,
+  "fields": {
+    "title": "Langue",
+    "page": 15,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 16,
+  "fields": {
+    "title": "Divers",
+    "page": 1,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 17,
+  "fields": {
+    "title": "Climat",
+    "page": 8,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 18,
+  "fields": {
+    "title": "Docu importante",
+    "page": 15,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 19,
+  "fields": {
+    "title": "Cours IA",
+    "page": 3,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 20,
+  "fields": {
+    "title": "IA",
+    "page": 11,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 21,
+  "fields": {
+    "title": "Travail",
+    "page": 1,
+    "order": 6,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 23,
+  "fields": {
+    "title": "Santé",
+    "page": 7,
+    "order": 2,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 24,
+  "fields": {
+    "title": "Sciences",
+    "page": 8,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 25,
+  "fields": {
+    "title": "Drive",
+    "page": 1,
+    "order": 5,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 26,
+  "fields": {
+    "title": "Abonnements",
+    "page": 7,
+    "order": 3,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 27,
+  "fields": {
+    "title": "Forums/Blogues",
+    "page": 1,
+    "order": 7,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 29,
+  "fields": {
+    "title": "Cours des actions",
+    "page": 15,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 33,
+  "fields": {
+    "title": "Recettes",
+    "page": 7,
+    "order": 4,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 38,
+  "fields": {
+    "title": "Bloc note 1",
+    "page": 2,
+    "order": 3,
+    "widget_type": "note",
+    "content": "\n",
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 42,
+  "fields": {
+    "title": "Fichiers",
+    "page": 20,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 43,
+  "fields": {
+    "title": "Chat",
+    "page": 11,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 45,
+  "fields": {
+    "title": "Google",
+    "page": 1,
+    "order": 4,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 46,
+  "fields": {
+    "title": "À faire",
+    "page": 1,
+    "order": 2,
+    "widget_type": "note",
+    "content": "",
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 47,
+  "fields": {
+    "title": "Sondages",
+    "page": 2,
+    "order": 1,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 48,
+  "fields": {
+    "title": "Programmes",
+    "page": 2,
+    "order": 2,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 50,
+  "fields": {
+    "title": "Blogues",
+    "page": 14,
+    "order": 5,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 52,
+  "fields": {
+    "title": "Récurrent",
+    "page": 1,
+    "order": 0,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 53,
+  "fields": {
+    "title": "Scripts",
+    "page": 20,
+    "order": 999,
+    "widget_type": "command",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 56,
+  "fields": {
+    "title": "Twitter",
+    "page": 14,
+    "order": 2,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 57,
+  "fields": {
+    "title": "Redico-ai",
+    "page": 19,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 58,
+  "fields": {
+    "title": "Mes-sites",
+    "page": 19,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 59,
+  "fields": {
+    "title": "Abonnements",
+    "page": 19,
+    "order": 999,
+    "widget_type": "note",
+    "content": "PythonAnywhere $7.01CDN + 70.46/an ok jusqu'au 20270129)\nGoogleOne $310.42/an (20251117-20261117)\nGithub\nAnthropic-Claude $5.00 API (20260103)-Remboursé?\nAnthropic-Claude Déput 6$US (6.90U$ = 9.58CDN) Login nimzo@pm.me\n\n",
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 60,
+  "fields": {
+    "title": "Github",
+    "page": 19,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 61,
+  "fields": {
+    "title": "Divers",
+    "page": 7,
+    "order": 5,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 62,
+  "fields": {
+    "title": "Abonnements",
+    "page": 7,
+    "order": 7,
+    "widget_type": "note",
+    "content": "Le Figaro 2euros/mois pour 47 mois. (Renouv, déc 2029)\n\n\n",
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 63,
+  "fields": {
+    "title": "Autobus",
+    "page": 7,
+    "order": 6,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 65,
+  "fields": {
+    "title": "Lectures",
+    "page": 11,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 66,
+  "fields": {
+    "title": "Lectures",
+    "page": 8,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 67,
+  "fields": {
+    "title": "Résultats Élections Féd",
+    "page": 2,
+    "order": 4,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 68,
+  "fields": {
+    "title": "Résultats Élections QC",
+    "page": 2,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 69,
+  "fields": {
+    "title": "Données ouvertes",
+    "page": 2,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 70,
+  "fields": {
+    "title": "Prompt",
+    "page": 11,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 71,
+  "fields": {
+    "title": "Chaîne YT",
+    "page": 11,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 72,
+  "fields": {
+    "title": "Grandient, Divergence, Curl",
+    "page": 8,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 73,
+  "fields": {
+    "title": "Québec Fier",
+    "page": 2,
+    "order": 999,
+    "widget_type": "list",
+    "content": null,
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 74,
+  "fields": {
+    "title": "Médicamants",
+    "page": 7,
+    "order": 999,
+    "widget_type": "note",
+    "content": "Mes médicaments:\nAsaphen 80mg\nBisoprolol 2.5mg\nPerindropil 4mg\nPantoprazole 40mg\nAtorvastatine 80mg\nMetformin 500mg\nAPO Latanoprost 0.005%",
+    "is_wide": false
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 76,
+  "fields": {
+    "title": "Git",
+    "page": 21,
+    "order": 999,
+    "widget_type": "snippet",
+    "content": null,
+    "is_wide": true
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 77,
+  "fields": {
+    "title": "Claude",
+    "page": 21,
+    "order": 999,
+    "widget_type": "snippet",
+    "content": null,
+    "is_wide": true
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 79,
+  "fields": {
+    "title": "Django",
+    "page": 21,
+    "order": 999,
+    "widget_type": "snippet",
+    "content": null,
+    "is_wide": true
+  }
+},
+{
+  "model": "dashboard.widget",
+  "pk": 80,
+  "fields": {
+    "title": "Docu",
+    "page": 21,
+    "order": 999,
+    "widget_type": "note",
+    "content": "django-admin: Outil global\nmanage.py: Dans l'environnement",
+    "is_wide": true
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 1,
+  "fields": {
+    "title": "Costco",
+    "url": "https://costco.ca",
+    "widget": 9,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 3,
+  "fields": {
+    "title": "Thermostat",
+    "url": "#",
+    "widget": 11,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 4,
+  "fields": {
+    "title": "Caméras",
+    "url": "#",
+    "widget": 11,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 5,
+  "fields": {
+    "title": "La Presse",
+    "url": "https://lapresse.ca",
+    "widget": 4,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 6,
+  "fields": {
+    "title": "Le Devoir",
+    "url": "https://ledevoir.com",
+    "widget": 4,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 7,
+  "fields": {
+    "title": "PQ",
+    "url": "https://pq.org",
+    "widget": 4,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 8,
+  "fields": {
+    "title": "Bloc",
+    "url": "https://blocquebecois.org",
+    "widget": 4,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 9,
+  "fields": {
+    "title": "Github",
+    "url": "https://github.com",
+    "widget": 5,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 10,
+  "fields": {
+    "title": "StackOverflow",
+    "url": "https://stackoverflow.com",
+    "widget": 5,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 11,
+  "fields": {
+    "title": "Docs",
+    "url": "https://docs.djangoproject.com",
+    "widget": 6,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 12,
+  "fields": {
+    "title": "HTMX",
+    "url": "https://htmx.org",
+    "widget": 6,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 14,
+  "fields": {
+    "title": "Raindrop.io",
+    "url": "https://app.raindrop.io/my/-1",
+    "widget": 7,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 15,
+  "fields": {
+    "title": "AI agents for beginners",
+    "url": "https://github.com/cocolombo/ai-agents-for-beginners",
+    "widget": 7,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 16,
+  "fields": {
+    "title": "Cloudskillsboost.google",
+    "url": "https://www.cloudskillsboost.google/?show_innovator_form=true",
+    "widget": 7,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 17,
+  "fields": {
+    "title": "Google Gemini (2)",
+    "url": "https://gemini.google.com/gem/61070db28f17/ea4d82a9e8114b1b",
+    "widget": 52,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 18,
+  "fields": {
+    "title": "ProtonMail",
+    "url": "https://account.proton.me/mail",
+    "widget": 52,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 19,
+  "fields": {
+    "title": "TwitteX",
+    "url": "https://x.com/notifications",
+    "widget": 52,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 20,
+  "fields": {
+    "title": "Google",
+    "url": "https://www.google.ca/",
+    "widget": 52,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 21,
+  "fields": {
+    "title": "Online Timer",
+    "url": "https://www.timeanddate.com/timer/",
+    "widget": 7,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 22,
+  "fields": {
+    "title": "Synonymes",
+    "url": "https://www.synonymo.fr/",
+    "widget": 52,
+    "order": 9
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 23,
+  "fields": {
+    "title": "DeepL",
+    "url": "https://www.deepl.com/translator",
+    "widget": 52,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 24,
+  "fields": {
+    "title": "Mes Signets",
+    "url": "https://cocolombo.github.io/mes_sites/",
+    "widget": 7,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 25,
+  "fields": {
+    "title": "reddit thermopompe",
+    "url": "https://www.reddit.com/r/heatpumps/comments/1iryebj/comment/mdckgsu/?context=3",
+    "widget": 7,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 26,
+  "fields": {
+    "title": "YouTube",
+    "url": "https://www.youtube.com",
+    "widget": 12,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 27,
+  "fields": {
+    "title": "Discord",
+    "url": "https://discord.com/channels/@me",
+    "widget": 7,
+    "order": 8
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 28,
+  "fields": {
+    "title": "Radar météo",
+    "url": "https://www.accuweather.com/fr/ca/montreal/h3a/weather-radar/56186",
+    "widget": 52,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 29,
+  "fields": {
+    "title": "Hurricane Center",
+    "url": "https://www.nhc.noaa.gov/",
+    "widget": 8,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 30,
+  "fields": {
+    "title": "Latest Earthquakes",
+    "url": "https://earthquake.usgs.gov/earthquakes/map/?extent=-85.72811,-402.1875&extent=85.78017,286.17188&sort=largest&listOnlyShown=true",
+    "widget": 8,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 31,
+  "fields": {
+    "title": "Paris (France, Île-de-France)",
+    "url": "https://weather.com/weather/today/l/48.85339,2.34864",
+    "widget": 8,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 32,
+  "fields": {
+    "title": "Climate Reanalyzer",
+    "url": "https://climatereanalyzer.org/clim/t2_daily/?dm_id=world",
+    "widget": 8,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 33,
+  "fields": {
+    "title": "10-Jours",
+    "url": "https://weather.com/fr-CA/weather/tenday/l/45.53,-73.52",
+    "widget": 8,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 34,
+  "fields": {
+    "title": "31-Jours",
+    "url": "https://weather.com/fr-CA/weather/monthly/l/45.53,-73.52",
+    "widget": 8,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 35,
+  "fields": {
+    "title": "MONTRÉAL",
+    "url": "https://weather.com/weather/today/l/45.50884,-73.58781",
+    "widget": 8,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 36,
+  "fields": {
+    "title": "Costco",
+    "url": "https://www.costco.ca/",
+    "widget": 9,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 37,
+  "fields": {
+    "title": "Amazon.ca",
+    "url": "https://www.amazon.ca/",
+    "widget": 9,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 38,
+  "fields": {
+    "title": "Audible",
+    "url": "https://audible.ca/",
+    "widget": 9,
+    "order": 10
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 39,
+  "fields": {
+    "title": "Metro.ca",
+    "url": "https://www.metro.ca/",
+    "widget": 9,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 40,
+  "fields": {
+    "title": "Superc",
+    "url": "https://www.superc.ca/circulaire",
+    "widget": 9,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 41,
+  "fields": {
+    "title": "IGA",
+    "url": "https://www.iga.net/fr/circulaire/circulaire",
+    "widget": 9,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 42,
+  "fields": {
+    "title": "Wal-Mart",
+    "url": "https://www.walmart.ca/",
+    "widget": 9,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 43,
+  "fields": {
+    "title": "Popotesmontreal",
+    "url": "https://popotesmontreal.org/bon-de-commande/",
+    "widget": 9,
+    "order": 9
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 48,
+  "fields": {
+    "title": "Prime",
+    "url": "https://www.amazon.ca/gp/primecentral?ref_=ya_d_c_prime",
+    "widget": 9,
+    "order": 8
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 49,
+  "fields": {
+    "title": "Sico Proluxe SRD RE Wood Finish 009 Chêne Foncé Dark Oak",
+    "url": "https://www.google.com/search?num=10&newwindow=1&sca_esv=fe6362944b97d7fe&udm=28&fbs=AIIjpHx4nJjfGojPVHhEACUHPiMQ0USrjQeSRDpr8WJmue1kyJIi69nSjs5aaK1oUgwDnpkgZC2aHQ_bKKzGRPKjyluqTPAjXx8nriGuBmviG_hOTJd451uakYUU1EqO7s2J_u6SlSnO7-spKBIRbIJvB937k_7aYed7e6gmTlM81eRUfjtCmqGEHDtLLfN-Cgi5NewyKde2rOujhNe-yC9OkvWxvxHSYw&q=sico+srd+re+wood+finish&ved=1t:220175&ictx=111&biw=1008&bih=459&dpr=1.91#ip=1",
+    "widget": 9,
+    "order": 11
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 50,
+  "fields": {
+    "title": "- YouTube",
+    "url": "https://youtu.be/mdJU5ogrPMY",
+    "widget": 10,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 51,
+  "fields": {
+    "title": "- YouTube",
+    "url": "https://www.youtube.com/watch?v=Ie5GGRkjSXE",
+    "widget": 10,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 52,
+  "fields": {
+    "title": "- YouTube",
+    "url": "https://www.youtube.com/watch?v=f_FSWEg9Wgk",
+    "widget": 10,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 53,
+  "fields": {
+    "title": "Philip Glass",
+    "url": "https://www.youtube.com/watch?v=heu9tD0dzkY",
+    "widget": 10,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 54,
+  "fields": {
+    "title": "- YouTube",
+    "url": "https://www.youtube.com/watch?v=QPgSaUufaVU&t=11s",
+    "widget": 10,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 55,
+  "fields": {
+    "title": "- YouTube",
+    "url": "https://www.youtube.com/watch?v=E__Ty2GcbMM",
+    "widget": 10,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 56,
+  "fields": {
+    "title": "- YouTube (2)",
+    "url": "https://www.youtube.com/watch?v=DJahmKqFSIM",
+    "widget": 10,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 57,
+  "fields": {
+    "title": "Handel",
+    "url": "https://www.youtube.com/watch?v=hxrywXCuIdU",
+    "widget": 10,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 58,
+  "fields": {
+    "title": "moteur fournaise",
+    "url": "https://www.youtube.com/watch?v=HN-05sOh92s",
+    "widget": 11,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 59,
+  "fields": {
+    "title": "Thermostat Lennox",
+    "url": "https://www.youtube.com/watch?v=OQ8YkMBKlk0&t=2s",
+    "widget": 11,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 60,
+  "fields": {
+    "title": "- YouTube",
+    "url": "https://www.youtube.com/watch?v=6FufO9tDq9w",
+    "widget": 11,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 61,
+  "fields": {
+    "title": "- YouTube",
+    "url": "https://www.youtube.com/watch?v=wfWfidb27xM",
+    "widget": 11,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 62,
+  "fields": {
+    "title": "Thermopompe",
+    "url": "https://docs.google.com/spreadsheets/d/1B9b2ZpxAwHFoc5pxLOV9RncVQsdfcVjrzfJ9BZsyzbY/edit?gid=0#gid=0",
+    "widget": 11,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 63,
+  "fields": {
+    "title": "YouTube",
+    "url": "https://www.youtube.com/",
+    "widget": 12,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 64,
+  "fields": {
+    "title": "ICI Rdi en direct",
+    "url": "https://www.coolstreaming.us/channelnew/fr/61965/ICIRdi.html",
+    "widget": 12,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 65,
+  "fields": {
+    "title": "CNews",
+    "url": "https://www.cnews.fr/les-replays",
+    "widget": 12,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 66,
+  "fields": {
+    "title": "Mordus de politique",
+    "url": "https://ici.radio-canada.ca/rdi/mordus-de-politique/site",
+    "widget": 12,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 67,
+  "fields": {
+    "title": "Tou.tv",
+    "url": "https://ici.tou.tv/en-direct?lectureauto=1",
+    "widget": 12,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 68,
+  "fields": {
+    "title": "TVA",
+    "url": "https://www.qub.ca/tvaplus/tva/en-direct",
+    "widget": 12,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 69,
+  "fields": {
+    "title": "QUB",
+    "url": "https://www.qub.ca/",
+    "widget": 12,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 70,
+  "fields": {
+    "title": "Tv5unis.ca",
+    "url": "https://www.tv5unis.ca/",
+    "widget": 12,
+    "order": 8
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 71,
+  "fields": {
+    "title": "CNN",
+    "url": "https://www.cnn.com/videos/live",
+    "widget": 12,
+    "order": 9
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 72,
+  "fields": {
+    "title": "helix.videotron.com",
+    "url": "https://helix.videotron.com/",
+    "widget": 12,
+    "order": 10
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 73,
+  "fields": {
+    "title": "98.5 FM",
+    "url": "https://www.985fm.ca/",
+    "widget": 13,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 74,
+  "fields": {
+    "title": "995.fm",
+    "url": "https://995.fm/",
+    "widget": 13,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 75,
+  "fields": {
+    "title": "CBC Music",
+    "url": "https://www.cbc.ca/listen/live-radio",
+    "widget": 13,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 76,
+  "fields": {
+    "title": "Direct.radiovm.com",
+    "url": "https://direct.radiovm.com/",
+    "widget": 13,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 77,
+  "fields": {
+    "title": "Richard Martineau",
+    "url": "https://www.qub.ca/radio/balado/richard-martineau?audio=1099160126",
+    "widget": 13,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 78,
+  "fields": {
+    "title": "Le Devoir",
+    "url": "https://www.ledevoir.com/",
+    "widget": 14,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 79,
+  "fields": {
+    "title": "La Presse",
+    "url": "https://www.lapresse.ca/",
+    "widget": 14,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 80,
+  "fields": {
+    "title": "The New York Times",
+    "url": "https://www.nytimes.com/",
+    "widget": 14,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 81,
+  "fields": {
+    "title": "The Washington Post",
+    "url": "https://www.washingtonpost.com/",
+    "widget": 14,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 82,
+  "fields": {
+    "title": "The Globe and Mail",
+    "url": "https://www.theglobeandmail.com/",
+    "widget": 14,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 83,
+  "fields": {
+    "title": "Le Journal de Montréal",
+    "url": "https://www.journaldemontreal.com/",
+    "widget": 14,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 84,
+  "fields": {
+    "title": "Champ lexical",
+    "url": "https://www.rimessolides.com/motscles.aspx",
+    "widget": 15,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 85,
+  "fields": {
+    "title": "DeepL1",
+    "url": "https://www.deepl.com/translator",
+    "widget": 15,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 86,
+  "fields": {
+    "title": "Synonymes",
+    "url": "https://www.synonymo.fr/",
+    "widget": 15,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 87,
+  "fields": {
+    "title": "Scribens reformulation",
+    "url": "https://www.scribens.fr/?key=Rephrasep",
+    "widget": 15,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 88,
+  "fields": {
+    "title": "HQ pannes",
+    "url": "https://infopannes.solutions.hydroquebec.com/info-pannes/pannes/pannes-en-cours?langue=fr",
+    "widget": 16,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 89,
+  "fields": {
+    "title": "Loto 6/49",
+    "url": "https://loteries.espacejeux.com/fr/loteries/lotto-6-49",
+    "widget": 61,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 90,
+  "fields": {
+    "title": "LotoMax",
+    "url": "https://loteries.espacejeux.com/fr/loteries/lotto-max",
+    "widget": 61,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 91,
+  "fields": {
+    "title": "Communauto",
+    "url": "https://quebec.client.reservauto.net/",
+    "widget": 63,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 92,
+  "fields": {
+    "title": "Communauto grille tarifaire",
+    "url": "https://communauto.com/wp-content/uploads/pdf/qc/grille-tarifaire-qc.pdf",
+    "widget": 63,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 93,
+  "fields": {
+    "title": "TinEye",
+    "url": "https://tineye.com/",
+    "widget": 16,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 94,
+  "fields": {
+    "title": "Bibliomontreal.com",
+    "url": "https://bibliomontreal.com/",
+    "widget": 16,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 95,
+  "fields": {
+    "title": "www.quebecmunicipal.qc.ca",
+    "url": "https://www.quebecmunicipal.qc.ca/",
+    "widget": 16,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 96,
+  "fields": {
+    "title": "Board Editor",
+    "url": "https://www.365chess.com/board_editor.php",
+    "widget": 16,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 97,
+  "fields": {
+    "title": "Google Drawings",
+    "url": "https://docs.google.com/drawings",
+    "widget": 45,
+    "order": 9
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 98,
+  "fields": {
+    "title": "Helix admin 10.0.0.1",
+    "url": "https://10.0.0.1/",
+    "widget": 16,
+    "order": 8
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 99,
+  "fields": {
+    "title": "Données ouvertes",
+    "url": "https://donnees.montreal.ca/",
+    "widget": 16,
+    "order": 9
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 100,
+  "fields": {
+    "title": "HQ",
+    "url": "https://connexion.solutions.hydroquebec.com/32bf9b91-0a36-4385-b231-d9a8fa3b05ab/b2c_1a_prd_signup_signin/oauth2/v2.0/authorize?response_type=code&client_id=09b0ae72-6db8-4ecc-a1be-041b67afc1cd&state=dHpWek42YW5wSUpGelRVYi00MjNkSWtQWGtsUUF4anZEZzkyUEM0WFdvVzBf%3B%257B%2522state%2522%253A%2522%257B%255C%2522url%255C%2522%253A%255C%2522%252Fclient%252Fgroup%252Frelation-affaires%255C%2522%257D%2522%252C%2522stateStore%2522%253A%2522url%2522%257D&redirect_uri=https%3A%2F%2Fsession.hydroquebec.com%2Foauth2%2Fcallback&scope=openid%20https%3A%2F%2Fconnexionhq.onmicrosoft.com%2Fhq-clientele%2FEspace.Client&code_challenge=e5LH2PqsdakB0xGnmMIVM3qXpcU2knSkNT7riUlEiE4&code_challenge_method=S256&nonce=dHpWek42YW5wSUpGelRVYi00MjNkSWtQWGtsUUF4anZEZzkyUEM0WFdvVzBf&ui_locales=fr&mobile=false",
+    "widget": 16,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 101,
+  "fields": {
+    "title": "CO2 lags temperature",
+    "url": "https://skepticalscience.com/co2-lags-temperature-intermediate.htm",
+    "widget": 17,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 102,
+  "fields": {
+    "title": "How China plans to meet its 2030 renewables target by the end of this month",
+    "url": "https://www.abc.net.au/news/science/2024-07-16/chinas-renewable-energy-boom-breaks-records/104086640",
+    "widget": 17,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 103,
+  "fields": {
+    "title": "Climate-change-myth-debunker",
+    "url": "https://chatgpt.com/g/g-MuFNfgDEB-climate-change-myth-debunker/c/67927e08-0c98-8011-b0ee-da69f99c80d9",
+    "widget": 17,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 104,
+  "fields": {
+    "title": "DocuIA",
+    "url": "https://github.com/cocolombo/DocuIA",
+    "widget": 18,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 105,
+  "fields": {
+    "title": "Explications de LoRA (10/10)",
+    "url": "https://g.co/gemini/share/49f1972951b2",
+    "widget": 18,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 106,
+  "fields": {
+    "title": "Réinstaller Jetbrains Toolbox",
+    "url": "https://github.com/copilot/share/0a695128-4ba4-8894-9000-044960e200db",
+    "widget": 18,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 107,
+  "fields": {
+    "title": "NotebookLM",
+    "url": "https://notebooklm.google.com/",
+    "widget": 18,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 108,
+  "fields": {
+    "title": "Gemini",
+    "url": "https://gemini.google.com/app/de0d8c74bdb41684",
+    "widget": 18,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 109,
+  "fields": {
+    "title": "Google Photos",
+    "url": "https://photos.google.com/",
+    "widget": 18,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 110,
+  "fields": {
+    "title": "GoogleDrive",
+    "url": "https://drive.google.com/drive/my-drive",
+    "widget": 18,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 111,
+  "fields": {
+    "title": "Google AI Studio",
+    "url": "https://aistudio.google.com/prompts/new_chat",
+    "widget": 18,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 112,
+  "fields": {
+    "title": "Colab.google",
+    "url": "https://colab.google/",
+    "widget": 18,
+    "order": 8
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 113,
+  "fields": {
+    "title": "Google Mes Notebooks",
+    "url": "https://colab.research.google.com/",
+    "widget": 18,
+    "order": 9
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 114,
+  "fields": {
+    "title": "Gmail",
+    "url": "https://mail.google.com/",
+    "widget": 18,
+    "order": 10
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 115,
+  "fields": {
+    "title": "Résilier abonnement à Google One",
+    "url": "https://one.google.com/settings?expand=upgrade&hl=fr&g1_landing_page=1&utm_source=google-account&utm_medium=web",
+    "widget": 18,
+    "order": 11
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 116,
+  "fields": {
+    "title": "Google Cloud Platform",
+    "url": "https://console.cloud.google.com/welcome?hl=fr&inv=1&invt=Ab3irg&project=mes-sites-466617&supportedpurview=project,organizationId,folder",
+    "widget": 18,
+    "order": 12
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 117,
+  "fields": {
+    "title": "Google allauth",
+    "url": "https://console.cloud.google.com/auth/clients?inv=1&invt=Ab1SQA&project=redico-ai-464301&supportedpurview=project",
+    "widget": 18,
+    "order": 13
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 118,
+  "fields": {
+    "title": "Google Chat",
+    "url": "https://mail.google.com/chat/u/0/#chat/home",
+    "widget": 18,
+    "order": 14
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 119,
+  "fields": {
+    "title": "Modèles Gemini",
+    "url": "https://docs.google.com/document/d/1NBI24f7LDbZ_fjqfHbHcTv6zcoRNn3NfrzvunHmL6rg/edit?addon_store&tab=t.0",
+    "widget": 18,
+    "order": 15
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 120,
+  "fields": {
+    "title": "Transformers, what can they do?",
+    "url": "https://huggingface.co/learn/llm-course/chapter1/3",
+    "widget": 19,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 121,
+  "fields": {
+    "title": "Sagemaker.aws",
+    "url": "https://studiolab.sagemaker.aws/users/nimzo",
+    "widget": 19,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 122,
+  "fields": {
+    "title": "5-Day AI Agents Intensive Course with Google",
+    "url": "https://www.kaggle.com/learn-guide/5-day-agents",
+    "widget": 19,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 123,
+  "fields": {
+    "title": "http://tomlr.free.fr/Math%E9matiques/Math%20Complete/calculus/THEORY%20AND%20PROBLEMS%20OF%20DIFFERENTIAL%20AND%20INTEGRAL%20CALCULUS%20Third%20Edition%20-%20AYRES%20&%20MENDELSON.pdf",
+    "url": "http://tomlr.free.fr/Math%E9matiques/Math%20Complete/calculus/THEORY%20AND%20PROBLEMS%20OF%20DIFFERENTIAL%20AND%20INTEGRAL%20CALCULUS%20Third%20Edition%20-%20AYRES%20&%20MENDELSON.pdf",
+    "widget": 19,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 124,
+  "fields": {
+    "title": "Gemini",
+    "url": "https://gemini.google.com/app/de0d8c74bdb41684",
+    "widget": 43,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 125,
+  "fields": {
+    "title": "Copilot",
+    "url": "https://github.com/copilot",
+    "widget": 20,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 126,
+  "fields": {
+    "title": "Grok.com",
+    "url": "https://grok.com/",
+    "widget": 20,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 127,
+  "fields": {
+    "title": "Perplexity AI",
+    "url": "https://www.perplexity.ai/?utm_source=blog&utm_medium=blog&utm_campaign=blog&utm_content=try-pplx",
+    "widget": 20,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 128,
+  "fields": {
+    "title": "Claude",
+    "url": "https://claude.ai/new",
+    "widget": 43,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 129,
+  "fields": {
+    "title": "DeepSeek",
+    "url": "https://chat.deepseek.com/a/chat",
+    "widget": 43,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 130,
+  "fields": {
+    "title": "Mistral AI",
+    "url": "https://mistral.ai/",
+    "widget": 43,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 131,
+  "fields": {
+    "title": "ChatGPT",
+    "url": "https://chatgpt.com/",
+    "widget": 43,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 132,
+  "fields": {
+    "title": "Chat.qwen.ai",
+    "url": "https://chat.qwen.ai/",
+    "widget": 20,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 133,
+  "fields": {
+    "title": "Sign in",
+    "url": "https://aistudio.google.com/prompts/new_chat",
+    "widget": 20,
+    "order": 9
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 134,
+  "fields": {
+    "title": "z.ai",
+    "url": "https://chat.z.ai/",
+    "widget": 43,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 135,
+  "fields": {
+    "title": "Desmos",
+    "url": "https://www.desmos.com/calculator?lang=fr",
+    "widget": 21,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 136,
+  "fields": {
+    "title": "administration",
+    "url": "https://admin.alwaysdata.com/site/",
+    "widget": 21,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 137,
+  "fields": {
+    "title": "Github Repo",
+    "url": "https://github.com/cocolombo?tab=repositories",
+    "widget": 21,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 138,
+  "fields": {
+    "title": "GitHub Gist",
+    "url": "https://gist.github.com/",
+    "widget": 21,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 139,
+  "fields": {
+    "title": "Anthropic Console",
+    "url": "https://console.anthropic.com/settings/billing",
+    "widget": 20,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 140,
+  "fields": {
+    "title": "GoogleNotebookLM",
+    "url": "https://notebooklm.google.com/?original_referer=https:%2F%2Fwww.google.ca%23&pli=1",
+    "widget": 45,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 141,
+  "fields": {
+    "title": "Google AI Studio",
+    "url": "https://aistudio.google.com/prompts/new_chat",
+    "widget": 45,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 142,
+  "fields": {
+    "title": "Le Redico",
+    "url": "https://redico.alwaysdata.net/redicos/",
+    "widget": 21,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 143,
+  "fields": {
+    "title": "https://console.x.ai/team/8dc3e83d-9f14-41a1-a547-f2907f636f68/billing/credits",
+    "url": "https://console.x.ai/team/8dc3e83d-9f14-41a1-a547-f2907f636f68/billing/credits",
+    "widget": 20,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 144,
+  "fields": {
+    "title": "Authenticator.cursor.sh",
+    "url": "https://authenticator.cursor.sh/",
+    "widget": 21,
+    "order": 9
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 145,
+  "fields": {
+    "title": "fill out this form.",
+    "url": "https://help.twitter.com/forms/privacy",
+    "widget": 21,
+    "order": 10
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 146,
+  "fields": {
+    "title": "Streamlit",
+    "url": "https://storm.genie.stanford.edu/",
+    "widget": 21,
+    "order": 11
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 147,
+  "fields": {
+    "title": "HuggingChat",
+    "url": "https://huggingface.co/chat/",
+    "widget": 20,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 148,
+  "fields": {
+    "title": "Qwen",
+    "url": "https://chat.qwenlm.ai/",
+    "widget": 20,
+    "order": 8
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 149,
+  "fields": {
+    "title": "Qwant",
+    "url": "https://www.qwant.com/?l=fr",
+    "widget": 20,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 150,
+  "fields": {
+    "title": "Bluesky Social",
+    "url": "https://bsky.app/",
+    "widget": 21,
+    "order": 14
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 151,
+  "fields": {
+    "title": "https://platform.openai.com/playground/chat?mode=chat&models=gpt-4o",
+    "url": "https://platform.openai.com/playground/chat?mode=chat&models=gpt-4o",
+    "widget": 21,
+    "order": 15
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 152,
+  "fields": {
+    "title": "https://www.cursor.com/en",
+    "url": "https://www.cursor.com/en",
+    "widget": 21,
+    "order": 16
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 153,
+  "fields": {
+    "title": "OpenHands README",
+    "url": "https://github.com/All-Hands-AI/OpenHands/blob/main/README.md",
+    "widget": 21,
+    "order": 17
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 154,
+  "fields": {
+    "title": "Carnet santé",
+    "url": "https://carnetsante.gouv.qc.ca/",
+    "widget": 23,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 155,
+  "fields": {
+    "title": "portal",
+    "url": "https://portal3.clicsante.ca/?serviceId=204&postalCode=H4H+2G6",
+    "widget": 23,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 156,
+  "fields": {
+    "title": "Clic Santé",
+    "url": "https://clients3.clicsante.ca/8000/take-appt?portalPlace=102&portalPostalCode=H4H%202G6&lang=fr&portalServicesUnified=11,353&portalEst=257",
+    "widget": 23,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 157,
+  "fields": {
+    "title": "Prendre rdv MD",
+    "url": "https://www.quebec.ca/sante/trouver-une-ressource/medecin-de-famille-prendre-rendez-vous-en-ligne",
+    "widget": 23,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 158,
+  "fields": {
+    "title": "Sciences.com",
+    "url": "http://sciences.com/",
+    "widget": 24,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 159,
+  "fields": {
+    "title": "The Busy Beaver Challenge",
+    "url": "https://bbchallenge.org/story#definition-of-bb",
+    "widget": 24,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 160,
+  "fields": {
+    "title": "Gmail",
+    "url": "https://mail.google.com/",
+    "widget": 25,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 161,
+  "fields": {
+    "title": "MS_Onedrive",
+    "url": "https://photos.onedrive.com/",
+    "widget": 25,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 162,
+  "fields": {
+    "title": "ProtonMail",
+    "url": "https://account.proton.me/mail",
+    "widget": 25,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 163,
+  "fields": {
+    "title": "AmazonDrive",
+    "url": "https://www.amazon.ca/photos/folders",
+    "widget": 25,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 164,
+  "fields": {
+    "title": "Proton Drive",
+    "url": "https://drive.proton.me/u/0/ExGzRTEvl9bDTgkiNfDoXadMwnTI5ktqAQwt4s8MEIEMy3KjNW8PpuOHenv4ShVF71_IcVkYge8F_PifY3BCtA==/folder/oUkAgveJIjjvM4CSNiJMsokGv_N5Cfn8mmzSMjP2Kxbpi6qqjtB9BkcUONcCLgBGBoqxvwyEjL8vMhjm6mVSGA==",
+    "widget": 25,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 165,
+  "fields": {
+    "title": "Yahoo Mail",
+    "url": "https://mail.yahoo.com/",
+    "widget": 7,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 166,
+  "fields": {
+    "title": "Proton Pass",
+    "url": "https://pass.proton.me/u/0/share/TbzT3wAlROHRgEbheNwtWRnlaxyOvHJJO2UuvbsqSh8bxvWCDleBa4MB4hHnup3RawojYzifqsJXq8BV1uweDg==/item/FLYNi4s5mTyXQOGeRYydHh27EPCFsOcKpsFbh9pw3L5DJow1XxTDyNB8NCEUZ5a18RleQmEjcylJgqG93hrmcA==?filters=eyJzZWFyY2giOiIiLCJzb3J0IjoicmVjZW50IiwidHlwZSI6IioiLCJzZWxlY3RlZFNoYXJlSWQiOm51bGx9",
+    "widget": 25,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 167,
+  "fields": {
+    "title": "wealthsimple",
+    "url": "https://my.wealthsimple.com/app/home",
+    "widget": 25,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 168,
+  "fields": {
+    "title": "Impôt2024",
+    "url": "https://docs.google.com/spreadsheets/d/1YEeIupGXtvn5twRLnj5SvFKQOcE9t232Id7HPFATIts/edit#gid=0",
+    "widget": 25,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 169,
+  "fields": {
+    "title": "Alim",
+    "url": "https://docs.google.com/spreadsheets/d/1s-5zqMcZdOa3IemOHdgJuCMqlAqikulBg-SyLdGurq8/edit?ouid=110135700900220212475&usp=sheets_home&ths=true",
+    "widget": 52,
+    "order": 8
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 170,
+  "fields": {
+    "title": "Github",
+    "url": "https://github.com/cocolombo/docu",
+    "widget": 26,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 171,
+  "fields": {
+    "title": "OpenAI",
+    "url": "https://openai.com/",
+    "widget": 26,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 172,
+  "fields": {
+    "title": "Audible.ca",
+    "url": "https://www.audible.ca/",
+    "widget": 26,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 173,
+  "fields": {
+    "title": "BiblioMtl",
+    "url": "https://bibliomontreal.com/",
+    "widget": 26,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 174,
+  "fields": {
+    "title": "AlwaysData",
+    "url": "https://admin.alwaysdata.com/login/?next=/",
+    "widget": 26,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 175,
+  "fields": {
+    "title": "Espace client",
+    "url": "https://www.videotron.com/client/residentiel/Espace-client",
+    "widget": 26,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 176,
+  "fields": {
+    "title": "Github abonnement",
+    "url": "https://github.com/settings/billing/summary",
+    "widget": 26,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 177,
+  "fields": {
+    "title": "Forum Sceptique",
+    "url": "https://forum-sceptique.com/search.php?search_id=active_topics&sid=ce2292247112d05dc69dedb0534d8fee",
+    "widget": 52,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 178,
+  "fields": {
+    "title": "Quanta Magazine",
+    "url": "https://www.quantamagazine.org/",
+    "widget": 27,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 179,
+  "fields": {
+    "title": "International Skeptics",
+    "url": "https://www.internationalskeptics.com/forums/",
+    "widget": 27,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 180,
+  "fields": {
+    "title": "Physics Forums",
+    "url": "https://www.physicsforums.com/",
+    "widget": 27,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 181,
+  "fields": {
+    "title": "Reddit/r/Python",
+    "url": "https://www.reddit.com/r/Python/",
+    "widget": 27,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 182,
+  "fields": {
+    "title": "reddit/r/django/",
+    "url": "https://www.reddit.com/r/django/",
+    "widget": 27,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 183,
+  "fields": {
+    "title": "reddit/r/QuebecLibre",
+    "url": "https://www.reddit.com/r/QuebecLibre",
+    "widget": 27,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 184,
+  "fields": {
+    "title": "/r/theydidthemath/",
+    "url": "https://www.reddit.com/r/theydidthemath/",
+    "widget": 27,
+    "order": 8
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 185,
+  "fields": {
+    "title": "Axiome",
+    "url": "https://www.youtube.com/channel/UCNHFiyWgsnaSOsMtSoV_Q1A",
+    "widget": 27,
+    "order": 9
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 186,
+  "fields": {
+    "title": "MonsieurPhi",
+    "url": "https://www.youtube.com/watch?v=dOF9vc5tLJ4",
+    "widget": 27,
+    "order": 10
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 187,
+  "fields": {
+    "title": "Blog.pubpeer.com",
+    "url": "https://blog.pubpeer.com/",
+    "widget": 27,
+    "order": 11
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 188,
+  "fields": {
+    "title": "Mostly Python",
+    "url": "https://www.mostlypython.com/",
+    "widget": 27,
+    "order": 12
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 189,
+  "fields": {
+    "title": "Le Redico",
+    "url": "https://redico.alwaysdata.net/redicos/",
+    "widget": 27,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 191,
+  "fields": {
+    "title": "Real Python-Achats",
+    "url": "https://realpython.com/account/purchases/",
+    "widget": 9,
+    "order": 12
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 192,
+  "fields": {
+    "title": "BTC-USD - Bitcoin USD (CCC)",
+    "url": "https://finance.yahoo.com/quote/BTC-USD/",
+    "widget": 29,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 193,
+  "fields": {
+    "title": "^DJI - Dow Jones Industrial Average (DJI)",
+    "url": "https://finance.yahoo.com/quote/%5EDJI/",
+    "widget": 29,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 194,
+  "fields": {
+    "title": "^GSPC - S&P 500 (SNP)",
+    "url": "https://finance.yahoo.com/quote/%5EGSPC/",
+    "widget": 29,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 195,
+  "fields": {
+    "title": "^IXIC - NASDAQ Composite (NIM)",
+    "url": "https://finance.yahoo.com/quote/%5EIXIC/",
+    "widget": 29,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 196,
+  "fields": {
+    "title": "Galette lentilles",
+    "url": "https://www.youtube.com/watch?v=k7_PwKjpVAo",
+    "widget": 33,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 197,
+  "fields": {
+    "title": "Lentilles et pois chiche",
+    "url": "https://www.youtube.com/watch?v=oWvIFg3HxTM",
+    "widget": 33,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 205,
+  "fields": {
+    "title": "f2",
+    "url": "file:///home/nimzo/PARA/1-Projets/python/startme/AI_CONTEXT.md",
+    "widget": 8,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 206,
+  "fields": {
+    "title": "Facturation GoogleCloud ",
+    "url": "https://console.cloud.google.com/billing/01559C-C92EA3-611057/reports/tabular",
+    "widget": 45,
+    "order": 8
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 207,
+  "fields": {
+    "title": "Google",
+    "url": "https://www.google.ca/",
+    "widget": 45,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 208,
+  "fields": {
+    "title": "Google Gemini",
+    "url": "https://gemini.google.com/gem/61070db28f17/ea4d82a9e8114b1b",
+    "widget": 45,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 209,
+  "fields": {
+    "title": "Google Drive",
+    "url": "https://drive.google.com/drive/home",
+    "widget": 45,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 211,
+  "fields": {
+    "title": "NotebookLM",
+    "url": "http://notebooklm.google",
+    "widget": 45,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 212,
+  "fields": {
+    "title": "NotebookLM",
+    "url": "http://notebooklm.google",
+    "widget": 43,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 213,
+  "fields": {
+    "title": "Léger 20251203",
+    "url": "https://leger360.com/fr/dernieres-nouvelles-crise-plq-confiance-envers-pablo-rodriguez-en-baisse/",
+    "widget": 47,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 214,
+  "fields": {
+    "title": "PQ",
+    "url": "https://pq.org/wp-content/uploads/2024/08/cahier-projet-nationalv2-1.pdf",
+    "widget": 48,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 215,
+  "fields": {
+    "title": "PLQ",
+    "url": "",
+    "widget": 48,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 216,
+  "fields": {
+    "title": "CAQ",
+    "url": "",
+    "widget": 48,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 217,
+  "fields": {
+    "title": "QS",
+    "url": "",
+    "widget": 48,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 218,
+  "fields": {
+    "title": "PCQ",
+    "url": "",
+    "widget": 48,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 219,
+  "fields": {
+    "title": "Boulettes lentilles",
+    "url": "https://www.youtube.com/watch?v=CKYWIo2imPM",
+    "widget": 33,
+    "order": 8
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 220,
+  "fields": {
+    "title": "HQ",
+    "url": "https://connexion.solutions.hydroquebec.com/32bf9b91-0a36-4385-b231-d9a8fa3b05ab/b2c_1a_prd_signup_signin/oauth2/v2.0/authorize?response_type=code&client_id=09b0ae72-6db8-4ecc-a1be-041b67afc1cd&state=dHpWek42YW5wSUpGelRVYi00MjNkSWtQWGtsUUF4anZEZzkyUEM0WFdvVzBf%3B%257B%2522state%2522%253A%2522%257B%255C%2522url%255C%2522%253A%255C%2522%252Fclient%252Fgroup%252Frelation-affaires%255C%2522%257D%2522%252C%2522stateStore%2522%253A%2522url%2522%257D&redirect_uri=https%3A%2F%2Fsession.hydroquebec.com%2Foauth2%2Fcallback&scope=openid%20https%3A%2F%2Fconnexionhq.onmicrosoft.com%2Fhq-clientele%2FEspace.Client&code_challenge=e5LH2PqsdakB0xGnmMIVM3qXpcU2knSkNT7riUlEiE4&code_challenge_method=S256&nonce=dHpWek42YW5wSUpGelRVYi00MjNkSWtQWGtsUUF4anZEZzkyUEM0WFdvVzBf&ui_locales=fr&mobile=false",
+    "widget": 11,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 222,
+  "fields": {
+    "title": "Biscuits",
+    "url": "https://www.youtube.com/watch?v=Nbm-KanID58",
+    "widget": 33,
+    "order": 9
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 223,
+  "fields": {
+    "title": "Burger aux lentilles",
+    "url": "https://www.youtube.com/watch?v=UeflsjI8Xu8",
+    "widget": 33,
+    "order": 10
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 224,
+  "fields": {
+    "title": "Burger",
+    "url": "https://www.youtube.com/watch?v=U53C1WRZ2cA",
+    "widget": 33,
+    "order": 11
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 225,
+  "fields": {
+    "title": "CNews",
+    "url": "https://www.cnews.fr/les-replays",
+    "widget": 52,
+    "order": 10
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 226,
+  "fields": {
+    "title": "Banane oeufs",
+    "url": "https://www.youtube.com/watch?v=dKKPXMKnGR4",
+    "widget": 33,
+    "order": 12
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 227,
+  "fields": {
+    "title": "Avoine-oeufs",
+    "url": "https://www.youtube.com/watch?v=sHa0zJM3BPg",
+    "widget": 33,
+    "order": 13
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 228,
+  "fields": {
+    "title": "Avoine",
+    "url": "https://www.youtube.com/watch?v=YF1nuFxGkGk",
+    "widget": 33,
+    "order": 14
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 229,
+  "fields": {
+    "title": "Blueberry Apple Oatmeal Cake",
+    "url": "https://www.youtube.com/watch?v=18YbDPJ17MI",
+    "widget": 33,
+    "order": 15
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 230,
+  "fields": {
+    "title": "Pomme et avoine",
+    "url": "https://www.youtube.com/watch?v=l4ad0Eaa4ZQ",
+    "widget": 33,
+    "order": 5
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 231,
+  "fields": {
+    "title": "Mise à jour Ubuntu",
+    "url": "sudo apt update && sudo apt upgrade -y",
+    "widget": 53,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 232,
+  "fields": {
+    "title": "Nettoyage Rapide",
+    "url": "sudo apt autoremove -y && sudo apt clean",
+    "widget": 53,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 233,
+  "fields": {
+    "title": "Lancer Jupyter Lab",
+    "url": "/media/120gb/python/startme/venv/bin/python -m jupyterlab --notebook-dir=/media/120gb/python/startme",
+    "widget": 53,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 234,
+  "fields": {
+    "title": "Ollama list",
+    "url": "ollama list",
+    "widget": 53,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 235,
+  "fields": {
+    "title": "Chat Llama3 (Terminal",
+    "url": "ollama run llama3",
+    "widget": 53,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 236,
+  "fields": {
+    "title": "GPU Watch (Nvidia)",
+    "url": "watch -n 1 nvidia-smi",
+    "widget": 53,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 237,
+  "fields": {
+    "title": "Nettoyage Python",
+    "url": "find . -type d -name \"__pycache__\" -exec rm -r {} + && echo \"Cache nettoyé !\"",
+    "widget": 53,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 238,
+  "fields": {
+    "title": "BdP et Chocolat",
+    "url": "https://www.youtube.com/watch?v=TwVZbs8vXE8",
+    "widget": 33,
+    "order": 16
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 239,
+  "fields": {
+    "title": "Pommes",
+    "url": "https://www.youtube.com/watch?v=pMl8mi7_MPQ",
+    "widget": 33,
+    "order": 17
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 240,
+  "fields": {
+    "title": "Brownie aux pommes",
+    "url": "https://www.youtube.com/watch?v=8E8MQuGex0w",
+    "widget": 33,
+    "order": 18
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 241,
+  "fields": {
+    "title": "ChatGPT-Gratuit",
+    "url": "https://chatgpt.com/?mode=default&utm_campaign=EML-CNaskanything&utm_content=utm_content&utm_medium=email&utm_source=sendgrid&utm_term=utm_term",
+    "widget": 20,
+    "order": 10
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 243,
+  "fields": {
+    "title": "informati.ca (CanSpace)",
+    "url": "https://www.canspace.ca/clients/clientarea.php",
+    "widget": 9,
+    "order": 13
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 245,
+  "fields": {
+    "title": "googolplex.net (Porkbun)",
+    "url": "https://porkbun.com/account/transfers",
+    "widget": 9,
+    "order": 14
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 246,
+  "fields": {
+    "title": "Lennox Comfort Shield",
+    "url": "https://www.costco.ca/lennox-home-comfort-systems.product.10318178.html",
+    "widget": 11,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 247,
+  "fields": {
+    "title": "settings.py",
+    "url": "file:///home/nimzo/PARA/1-Projets/python/startme/startme/settings.py",
+    "widget": 42,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 248,
+  "fields": {
+    "title": "Contrat thermopompe",
+    "url": "https://airmax.gestionminute.com/projects/22304/costco-forms/signature-request?token=1696360611&lang=en",
+    "widget": 11,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 250,
+  "fields": {
+    "title": "Riz frit oeufs",
+    "url": "https://www.youtube.com/watch?v=8kFT7b5qTK0",
+    "widget": 33,
+    "order": 19
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 252,
+  "fields": {
+    "title": "Home Depot",
+    "url": "https://www.homedepot.ca/fr/accueil.html",
+    "widget": 9,
+    "order": 15
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 253,
+  "fields": {
+    "title": "Avoine et Pomme",
+    "url": "https://www.youtube.com/watch?v=cL9Kkat-n_U",
+    "widget": 33,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 254,
+  "fields": {
+    "title": "Menus Avoine",
+    "url": "https://www.youtube.com/watch?v=VZOHHCosuzY",
+    "widget": 33,
+    "order": 20
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 255,
+  "fields": {
+    "title": "start.me",
+    "url": "https://start.me/p/4EkA85/start-page",
+    "widget": 52,
+    "order": 11
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 256,
+  "fields": {
+    "title": "GND avoue",
+    "url": "file:///home/nimzo/usageTW/GND.mp4",
+    "widget": 42,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 257,
+  "fields": {
+    "title": "Sauvegarder une vidéo TW",
+    "url": "http://savetwitter.net",
+    "widget": 56,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 258,
+  "fields": {
+    "title": "AI_CONTEXT",
+    "url": "file:///home/nimzo/PARA/1-Projets/python/startme/AI_CONTEXT.md",
+    "widget": 42,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 259,
+  "fields": {
+    "title": "Riz et fêves",
+    "url": "https://www.youtube.com/watch?v=UNMrwudowfg",
+    "widget": 33,
+    "order": 21
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 260,
+  "fields": {
+    "title": "Anthropic Billing",
+    "url": "https://platform.claude.com/settings/billing",
+    "widget": 20,
+    "order": 11
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 261,
+  "fields": {
+    "title": "Console PA",
+    "url": "https://www.pythonanywhere.com/user/redico/",
+    "widget": 57,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 262,
+  "fields": {
+    "title": "Google Cloud",
+    "url": "https://console.cloud.google.com/welcome?organizationId=0",
+    "widget": 57,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 263,
+  "fields": {
+    "title": "Redico-ai sur PA",
+    "url": "https://redico.pythonanywhere.com/redicos/index/",
+    "widget": 57,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 265,
+  "fields": {
+    "title": "Porkbun",
+    "url": "https://porkbun.com/account/login",
+    "widget": 26,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 266,
+  "fields": {
+    "title": "Dépot sur Github",
+    "url": "https://github.com/cocolombo/redico-ai",
+    "widget": 57,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 268,
+  "fields": {
+    "title": "Github Actions",
+    "url": "https://github.com/cocolombo/redico-ai/actions",
+    "widget": 57,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 269,
+  "fields": {
+    "title": "Travail",
+    "url": "https://www.youtube.com/watch?v=6vJWZDoRdOw",
+    "widget": 10,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 270,
+  "fields": {
+    "title": "Gemini",
+    "url": "https://gemini.google.com/app",
+    "widget": 20,
+    "order": 12
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 271,
+  "fields": {
+    "title": "Google Photos",
+    "url": "https://photos.google.com/",
+    "widget": 45,
+    "order": 10
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 272,
+  "fields": {
+    "title": "Google Colab",
+    "url": "https://colab.google/",
+    "widget": 45,
+    "order": 6
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 273,
+  "fields": {
+    "title": "Gmail",
+    "url": "https://mail.google.com",
+    "widget": 45,
+    "order": 7
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 274,
+  "fields": {
+    "title": "Google Chat",
+    "url": "https://mail.google.com/chat/u/0/#chat/home",
+    "widget": 45,
+    "order": 11
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 275,
+  "fields": {
+    "title": "Modèles Gemini",
+    "url": "https://docs.google.com/document/d/1NBI24f7LDbZ_fjqfHbHcTv6zcoRNn3NfrzvunHmL6rg/edit?addon_store&tab=t.0",
+    "widget": 45,
+    "order": 12
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 276,
+  "fields": {
+    "title": "Google Cloud mes-sites",
+    "url": "https://console.cloud.google.com/welcome?hl=fr&inv=1&invt=Ab3irg&project=mes-sites-466617&supportedpurview=project,organizationId,folder",
+    "widget": 45,
+    "order": 13
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 277,
+  "fields": {
+    "title": "Google One abonnement",
+    "url": "https://one.google.com/settings?expand=upgrade&hl=fr&g1_landing_page=1&utm_source=google-account&utm_medium=web",
+    "widget": 45,
+    "order": 14
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 278,
+  "fields": {
+    "title": "Grok",
+    "url": "https://grok.com/",
+    "widget": 20,
+    "order": 13
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 279,
+  "fields": {
+    "title": "Claude",
+    "url": "https://claude.ai/new",
+    "widget": 20,
+    "order": 14
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 280,
+  "fields": {
+    "title": "Deepseek",
+    "url": "https://chat.deepseek.com/a/chat",
+    "widget": 20,
+    "order": 15
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 281,
+  "fields": {
+    "title": "Mistral AI",
+    "url": "https://mistral.ai/",
+    "widget": 20,
+    "order": 16
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 282,
+  "fields": {
+    "title": "z.ai",
+    "url": "https://chat.z.ai/",
+    "widget": 20,
+    "order": 17
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 283,
+  "fields": {
+    "title": "Repo",
+    "url": "https://github.com/cocolombo?tab=repositories",
+    "widget": 60,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 284,
+  "fields": {
+    "title": "Gist",
+    "url": "https://gist.github.com/",
+    "widget": 60,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 285,
+  "fields": {
+    "title": "Cursor",
+    "url": "https://www.cursor.com/en",
+    "widget": 20,
+    "order": 18
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 286,
+  "fields": {
+    "title": "MSoneDrive",
+    "url": "https://photos.onedrive.com/",
+    "widget": 45,
+    "order": 15
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 287,
+  "fields": {
+    "title": "Impot 2025",
+    "url": "https://docs.google.com/spreadsheets/d/1YEeIupGXtvn5twRLnj5SvFKQOcE9t232Id7HPFATIts/edit?gid=1251355097#gid=1251355097",
+    "widget": 61,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 288,
+  "fields": {
+    "title": "Wealthsimple",
+    "url": "https://my.wealthsimple.com/app/home",
+    "widget": 61,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 289,
+  "fields": {
+    "title": "Claude usage",
+    "url": "https://console.anthropic.com/usage",
+    "widget": 20,
+    "order": 19
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 290,
+  "fields": {
+    "title": "Claude usage",
+    "url": "https://console.anthropic.com/usage",
+    "widget": 57,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 291,
+  "fields": {
+    "title": "Clause cost",
+    "url": "https://console.anthropic.com/workspaces/default/cost",
+    "widget": 57,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 292,
+  "fields": {
+    "title": "Actions",
+    "url": "https://github.com/cocolombo/redico-ai/actions",
+    "widget": 60,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 293,
+  "fields": {
+    "title": "Google Trends",
+    "url": "https://trends.google.com/trends/",
+    "widget": 45,
+    "order": 16
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 294,
+  "fields": {
+    "title": "Ventilateur",
+    "url": "https://www.aliexpress.com/item/1005006013074099.html",
+    "widget": 9,
+    "order": 16
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 295,
+  "fields": {
+    "title": "Le Figaro",
+    "url": "https://www.lefigaro.fr/",
+    "widget": 14,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 296,
+  "fields": {
+    "title": "Le Figaro",
+    "url": "https://www.lefigaro.fr/",
+    "widget": 52,
+    "order": 12
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 297,
+  "fields": {
+    "title": "Sauvegarde dashboard",
+    "url": "xdg-open http://127.0.0.1:8887/api/backup/",
+    "widget": 53,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 298,
+  "fields": {
+    "title": "Alim",
+    "url": "https://docs.google.com/spreadsheets/d/1s-5zqMcZdOa3IemOHdgJuCMqlAqikulBg-SyLdGurq8/edit?gid=218337235#gid=218337235",
+    "widget": 42,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 299,
+  "fields": {
+    "title": "Anthropic Billing 5.57",
+    "url": "https://platform.claude.com/settings/billing",
+    "widget": 57,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 300,
+  "fields": {
+    "title": "35 EST- Monk/Vérendrye",
+    "url": "https://www.stm.info/fr/infos/reseaux/bus/reseau-local/ligne-35-Est/54012",
+    "widget": 63,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 301,
+  "fields": {
+    "title": "Autobus",
+    "url": "https://www.stm.info/fr#",
+    "widget": 63,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 302,
+  "fields": {
+    "title": "112 OUEST Rolland/Champlain",
+    "url": "https://www.stm.info/fr/infos/reseaux/bus/reseau-local/ligne-112-Ouest/56511",
+    "widget": 63,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 303,
+  "fields": {
+    "title": "350-OUEST Laurendeau-Jolicoeur",
+    "url": "https://www.stm.info/fr/infos/reseaux/bus/reseau-local/ligne-35-Ouest/51962",
+    "widget": 63,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 304,
+  "fields": {
+    "title": "107-EST Lasalle-Bannantyne",
+    "url": "https://www.stm.info/fr/infos/reseaux/bus/reseau-local/ligne-107-Est/56536",
+    "widget": 63,
+    "order": 4
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 305,
+  "fields": {
+    "title": "Boris Cherny",
+    "url": "https://x.com/bcherny/status/2017742741636321619?s=20",
+    "widget": 52,
+    "order": 13
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 306,
+  "fields": {
+    "title": "Identifiants Google",
+    "url": "https://console.cloud.google.com/apis/credentials?project=gen-lang-client-0663416887&supportedpurview=project",
+    "widget": 57,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 307,
+  "fields": {
+    "title": "MIT",
+    "url": "https://x.com/BharukaShraddha/status/2017891556053946411?s=20",
+    "widget": 65,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 308,
+  "fields": {
+    "title": "Maths",
+    "url": "https://www.math.cmu.edu/~jmackey/151_128/bws_book.pdf",
+    "widget": 66,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 309,
+  "fields": {
+    "title": "EH",
+    "url": "https://ca.finance.yahoo.com/quote/EH/",
+    "widget": 61,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 310,
+  "fields": {
+    "title": "Gemini API coûts",
+    "url": "https://console.cloud.google.com/billing/01559C-C92EA3-611057?project=gen-lang-client-0663416887",
+    "widget": 57,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 311,
+  "fields": {
+    "title": "Choux aux oeufs",
+    "url": "https://www.youtube.com/watch?v=K6NdLsouF2U",
+    "widget": 33,
+    "order": 3
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 312,
+  "fields": {
+    "title": "2019",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_f%C3%A9d%C3%A9rales_canadiennes_de_2019#R%C3%A9sultats",
+    "widget": 67,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 313,
+  "fields": {
+    "title": "2015",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_f%C3%A9d%C3%A9rales_canadiennes_de_2015#R%C3%A9sultats",
+    "widget": 67,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 314,
+  "fields": {
+    "title": "2011",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_f%C3%A9d%C3%A9rales_canadiennes_de_2011#R%C3%A9sultats",
+    "widget": 67,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 315,
+  "fields": {
+    "title": "2008",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_f%C3%A9d%C3%A9rales_canadiennes_de_2008#R%C3%A9sultats",
+    "widget": 67,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 316,
+  "fields": {
+    "title": "2006",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_f%C3%A9d%C3%A9rales_canadiennes_de_2006#R%C3%A9sultats",
+    "widget": 67,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 317,
+  "fields": {
+    "title": "2004",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_f%C3%A9d%C3%A9rales_canadiennes_de_2004#R%C3%A9sultats",
+    "widget": 67,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 318,
+  "fields": {
+    "title": "2000",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_f%C3%A9d%C3%A9rales_canadiennes_de_2000#R%C3%A9sultats",
+    "widget": 67,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 319,
+  "fields": {
+    "title": "1997",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_f%C3%A9d%C3%A9rales_canadiennes_de_1997#R%C3%A9sultats",
+    "widget": 67,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 320,
+  "fields": {
+    "title": "1993",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_f%C3%A9d%C3%A9rales_canadiennes_de_1993#R%C3%A9sultats",
+    "widget": 67,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 321,
+  "fields": {
+    "title": "2022",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2022#R%C3%A9sultats",
+    "widget": 68,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 322,
+  "fields": {
+    "title": "2018",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2018#R%C3%A9sultats",
+    "widget": 68,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 323,
+  "fields": {
+    "title": "2014",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2014#R%C3%A9sultats",
+    "widget": 68,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 324,
+  "fields": {
+    "title": "2012",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2012#R%C3%A9sultats",
+    "widget": 68,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 325,
+  "fields": {
+    "title": "2008",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2008#R%C3%A9sultats",
+    "widget": 68,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 326,
+  "fields": {
+    "title": "2007",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2007#R%C3%A9sultats",
+    "widget": 68,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 327,
+  "fields": {
+    "title": "2003",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2003#R%C3%A9sultats",
+    "widget": 68,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 328,
+  "fields": {
+    "title": "1998",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_1998#R%C3%A9sultats",
+    "widget": 68,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 329,
+  "fields": {
+    "title": "1994",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_1994#R%C3%A9sultats",
+    "widget": 68,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 330,
+  "fields": {
+    "title": "1985",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_1985#R%C3%A9sultats",
+    "widget": 68,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 331,
+  "fields": {
+    "title": "1981",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_1981#R%C3%A9sultats",
+    "widget": 68,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 332,
+  "fields": {
+    "title": "1976",
+    "url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_1976#R%C3%A9sultats",
+    "widget": 68,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 333,
+  "fields": {
+    "title": "Fédéral",
+    "url": "https://www.noscommunes.ca/fr/donnees-ouvertes",
+    "widget": 69,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 334,
+  "fields": {
+    "title": "Avoine Yogourt",
+    "url": "https://www.youtube.com/watch?v=yUMn3IdXGMA",
+    "widget": 33,
+    "order": 2
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 335,
+  "fields": {
+    "title": "Sardines",
+    "url": "https://www.youtube.com/watch?v=JDh3r71mWGI",
+    "widget": 33,
+    "order": 1
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 336,
+  "fields": {
+    "title": "Pluriel des noms composés",
+    "url": "https://vitrinelinguistique.oqlf.gouv.qc.ca/24429/la-grammaire/le-nom/pluriel-des-noms/noms-composes/pluriel-des-noms-composes",
+    "widget": 15,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 337,
+  "fields": {
+    "title": "Pain aux lentilles",
+    "url": "https://www.youtube.com/watch?v=i5QxpVhR4ik",
+    "widget": 33,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 338,
+  "fields": {
+    "title": "Pain aux pois chiche",
+    "url": "https://www.youtube.com/watch?v=3vrRHtb8O7o",
+    "widget": 33,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 339,
+  "fields": {
+    "title": "Autological Words",
+    "url": "http://www.segerman.org/autological.html",
+    "widget": 15,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 340,
+  "fields": {
+    "title": "Grok.com",
+    "url": "https://grok.com/",
+    "widget": 52,
+    "order": 14
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 341,
+  "fields": {
+    "title": "DB",
+    "url": "https://www.facebook.com/brodeurd",
+    "widget": 61,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 342,
+  "fields": {
+    "title": "wraps",
+    "url": "https://www.youtube.com/watch?v=ofb9pSpuz64",
+    "widget": 33,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 343,
+  "fields": {
+    "title": "Biscuit avoine",
+    "url": "https://www.youtube.com/watch?v=8y3AEMvtq68",
+    "widget": 33,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 344,
+  "fields": {
+    "title": "ffmpeg",
+    "url": "https://grok.com/share/c2hhcmQtMg_cdfaac76-45e1-4b8f-9d4f-43ed5207d37d",
+    "widget": 12,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 345,
+  "fields": {
+    "title": "Prompting",
+    "url": "https://x.com/i/grok/share/acaa22277fa2418f8d409df64b8734d1",
+    "widget": 70,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 346,
+  "fields": {
+    "title": "État du projet 2026/03/01",
+    "url": "file:///home/nimzo/.claude/projects/-media-120gb-python-redico-ai/memory/MEMORY.md",
+    "widget": 57,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 347,
+  "fields": {
+    "title": "Cours Claude Code",
+    "url": "https://anthropic.skilljar.com/claude-code-in-action/303237",
+    "widget": 7,
+    "order": 9
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 348,
+  "fields": {
+    "title": "Andrej Karpathy",
+    "url": "https://www.youtube.com/@AndrejKarpathy",
+    "widget": 71,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 349,
+  "fields": {
+    "title": "3Blue1Brown",
+    "url": "https://www.youtube.com/@3blue1brown",
+    "widget": 71,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 350,
+  "fields": {
+    "title": "Andrew Ng",
+    "url": "https://www.youtube.com/@stanfordonline",
+    "widget": 71,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 351,
+  "fields": {
+    "title": "ML Street Talk",
+    "url": "https://www.youtube.com/@MachineLearningStreetTalk",
+    "widget": 71,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 352,
+  "fields": {
+    "title": "Josh Starmer",
+    "url": "https://www.youtube.com/@statquest",
+    "widget": 71,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 353,
+  "fields": {
+    "title": "Luis Serrano",
+    "url": "https://www.youtube.com/@SerranoAcademy",
+    "widget": 71,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 354,
+  "fields": {
+    "title": "Jeremy Howard",
+    "url": "https://www.youtube.com/@howardjeremyp",
+    "widget": 71,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 355,
+  "fields": {
+    "title": "Hamel Husain",
+    "url": "https://www.youtube.com/@hamelhusain7140",
+    "widget": 71,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 356,
+  "fields": {
+    "title": "Dave Ebbelaar",
+    "url": "https://www.youtube.com/@daveebbelaar",
+    "widget": 71,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 357,
+  "fields": {
+    "title": "Lex Fridman",
+    "url": "https://www.youtube.com/@lexfridman",
+    "widget": 71,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 358,
+  "fields": {
+    "title": "Zachary Huang (MS)",
+    "url": "https://www.youtube.com/@ZacharyLLM",
+    "widget": 71,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 359,
+  "fields": {
+    "title": "Grad-Div-Curl",
+    "url": "https://www.youtube.com/watch?v=m_Psx7CdvDk",
+    "widget": 72,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 360,
+  "fields": {
+    "title": "2018",
+    "url": "https://www.journaldequebec.com/2018/08/23/lindustrie-du-gaz-et-du-petrole-veut-influencer-la-campagne",
+    "widget": 73,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 361,
+  "fields": {
+    "title": "R.-C.",
+    "url": "https://ici.radio-canada.ca/recit-numerique/4207/quebec-fier-parti-conservateur-eric-duhaime",
+    "widget": 73,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 362,
+  "fields": {
+    "title": "Pain St-Méthode",
+    "url": "https://gemini.google.com/share/039deadde776",
+    "widget": 9,
+    "order": 17
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 363,
+  "fields": {
+    "title": "Commentaires YT",
+    "url": "https://myactivity.google.com/page?page=youtube_comments&continue=https://myactivity.google.com/product/youtube/interactions?hl%3Dfr-CA&utm_source=privacy-advisor-youtube&hl=fr_CA",
+    "widget": 10,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 364,
+  "fields": {
+    "title": "Carte cadeau",
+    "url": "https://reward.tremendous.com/prepaid-cards/x3jynfwhc--h9gvfalmwa2idhm0g0ztsiwmpbptqk0t",
+    "widget": 9,
+    "order": 0
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 365,
+  "fields": {
+    "title": "git add",
+    "url": "git add .",
+    "widget": 76,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 367,
+  "fields": {
+    "title": "YT",
+    "url": "https://www.youtube.com/",
+    "widget": 52,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 369,
+  "fields": {
+    "title": "Derniers commits",
+    "url": "git log -1",
+    "widget": 76,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 370,
+  "fields": {
+    "title": "Install",
+    "url": "sudo npm uninstall -g @anthropic-ai/claude-code",
+    "widget": 77,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 371,
+  "fields": {
+    "title": "Uninstall",
+    "url": "sudo npm uninstall -g @anthropic-ai/claude-code",
+    "widget": 77,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 372,
+  "fields": {
+    "title": "Troubleshooting",
+    "url": "/doctor",
+    "widget": 77,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 373,
+  "fields": {
+    "title": "/compact",
+    "url": "Résumer pour sauver de l'espace",
+    "widget": 77,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 374,
+  "fields": {
+    "title": "Question subsidiaire",
+    "url": "/btw [question]",
+    "widget": 77,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 375,
+  "fields": {
+    "title": "Définit le nom d’utilisateur pour tous les dépôts.",
+    "url": "git config --global user.name \"Votre Nom\"",
+    "widget": 76,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 376,
+  "fields": {
+    "title": "Définit l’adresse e-mail pour tous les dépôts.",
+    "url": "git config --global user.email \"votre@email.com\"",
+    "widget": 76,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 377,
+  "fields": {
+    "title": "Minuterie (20)",
+    "url": "https://www.youtube.com/watch?v=TNIKpWCd_lg",
+    "widget": 52,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 378,
+  "fields": {
+    "title": "Startapp",
+    "url": "python manage.py startapp projet",
+    "widget": 79,
+    "order": 999
+  }
+},
+{
+  "model": "dashboard.link",
+  "pk": 379,
+  "fields": {
+    "title": "CollectStatic",
+    "url": "python manage.py collectstatic",
+    "widget": 79,
+    "order": 999
+  }
 }
+]

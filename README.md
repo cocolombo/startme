@@ -21,6 +21,7 @@ Un tableau de bord (Dashboard) personnel, auto-hébergé et interactif, inspiré
 ### Widgets Spéciaux
 * **Bloc-notes** : Un widget de type "Note" qui sauvegarde automatiquement votre texte pendant la frappe.
 * **Commandes Shell** : Un widget spécial pour exécuter des scripts ou commandes système directement depuis le navigateur (ouvre un terminal local).
+* **Bloc de commandes (Snippet)** : Un widget pour afficher des commandes à copier en un clic, avec option d'affichage en 2 colonnes.
 
 ### Drag & Drop (Glisser-Déposer)
 * **Liens** : Déplacez les liens d'une catégorie à une autre ou réorganisez-les au sein d'une liste.
