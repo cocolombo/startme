@@ -7,7 +7,7 @@ Contexte Technique du Projet Dashboard
     Backend : Python 3.12, Django 5.2.
     Frontend : HTML5, Tailwind CSS (Local), HTMX (AJAX), SortableJS.
     Base de données : SQLite.
-    Système : psutil pour le monitoring serveur.
+    Système : psutil (monitoring serveur), python-dotenv (configuration).
     Design : Dark Mode par défaut.
 
 2. Models (dashboard/models.py)
@@ -82,7 +82,7 @@ class Link(models.Model):
     path('api/move-link/<int:link_id>/', views.move_link_to_page, name='move_link')
     path('api/save-note/<int:widget_id>/', views.save_note_content, name='save_note')
 
-    # Utilitaires
+    # Utilitaires / Page Infos
     path('api/system-monitor/', views.system_monitor, name='system_monitor')
     path('api/network-info/', views.get_network_info, name='get_network_info')
     path('api/backup/', views.download_backup, name='download_backup')
@@ -93,11 +93,10 @@ class Link(models.Model):
     Partials : Les fragments HTML pour HTMX sont dans startme/templates/partials/.
 
     Interactions :
-
         Drag & Drop : SortableJS, sauvegarde via API fetch.
         Édition : Inline via HTMX (hx-swap="outerHTML").
-        Mode Zen : Bouton JS pur + classe CSS .zen-mode.
-        Widgets Spéciaux : Météo (API JS), Calendrier (JS Frontend), Bourse (Iframe), Système (HTMX Polling 5s).
+        Widgets Infos : La page avec le slug 'infos' charge un layout spécifique (widgets_infos.html)
+        Widgets Spéciaux : Météo (API JS), Calendrier (JS Frontend), Marchés (Iframe TradingView), Système (HTMX Polling), Réseau (HTMX), Calculatrice (JS), Minuteur Pomodoro (JS avec Web Audio API).
 
 5. Types de widgets
 
@@ -106,3 +105,4 @@ class Link(models.Model):
     command  : Lanceur de scripts — exécute un Link.url via run_command. Partial : command_item.html
     snippet  : Bloc de commandes à copier (pas d'exécution). Partial : snippet_item.html
                Supporte is_wide pour affichage en 2 colonnes.
+    infos    : Widgets système hardcodés (Météo, Horloges, Réseau, etc.) exclusifs à la page 'infos'.
