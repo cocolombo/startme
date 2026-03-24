@@ -42,6 +42,7 @@
     document.addEventListener('keydown', function(event) {
         if (event.key === "Escape") {
             document.querySelectorAll('[id^="modal-"]').forEach(modal => modal.classList.add('hidden'));
+            document.querySelectorAll('[id^="form-"]').forEach(form => form.classList.add('hidden'));
             if(widgetMenu) widgetMenu.classList.add('hidden');
         }
     });
