@@ -34,7 +34,12 @@
 
         {% if widget.widget_type == 'list' or not widget.widget_type %}
 
-            <form id="form-{{ widget.id }}" action="{% url 'add_link' widget.id %}" method="POST" class="hidden mb-3 bg-gray-900 p-3 rounded border border-gray-600 absolute top-0 left-0 right-0 z-10 shadow-xl"
+            <form id="form-{{ widget.id }}"
+                  hx-post="{% url 'add_link' widget.id %}"
+                  hx-target="#link-list-{{ widget.id }}"
+                  hx-swap="beforeend"
+                  hx-on::after-request="if(event.detail.successful){this.reset();toggleForm('form-{{ widget.id }}');}"
+                  class="hidden mb-3 bg-gray-900 p-3 rounded border border-gray-600 absolute top-0 left-0 right-0 z-10 shadow-xl"
                   onkeydown="if(event.key==='Escape'){event.preventDefault();toggleForm('form-{{ widget.id }}');}">
                 {% csrf_token %}
                 <input type="text" name="title" placeholder="Titre" required class="w-full mb-2 bg-gray-800 text-white px-2 py-1 rounded border border-gray-700">
@@ -45,7 +50,7 @@
                 </div>
             </form>
 
-            <ul class="sortable-list space-y-0 flex-1 min-h-[20px] overflow-y-auto custom-scrollbar" data-widget-id="{{ widget.id }}">
+            <ul id="link-list-{{ widget.id }}" class="sortable-list space-y-0 flex-1 min-h-[20px] overflow-y-auto custom-scrollbar" data-widget-id="{{ widget.id }}">
                 {% for link in widget.links.all %}
                     {% include "partials/link_item.html" %}
                 {% endfor %}
@@ -78,7 +83,12 @@
 
         {% elif widget.widget_type == 'command' %}
 
-            <form id="form-{{ widget.id }}" action="{% url 'add_link' widget.id %}" method="POST" class="hidden mb-3 bg-gray-900 p-3 rounded border border-gray-600 absolute top-0 left-0 right-0 z-10 shadow-xl"
+            <form id="form-{{ widget.id }}"
+                  hx-post="{% url 'add_link' widget.id %}"
+                  hx-target="#cmd-list-{{ widget.id }}"
+                  hx-swap="beforeend"
+                  hx-on::after-request="if(event.detail.successful){this.reset();toggleForm('form-{{ widget.id }}');}"
+                  class="hidden mb-3 bg-gray-900 p-3 rounded border border-gray-600 absolute top-0 left-0 right-0 z-10 shadow-xl"
                   onkeydown="if(event.key==='Escape'){event.preventDefault();toggleForm('form-{{ widget.id }}');}">
                 {% csrf_token %}
                 <input type="text" name="title" placeholder="Nom du bouton (ex: Update)" required class="w-full mb-2 bg-gray-800 text-white px-2 py-1 rounded border border-gray-700">
@@ -89,7 +99,7 @@
                 </div>
             </form>
 
-            <div class="grid grid-cols-1 gap-2 overflow-y-auto p-1 custom-scrollbar w-full h-full">
+            <div id="cmd-list-{{ widget.id }}" class="grid grid-cols-1 gap-2 overflow-y-auto p-1 custom-scrollbar w-full h-full">
                 {% for link in widget.links.all %}
                     {% include "partials/command_item.html" %}
                 {% endfor %}
@@ -97,7 +107,12 @@
 
         {% elif widget.widget_type == 'snippet' %}
 
-            <form id="form-{{ widget.id }}" action="{% url 'add_link' widget.id %}" method="POST" class="hidden mb-3 bg-gray-900 p-3 rounded border border-gray-600 absolute top-0 left-0 right-0 z-10 shadow-xl"
+            <form id="form-{{ widget.id }}"
+                  hx-post="{% url 'add_link' widget.id %}"
+                  hx-target="#snippet-list-{{ widget.id }}"
+                  hx-swap="beforeend"
+                  hx-on::after-request="if(event.detail.successful){this.reset();toggleForm('form-{{ widget.id }}');}"
+                  class="hidden mb-3 bg-gray-900 p-3 rounded border border-gray-600 absolute top-0 left-0 right-0 z-10 shadow-xl"
                   onkeydown="if(event.key==='Escape'){event.preventDefault();toggleForm('form-{{ widget.id }}');}">
                 {% csrf_token %}
                 <input type="text" name="title" placeholder="Description (optionnel)" class="w-full mb-2 bg-gray-800 text-white px-2 py-1 rounded border border-gray-700 text-sm">
@@ -108,7 +123,7 @@
                 </div>
             </form>
 
-            <ul class="sortable-list space-y-0 flex-1 min-h-[20px] overflow-y-auto custom-scrollbar" data-widget-id="{{ widget.id }}">
+            <ul id="snippet-list-{{ widget.id }}" class="sortable-list space-y-0 flex-1 min-h-[20px] overflow-y-auto custom-scrollbar" data-widget-id="{{ widget.id }}">
                 {% for link in widget.links.all %}
                     {% include "partials/snippet_item.html" %}
                 {% endfor %}

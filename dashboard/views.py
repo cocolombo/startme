@@ -163,19 +163,28 @@ def add_link(request, widget_id):
         widget_id (int): L'ID du widget parent.
 
     Returns:
-        HttpResponseRedirect: Redirige vers la page précédente (HTTP_REFERER).
+        HttpResponse: Le fragment HTML du nouveau lien (pour insertion HTMX).
     """
     widget = get_object_or_404(Widget, id=widget_id)
     title = request.POST.get('title', '')
     url = request.POST.get('url', '')
 
+    link = None
     if widget.widget_type == 'snippet':
         if url:
-            Link.objects.create(title=title, url=url, widget=widget, order=999)
+            link = Link.objects.create(title=title, url=url, widget=widget, order=999)
     elif title:
-        Link.objects.create(title=title, url=url, widget=widget, order=999)
+        link = Link.objects.create(title=title, url=url, widget=widget, order=999)
 
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+    if link is None:
+        return HttpResponse(status=400)
+
+    if widget.widget_type == 'command':
+        return render(request, 'partials/command_item.html', {'link': link})
+    elif widget.widget_type == 'snippet':
+        return render(request, 'partials/snippet_item.html', {'link': link})
+    else:
+        return render(request, 'partials/link_item.html', {'link': link})
 
 def delete_link(request, link_id):
     """Supprime un lien spécifique.
@@ -185,11 +194,11 @@ def delete_link(request, link_id):
         link_id (int): L'ID du lien à supprimer.
 
     Returns:
-        HttpResponseRedirect: Redirige vers la page précédente.
+        HttpResponse: Réponse vide 200 (HTMX retire l'élément du DOM côté client).
     """
     link = get_object_or_404(Link, id=link_id)
     link.delete()
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+    return HttpResponse(status=200)
 
 
 @require_POST

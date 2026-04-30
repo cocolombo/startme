@@ -56,9 +56,18 @@
 
     function confirmDeleteLink(linkId) {
         const confirmBtn = document.getElementById('btn-confirm-delete-link');
-        confirmBtn.href = "/link/delete/" + linkId + "/";
+        confirmBtn.setAttribute('hx-get', `/link/delete/${linkId}/`);
+        confirmBtn.setAttribute('hx-target', `#link-${linkId}`);
+        confirmBtn.setAttribute('hx-swap', 'delete');
+        htmx.process(confirmBtn);
         toggleModal('modal-delete-link');
     }
+
+    document.body.addEventListener('htmx:afterRequest', function(evt) {
+        if (evt.detail.elt.id === 'btn-confirm-delete-link' && evt.detail.successful) {
+            toggleModal('modal-delete-link');
+        }
+    });
 
     // --- AFFICHAGE FORMULAIRE LIEN ---
     function toggleForm(formId) {
