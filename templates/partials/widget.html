@@ -60,6 +60,7 @@
 
             <textarea
                 name="content"
+                rows="10"
                 class="w-full h-full bg-gray-900 text-gray-300 p-3 rounded border border-gray-700 focus:border-blue-500 focus:outline-none resize-none text-sm font-mono leading-relaxed"
                 placeholder="Écrivez vos notes ici..."
                 hx-post="{% url 'save_note' widget.id %}"
