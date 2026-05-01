@@ -488,12 +488,13 @@ def system_monitor(request):
             usage = psutil.disk_usage(d['path'])
             disks_info.append({
                 'name': d['name'],
-                'percent': usage.percent,
-                'free_gb': round(usage.free / (1024 ** 3), 0),
-                'total_gb': round(usage.total / (1024 ** 3), 0)
+                'device': d['path'].rstrip('/').split('/')[-1],
+                'percent': round(usage.percent, 1),
+                'free_gb': round(usage.free / (1024 ** 3)),
+                'used_gb': round(usage.used / (1024 ** 3)),
+                'total_gb': round(usage.total / (1024 ** 3)),
             })
         except FileNotFoundError:
-            # Si le disque n'est pas monté, on l'ignore ou on met 0
             continue
 
     # 3. GPU
