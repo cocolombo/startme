@@ -1,4 +1,20 @@
 <script>
+    // --- SIDEBAR MENU ---
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar-menu');
+        const backdrop = document.getElementById('sidebar-backdrop');
+        const isOpen = !sidebar.classList.contains('-translate-x-full');
+        sidebar.classList.toggle('-translate-x-full', isOpen);
+        backdrop.classList.toggle('hidden', isOpen);
+    }
+
+    function closeSidebar() {
+        const sidebar = document.getElementById('sidebar-menu');
+        const backdrop = document.getElementById('sidebar-backdrop');
+        if (sidebar) sidebar.classList.add('-translate-x-full');
+        if (backdrop) backdrop.classList.add('hidden');
+    }
+
    // --- GESTION DES MENUS CONTEXTUELS ---
     // ... (code pour afficher/cacher les menus au clic droit et mettr
     const widgetMenu = document.getElementById('widget-context-menu');
@@ -44,6 +60,7 @@
             document.querySelectorAll('[id^="modal-"]').forEach(modal => modal.classList.add('hidden'));
             document.querySelectorAll('[id^="form-"]').forEach(form => form.classList.add('hidden'));
             if(widgetMenu) widgetMenu.classList.add('hidden');
+            closeSidebar();
         }
     });
 

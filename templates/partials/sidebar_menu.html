@@ -1,0 +1,47 @@
+<!-- Backdrop -->
+<div id="sidebar-backdrop"
+     class="fixed inset-0 bg-black/60 z-40 hidden"
+     onclick="closeSidebar()">
+</div>
+
+<!-- Sidebar drawer -->
+<aside id="sidebar-menu"
+       class="fixed top-0 left-0 h-full w-64 bg-gray-900 border-r border-gray-700 z-50
+              transform -translate-x-full transition-transform duration-300 ease-in-out
+              flex flex-col overflow-hidden">
+
+    <div class="flex items-center justify-between px-4 py-3 border-b border-gray-700 shrink-0">
+        <span class="font-semibold text-white text-sm tracking-wide">Navigation</span>
+        <button onclick="closeSidebar()"
+                class="text-gray-400 hover:text-white transition-colors p-1 rounded hover:bg-gray-700"
+                title="Fermer">✕</button>
+    </div>
+
+    <nav class="overflow-y-auto flex-1 py-2 px-2">
+        {% for page in pages %}
+        <div class="mb-1">
+            <a href="{% url 'index' page.slug %}"
+               onclick="closeSidebar()"
+               class="flex items-center gap-2 px-3 py-2 rounded text-sm font-semibold transition-colors
+                      {% if page == active_page %}bg-blue-600/20 text-blue-400{% else %}text-gray-300 hover:bg-gray-800 hover:text-white{% endif %}">
+                <span class="text-gray-500 text-xs">▸</span>
+                {{ page.name }}
+            </a>
+            {% with widgets=page.widgets.all %}
+            {% if widgets %}
+            <div class="ml-4 pl-3 border-l border-gray-700 mt-0.5 space-y-0.5">
+                {% for widget in widgets %}
+                <a href="{% url 'index' page.slug %}"
+                   onclick="closeSidebar()"
+                   class="flex items-center px-2 py-1 rounded text-xs transition-colors
+                          text-gray-300 hover:bg-gray-800 hover:text-white">
+                    {{ widget.title }}
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+        </div>
+        {% endfor %}
+    </nav>
+</aside>
