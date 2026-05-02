@@ -157,6 +157,24 @@
         });
     }
 
+    // --- DRAG & DROP : PAGES (Sidebar) ---
+    var sidebarPagesList = document.getElementById('sidebar-pages-list');
+    if (sidebarPagesList) {
+        new Sortable(sidebarPagesList, {
+            animation: 150,
+            draggable: '.page-item',
+            handle: '.page-drag-handle',
+            ghostClass: 'sortable-ghost',
+            onEnd: function () {
+                var items = sidebarPagesList.querySelectorAll('.page-item[data-id]');
+                var pageIds = Array.from(items).map(el => el.getAttribute('data-id'));
+                var formData = new FormData();
+                pageIds.forEach(id => formData.append('page', id));
+                fetch('/api/update-page-order/', { method: 'POST', body: formData });
+            }
+        });
+    }
+
     // --- MENU CONTEXTUEL : LIENS (Clic Droit) ---
     const linkMenu = document.getElementById('context-menu');
     let currentLinkId = null;
