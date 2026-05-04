@@ -19,32 +19,31 @@
 
     <nav id="sidebar-pages-list" class="overflow-y-auto flex-1 py-2 px-2">
         {% for page in pages %}
-        <div class="mb-1 page-item group" data-id="{{ page.id }}">
-            <div class="flex items-center">
-                <span class="page-drag-handle cursor-grab opacity-0 group-hover:opacity-100 transition-opacity text-gray-600 hover:text-gray-300 px-1 text-sm select-none shrink-0"
-                      title="Glisser pour réordonner">⠿</span>
+        <div class="mb-1 page-item" data-id="{{ page.id }}">
+            <div class="page-drag-handle flex items-center cursor-grab active:cursor-grabbing">
+                <span class="text-gray-600 px-1 text-sm select-none shrink-0" title="Glisser pour réordonner">⠿</span>
                 <a href="{% url 'index' page.slug %}"
                    onclick="closeSidebar()"
-                   class="flex-1 flex items-center gap-2 px-2 py-2 rounded text-sm font-semibold transition-colors
+                   draggable="false"
+                   class="flex-1 flex items-center gap-2 px-2 py-2 rounded text-sm font-semibold transition-colors cursor-pointer
                           {% if page == active_page %}bg-blue-600/20 text-blue-400{% else %}text-gray-300 hover:bg-gray-800 hover:text-white{% endif %}">
                     <span class="text-gray-500 text-xs">▸</span>
                     {{ page.name }}
                 </a>
             </div>
-            {% with widgets=page.widgets.all %}
-            {% if widgets %}
-            <div class="ml-4 pl-3 border-l border-gray-700 mt-0.5 space-y-0.5">
-                {% for widget in widgets %}
+            <div class="sidebar-widget-dropzone ml-4 pl-3 border-l border-gray-700 mt-0.5 space-y-0.5 min-h-[4px]"
+                 data-page-id="{{ page.id }}"
+                 data-page-url="{% url 'index' page.slug %}">
+                {% for widget in page.widgets.all %}
                 <a href="{% url 'index' page.slug %}"
                    onclick="closeSidebar()"
+                   data-widget-id="{{ widget.id }}"
                    class="flex items-center px-2 py-1 rounded text-xs transition-colors
-                          text-gray-300 hover:bg-gray-800 hover:text-white">
+                          text-gray-300 hover:bg-gray-800 hover:text-white cursor-grab active:cursor-grabbing">
                     {{ widget.title }}
                 </a>
                 {% endfor %}
             </div>
-            {% endif %}
-            {% endwith %}
         </div>
         {% endfor %}
     </nav>

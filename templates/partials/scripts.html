@@ -157,23 +157,32 @@
         });
     }
 
-    // --- DRAG & DROP : PAGES (Sidebar) ---
-    var sidebarPagesList = document.getElementById('sidebar-pages-list');
-    if (sidebarPagesList) {
-        new Sortable(sidebarPagesList, {
+    // --- DRAG & DROP : CATÉGORIES (Sidebar) ---
+    document.querySelectorAll('.sidebar-widget-dropzone').forEach(function(dropzone) {
+        new Sortable(dropzone, {
+            group: 'sidebar-widgets',
             animation: 150,
-            draggable: '.page-item',
-            handle: '.page-drag-handle',
             ghostClass: 'sortable-ghost',
-            onEnd: function () {
-                var items = sidebarPagesList.querySelectorAll('.page-item[data-id]');
-                var pageIds = Array.from(items).map(el => el.getAttribute('data-id'));
-                var formData = new FormData();
-                pageIds.forEach(id => formData.append('page', id));
-                fetch('/api/update-page-order/', { method: 'POST', body: formData });
+            emptyInsertThreshold: 20,
+            forceFallback: true,
+            onAdd: function(evt) {
+                const widgetId = evt.item.dataset.widgetId;
+                const pageId = evt.to.dataset.pageId;
+                const pageUrl = evt.to.dataset.pageUrl;
+                const csrfToken = JSON.parse(document.body.getAttribute('hx-headers'))['X-CSRFToken'];
+
+                evt.item.href = pageUrl;
+
+                const formData = new FormData();
+                formData.append('target_page_id', pageId);
+                fetch(`/widget/move/${widgetId}/`, {
+                    method: 'POST',
+                    headers: {'X-CSRFToken': csrfToken},
+                    body: formData
+                });
             }
         });
-    }
+    });
 
     // --- MENU CONTEXTUEL : LIENS (Clic Droit) ---
     const linkMenu = document.getElementById('context-menu');
