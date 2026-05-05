@@ -89,14 +89,17 @@ class Link(models.Model):
 
 4. Règles UI & Frontend
 
-    Templates : Un seul template principal index.html situé dans startme/templates/dashboard/.
-    Partials : Les fragments HTML pour HTMX sont dans startme/templates/partials/.
+    Templates : Un seul template principal index.html situé dans dashboard/templates/dashboard/.
+    Partials : Les fragments HTML pour HTMX sont dans templates/partials/ (racine du projet).
 
     Interactions :
-        Drag & Drop : SortableJS, sauvegarde via API fetch.
+        Drag & Drop : SortableJS, sauvegarde via API fetch. Deux contextes :
+            - Grille principale : réorganisation des widgets (update-widget-order) et des liens (update-order).
+            - Sidebar (sidebar_menu.html) : réorganisation des pages (update-page-order) via poignée ⠿, déplacement de widgets entre pages (move_widget) via glisser-déposer.
         Édition : Inline via HTMX (hx-swap="outerHTML").
-        Widgets Infos : La page avec le slug 'infos' charge un layout spécifique (widgets_infos.html)
+        Widgets Infos : La page avec le slug 'infos' charge un layout spécifique (widgets_infos.html).
         Widgets Spéciaux : Météo (API JS), Calendrier (JS Frontend), Marchés (Iframe TradingView), Système (HTMX Polling), Réseau (HTMX), Calculatrice (JS), Minuteur Pomodoro (JS avec Web Audio API).
+        Sidebar : Panneau latéral (☰) avec arborescence Pages → Widgets pour navigation rapide et gestion par drag-and-drop. Template : partials/sidebar_menu.html.
 
 5. Types de widgets
 
@@ -105,4 +108,7 @@ class Link(models.Model):
     command  : Lanceur de scripts — exécute un Link.url via run_command. Partial : command_item.html
     snippet  : Bloc de commandes à copier (pas d'exécution). Partial : snippet_item.html
                Supporte is_wide pour affichage en 2 colonnes.
-    infos    : Widgets système hardcodés (Météo, Horloges, Réseau, etc.) exclusifs à la page 'infos'.
+
+    Page spéciale 'infos' : détectée par slug (pas un widget_type). La vue index() charge
+    widgets_infos.html à la place de la grille normale. Contient : Météo, Horloges,
+    Calendrier, Marchés, Moniteur Système (CPU/RAM/Disques/GPU), Réseau, Calculatrice, Minuteur.

@@ -77,5 +77,8 @@ Le fichier `.env` (à la racine) contrôle la configuration sans toucher au code
 
 *   **Renommer un widget :** Cliquez simplement sur son titre.
 *   **Ouvrir tous les liens :** Le petit bouton `⇱` dans l'en-tête d'une liste ouvre tous ses liens dans de nouveaux onglets (décalés de 100ms pour ne pas surcharger le navigateur).
-*   **Déplacer vers un autre onglet :** Clic droit sur le titre du widget ➔ Choisissez la page de destination.
+*   **Déplacer un widget (méthode 1 — menu contextuel) :** Clic droit sur le titre du widget ➔ Choisissez la page de destination.
+*   **Déplacer un widget (méthode 2 — sidebar) :** Ouvrez la sidebar (☰), glissez le nom d'un widget vers la liste d'une autre page. La mise à jour est instantanée, sans rechargement.
+*   **Réordonner les pages :** Ouvrez la sidebar (☰), saisissez la poignée `⠿` à gauche d'une page et glissez-la à la position souhaitée.
+*   **Passer un widget en 2 colonnes :** Clic sur l'icône ⚙ (en-tête du widget) ➔ `↔ Largeur 2 colonnes`. Le widget occupe alors toute la largeur de la page. Recliquer pour revenir à 1 colonne.
 *   **Éditer un lien existant :** Survolez la ligne du lien et cliquez sur l'icône de crayon `✎` qui apparaît.

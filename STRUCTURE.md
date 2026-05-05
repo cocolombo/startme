@@ -5,14 +5,14 @@ startme/
 │   ├── asgi.py
 │   └── wsgi.py
 ├── dashboard/                  # Application principale
-│   ├── models.py               # Modèles de données (Page, Widget, Link)
+│   ├── models.py               # Modèles de données : Page, Widget (type: list/command/snippet/notepad/network/system/disk), Link
 │   ├── views.py                # Logique métier et endpoints HTMX
 │   ├── urls.py                 # Routes de l'application
 │   ├── admin.py                # Enregistrement des modèles dans l'admin Django
 │   ├── migrations/             # Migrations Django (auto-générées)
 │   ├── templates/
 │   │   └── dashboard/
-│   │       └── index.html      # Template principal du tableau de bord
+│   │       └── index.html      # Template principal du tableau de bord (inclut sidebar)
 │   ├── templatetags/
 │   │   └── dashboard_extras.py # Filtres et tags Django personnalisés
 │   └── management/
@@ -28,6 +28,7 @@ startme/
 │       ├── link_form.html      # Formulaire d'ajout/édition de lien
 │       ├── command_item.html   # Item de commande shell (widget type 'command')
 │       ├── snippet_item.html   # Item de snippet à copier (widget type 'snippet')
+│       ├── sidebar_menu.html   # Sidebar hamburger : arborescence Pages → Catégories → Widgets (drag-and-drop)
 │       ├── nav_header.html     # En-tête de navigation
 │       ├── menus.html          # Menus contextuels
 │       ├── modals.html         # Fenêtres modales
@@ -55,7 +56,12 @@ startme/
 ├── db.sqlite3                  # Base de données locale
 ├── changelog                   # Journal des changements
 ├── README.md                   # Documentation utilisateur
+├── CHEATSHEET.md               # Aide-mémoire des commandes et raccourcis HTMX/Django
+├── TODO.md                     # Liste des fonctionnalités à développer
+├── TROUBLESHOOTING.md          # Guide de résolution des problèmes courants
+├── WIDGETS_API.md              # Documentation des types de widgets et leur API HTMX
 ├── AI_CONTEXT.md               # Contexte du projet pour l'IA
+├── CLAUDE.md                   # Instructions de collaboration pour Claude Code
 ├── DEVELOPMENT.md              # Notes de développement
 ├── APPARENCE.md                # Documentation sur le thème/apparence
 └── STRUCTURE.md                # Ce fichier

@@ -58,9 +58,15 @@ Ce document liste les problèmes courants que vous pourriez rencontrer lors de l
 *   **Cause :** La base de données SQLite n'est pas initialisée.
 *   **Solution :** Arrêtez le serveur et lancez `python manage.py migrate`.
 
-### Les modifications de glisser-déposer ne sont pas sauvegardées
-*   **Cause :** La requête AJAX (HTMX) échoue, potentiellement à cause d'un problème de jeton CSRF.
-*   **Solution :** Vérifiez la console de votre navigateur (F12). Assurez-vous que la balise `<body>` contient bien l'attribut `hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'` dans `index.html`.
+### Les modifications de glisser-déposer (grille principale) ne sont pas sauvegardées
+*   **Cause :** La requête HTMX échoue, potentiellement à cause d'un problème de jeton CSRF.
+*   **Solution :** Vérifiez la console navigateur (F12). Assurez-vous que la balise `<body>` contient bien `hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'` dans `index.html`.
+
+### Le glisser-déposer dans la sidebar ne fonctionne pas (pages ou widgets)
+*   **Cause possible 1 :** Erreur JavaScript au démarrage de SortableJS (élément DOM manquant).
+    *   *Solution :* Ouvrez F12 → Onglet **Console**. Une erreur JS bloquante empêche l'initialisation. Rechargez la page et reproduisez le problème.
+*   **Cause possible 2 :** La requête `fetch()` vers l'API échoue (erreur réseau ou réponse 4xx/5xx).
+    *   *Solution :* Ouvrez F12 → Onglet **Réseau** (Network). Filtrez par `update-page-order` ou `widget/move`. Vérifiez le code de réponse et le corps de l'erreur côté serveur (console Django).
 
 ---
 

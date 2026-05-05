@@ -1,80 +1,96 @@
-### Personnalisation (Guide CSS & UI)
-Le design est géré via Tailwind CSS. La majorité des modifications se font directement dans dashboard/templates/dashboard/index.html.
+# Personnalisation de l'Apparence
 
-1. Grille et Disposition (Colonnes)
-Pour changer le nombre de catégories affichées par ligne :
+Le design est géré via **Tailwind CSS** (chargé localement depuis `static/js/tailwind.js`).
+Les modifications se font dans les fichiers de templates — aucune compilation nécessaire.
 
-Fichier : index.html
-Chercher : id="widget-grid"
-Modifier : La classe lg:grid-cols-4
-lg:grid-cols-3 : Plus large (3 colonnes)
-lg:grid-cols-5 : Plus compact (5 colonnes)
-grid-cols-1 : Mobile (1 colonne)
+---
 
-2. Thème et Couleurs
-Fond global : Balise <body>, classe bg-gray-900.
-Fond des Widgets : Cherchez bg-gray-800 et remplacez par une autre nuance (ex: bg-slate-800).
+## 1. Grille et Disposition (Colonnes)
 
-Titres (Couleur d'accent) : Cherchez text-orange-400. Remplacez par :
-Bleu : text-blue-400
-Vert : text-green-400
-Violet : text-purple-400
+**Fichier :** `dashboard/templates/dashboard/index.html`
+**Chercher :** `id="widget-grid"`
 
-3. Densité (Espacement des liens)
-Pour rendre la liste des liens plus compacte ou plus aérée :
-Fichier : templates/partials/link_item.html (ou dans la boucle <ul> de index.html)
+Modifier la classe `lg:grid-cols-4` :
 
-Modifier :
-space-y-0 ou space-y-1 sur le conteneur <ul>.
-py-1 (padding vertical) sur les éléments <li>.
+| Classe | Résultat |
+| :--- | :--- |
+| `lg:grid-cols-3` | Plus large (3 colonnes) |
+| `lg:grid-cols-4` | Défaut (4 colonnes) |
+| `lg:grid-cols-5` | Plus compact (5 colonnes) |
+| `grid-cols-1` | Mobile (1 colonne) |
 
-### Configuration des Widgets Spéciau
+Un widget avec `is_wide=True` utilise `col-span-2` et occupe automatiquement 2 colonnes.
 
-Widget Bourse (TradingView)
-Le widget financier dans l'onglet "Infos" est un script externe injecté.
-Fichier : index.html (Section "Infos")
-Modification : Cherchez le script JSON dans la balise <script ... embed-widget-market-overview.js">.
+---
 
-Format :
-JSON
-{
-  "symbols": [
-    { "s": "NASDAQ:AAPL", "d": "Apple" },
-    { "s": "FOREXCOM:SPXUSD", "d": "S&P 500" },
-    { "s": "BITSTAMP:BTCUSD", "d": "Bitcoin" }
-  ]
-}
-Widget Météo (Open-Meteo)
-Fichier : index.html (Script JS en bas de page)
-Variable : const weatherAPI = "..."
-Modification : Changez latitude et longitude dans l'URL pour votre ville.
+## 2. Thème et Couleurs
 
-// Exemple pour Paris
-const weatherAPI = "[https://api.open-meteo.com/v1/forecast?latitude=48.8566&longitude=2.3522](https://api.open-meteo.com/v1/forecast?latitude=48.8566&longitude=2.3522)&...";
+### Couleurs principales
 
+| Élément | Classe Tailwind | Emplacement |
+| :--- | :--- | :--- |
+| Fond global | `bg-gray-900` (`#111827`) | `<body>` dans `index.html` |
+| Fond des widgets | `bg-gray-800` (`#1f2937`) | `widget.html` |
+| Bordures | `border-gray-700` (`#374151`) | partout |
+| Texte principal | `text-gray-200` | `<body>` dans `index.html` |
+| Texte secondaire | `text-gray-400` / `text-gray-500` | labels, compteurs |
 
-## Personnalisation (Guide Rapide)
- - Le design est géré via Tailwind CSS directement dans dashboard/templates/dashboard/index.html. Voici les lignes clés à modifier pour ajuster l'apparence.
- - 1. Changer la largeur des colonnes (Catégories)
- -- Cherchez la ligne contenant id="widget-grid". Modifiez la classe lg:grid-cols-4 :
- -- Plus large : lg:grid-cols-3 (3 colonnes par ligne)
- -- Plus petit : lg:grid-cols-5 (5 colonnes par ligne)
- -- Mobile : grid-cols-1 (1 colonne par défaut sur petit écran)
- - 2. Changer les couleurs (Thème)
- --  Fond de la page : Dans la balise <body>, changez bg-gray-900.
- -- Fond des boîtes : Cherchez et remplacez partout bg-gray-800.
- -- Titres (Orange) : Cherchez text-orange-400 et remplacez par text-blue-400, text-green-400, etc.
+### Couleurs d'accent
 
- - 3. Espacement des liens (Densité)
- -- Dans la liste des liens (<ul class="sortable-list ...">) :
- -- Écart vertical : Modifiez space-y-0.5 (0.5 = très serré, 2 = aéré).
- -- Hauteur de ligne : Dans les balises <li>, modifiez py-1 (padding vertical).
+| Élément | Classe | Emplacement |
+| :--- | :--- | :--- |
+| Titres des widgets | `text-orange-400` | `widget_title.html` |
+| En-têtes menus contextuels | `text-orange-400` | `menus.html` |
+| Liens (hover) | `hover:text-blue-400` | `link_item.html`, `widget.html` |
+| Page active (sidebar) | `bg-blue-600/20 text-blue-400` | `sidebar_menu.html` |
+| Commandes/Snippets | `text-green-400` | `command_item.html`, `snippet_item.html` |
 
- - 4. Modifier les données Bourse (Tickers)
- -- Le widget Bourse est un script TradingView intégré dans la section "Infos". Pour changer les actions affichées :
+Pour changer la couleur d'accent des titres de widgets, remplacez `text-orange-400` par `text-blue-400`, `text-green-400`, `text-purple-400`, etc. dans `widget_title.html`.
 
-Ouvrez index.html.
-Cherchez le bloc ``.
-Dans le script JSON, modifiez la liste "symbols".
-Format : { "s": "MARCHE:SYMBOLE", "d": "Nom affiché" }
-Exemple : { "s": "NASDAQ:AAPL", "d": "Apple" }
+---
+
+## 3. Densité (Espacement des Liens)
+
+**Fichier :** `templates/partials/link_item.html`
+
+- Écart vertical entre liens : modifier `space-y-0.5` sur le `<ul>` parent (dans `widget.html`)
+- Padding vertical des lignes : modifier `py-1` sur les `<li>`
+
+---
+
+## 4. Drag & Drop (Effet Visuel)
+
+L'élément glissé affiche un fantôme semi-transparent. Configurable dans `index.html` :
+
+```css
+.sortable-ghost { opacity: 0.4; background-color: #4B5563; }
+```
+
+---
+
+## 5. Widgets Spéciaux (Page "Infos")
+
+### Widget Bourse (TradingView)
+
+**Fichier :** `templates/partials/widgets_infos.html`
+Cherchez le bloc `<script ... embed-widget-market-overview.js">`.
+Modifiez la liste `"symbols"` dans le JSON :
+
+```json
+{ "s": "NASDAQ:AAPL", "d": "Apple" }
+```
+
+Format : `"s": "MARCHE:SYMBOLE"`, `"d": "Nom affiché"`
+
+### Widget Météo (Open-Meteo)
+
+La configuration se fait dans le fichier **`.env`** (pas dans le JS) :
+
+```
+WEATHER_CITY="Montréal, QC"
+WEATHER_LAT=45.5088
+WEATHER_LON=-73.5878
+WEATHER_TIMEZONE=America/Toronto
+```
+
+Le JS dans `scripts.html` lit ces valeurs via les variables de contexte Django (`{{ weather_lat }}`, etc.).

@@ -58,6 +58,11 @@
 - [-] **Authentification** : Non nécessaire (usage local uniquement sur 127.0.0.1).
 - [-] **Import de favoris** : Importer un fichier HTML d'export de navigateur (Chrome/Firefox) pour peupler les liens en masse.
 - [x] **Choix du widget cible** lors d'un déplacement de lien vers une autre page (voir bug ci-dessus).
+- [x] **Sidebar hamburger** : Arborescence hiérarchique Pages → Catégories pour navigation rapide. Ouverte via bouton ☰ dans la nav.
+- [x] **Réordonner les pages via la sidebar** : Drag-and-drop sur la poignée `⠿` de chaque page. Appelle `POST /api/update-page-order/`.
+- [x] **Déplacer un widget entre pages via la sidebar** : Drag-and-drop dans la sidebar hamburger (SortableJS `group: sidebar-widgets`). Appelle `POST /widget/move/<id>/` avec CSRF. Le `href` est mis à jour sans rechargement.
+- [x] **Widget Disques** : Affichage style `df -h` avec point de montage abrégé et code couleur selon le taux de remplissage (>75% jaune, >90% rouge). Dans `system_monitor.html`.
+- [x] **Bouton Annuler + touche Escape** : Les 3 formulaires d'ajout (liste, commande, snippet) ont un bouton Annuler et répondent à la touche Escape. Un handler global dans `scripts.html` ferme aussi les modales.
 - [ ] **Mode Clair / Sombre** toggle (actuellement dark mode fixe).
 - [x] **Favicon automatique** : Implémenté via `https://www.google.com/s2/favicons?domain=...` dans `link_item.html`. Fonctionne pour les URLs web ; sans effet sur les chemins locaux ou commandes (comportement attendu).
 - [-] **Déploiement** : Non applicable (usage local uniquement).

@@ -66,8 +66,9 @@ L'application suit le pattern MVC (MVT dans l'écosystème Django) :
 * **Models** (`dashboard/models.py`) : Gère la hiérarchie `Page` > `Widget` > `Link`.
 * **Views** (`dashboard/views.py`) : Traite la logique métier, retourne soit des templates complets (`index.html`) soit des fragments HTML (partials) pour HTMX.
 * **Templates** (`templates/`) : 
-    * `dashboard/index.html` : Template principal.
-    * `partials/` : Contient tous les fragments réutilisables (widgets, formulaires, menus) mis à jour dynamiquement par HTMX.
+    * `dashboard/index.html` : Template principal (inclut la sidebar).
+    * `partials/` : Fragments réutilisables mis à jour dynamiquement par HTMX. Clés : `widget.html` (dispatch selon `widget_type`), `sidebar_menu.html` (navigation + drag-and-drop pages/widgets).
+* **Drag & Drop** : SortableJS est utilisé dans deux contextes distincts — la grille principale (ordre des widgets et des liens) et la sidebar (réorganisation des pages, déplacement de widgets entre pages).
 
 Pour une vue détaillée des fichiers, consultez [STRUCTURE.md](STRUCTURE.md).
 Pour le contexte IA global du projet, consultez [AI_CONTEXT.md](AI_CONTEXT.md).

@@ -25,7 +25,9 @@ Un tableau de bord (Dashboard) personnel, auto-hébergé et interactif, inspiré
 
 ### Drag & Drop (Glisser-Déposer)
 * **Liens** : Déplacez les liens d'une catégorie à une autre ou réorganisez-les au sein d'une liste.
-* **Catégories** : Réorganisez l'ordre des catégories sur la page par simple glisser-déposer via l'en-tête.
+* **Catégories (ordre)** : Réorganisez l'ordre des catégories sur la page par simple glisser-déposer via l'en-tête.
+* **Pages (ordre)** : Réorganisez l'ordre des pages via la sidebar (☰) par simple glisser-déposer sur la poignée `⠿`.
+* **Catégories (entre pages)** : Depuis la sidebar (☰), glissez une catégorie vers la zone d'une autre page pour l'y déplacer instantanément.
 * **Persistance** : Toutes les modifications de position sont sauvegardées instantanément en base de données.
 
 ### Gestion Complète
@@ -33,7 +35,7 @@ Un tableau de bord (Dashboard) personnel, auto-hébergé et interactif, inspiré
 * **Catégories (Widgets)** :
     * **Ouvrir Tout** : Bouton `⇱` pour ouvrir tous les liens d'une catégorie dans de nouveaux onglets (avec délai progressif).
     * **Renommer (Inline)** : Cliquez simplement sur le titre pour le modifier.
-    * **Déplacer vers** : Envoyez une catégorie entière vers une autre page.
+    * **Déplacer vers** : Envoyez une catégorie entière vers une autre page (clic droit sur le titre, ou glisser-déposer dans la sidebar).
 * **Liens** :
     * **Éditer (Inline)** : Modifiez le titre et l'URL directement dans la liste.
     * **Ouverture Locale** : Supporte l'ouverture de fichiers locaux (via `xdg-open`).
@@ -95,5 +97,6 @@ python manage.py runserver
  - **Ajouter un lien** : Cliquez sur le `+` à droite du titre d'une catégorie.
  - **Déplacer un élément** : Cliquez et glissez un lien ou un titre de catégorie.
  - **Menu Contextuel** : Faites un clic-droit sur un lien ou un titre de catégorie pour voir les options avancées.
+ - **Sidebar (☰)** : Ouvrez la barre latérale pour naviguer dans l'arborescence Pages → Catégories, réordonner les pages et déplacer des catégories entre pages.
  - **Gérer les pages** : Utilisez les boutons `+`, `✎` (renommer) et `🗑` (supprimer) dans la barre de navigation supérieure.
  - **Backup** : Un bouton permet de télécharger une sauvegarde complète du projet (ZIP).
