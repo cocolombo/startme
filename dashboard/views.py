@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.text import slugify
+from django.db.models import Q
 from .models import Page, Widget, Link
 import psutil
 import subprocess
@@ -756,4 +757,42 @@ def get_network_info(request):
     return render(request, 'partials/network_info.html', {
         'local_ip': local_ip,
         'public_ip': public_ip
+    })
+
+
+def search(request):
+    q = request.GET.get('q', '').strip()
+    if len(q) < 2:
+        return HttpResponse('')
+
+    raw_links = (
+        Link.objects
+        .filter(Q(title__icontains=q) | Q(url__icontains=q))
+        .select_related('widget', 'widget__page')
+        .distinct()
+        .order_by('widget__page__order', 'widget__order', 'order')[:40]
+    )
+    seen_urls: set[str] = set()
+    links = []
+    for link in raw_links:
+        url_key = link.url.strip().rstrip('/') if link.url else None
+        if url_key and url_key in seen_urls:
+            continue
+        if url_key:
+            seen_urls.add(url_key)
+        links.append(link)
+    links = links[:20]
+
+    widgets = (
+        Widget.objects
+        .filter(title__icontains=q)
+        .select_related('page')
+        .distinct()
+        .order_by('page__order', 'order')[:10]
+    )
+
+    return render(request, 'partials/search_results.html', {
+        'links': links,
+        'widgets': widgets,
+        'query': q,
     })

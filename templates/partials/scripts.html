@@ -385,51 +385,27 @@
         });
     }
 
-    // --- LIVE SEARCH ---
-    function liveSearch() {
-        let input = document.getElementById('search-input');
-        let filter = input.value.toLowerCase();
-        let widgets = document.querySelectorAll('.group\\/widget');
+    // --- RECHERCHE GLOBALE ---
+    (function () {
+        const input = document.getElementById('search-input');
+        const results = document.getElementById('search-results');
+        if (!input || !results) return;
 
-        widgets.forEach(function(widget) {
-            let widgetMatch = false;
-
-            // Check Title
-            let titleEl = widget.querySelector('h3, h2, .font-bold');
-            if (titleEl && titleEl.innerText.toLowerCase().includes(filter)) {
-                widgetMatch = true;
-            }
-
-            // Check Links
-            let links = widget.querySelectorAll('li');
-            let hasVisibleLink = false;
-
-            links.forEach(function(link) {
-                let text = link.innerText.toLowerCase();
-                if (text.includes(filter) || widgetMatch) {
-                    link.style.display = "";
-                    hasVisibleLink = true;
-                } else {
-                    link.style.display = "none";
-                }
-            });
-
-            // Check Notes
-            let note = widget.querySelector('textarea');
-            if (note) {
-                let noteText = note.value.toLowerCase();
-                if (noteText.includes(filter) || widgetMatch) {
-                    hasVisibleLink = true;
-                }
-            }
-
-            if (widgetMatch || hasVisibleLink || filter === "") {
-                widget.style.display = "";
-            } else {
-                widget.style.display = "none";
+        // Echap : vide l'input et ferme le dropdown
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                input.value = '';
+                results.innerHTML = '';
             }
         });
-    }
+
+        // Clic en dehors : ferme le dropdown
+        document.addEventListener('click', function (e) {
+            if (!document.getElementById('search-wrapper').contains(e.target)) {
+                results.innerHTML = '';
+            }
+        });
+    })();
 
     // --- REINIT SORTABLE APRES HTMX LOAD ---
     htmx.onLoad(function(content) {

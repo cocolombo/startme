@@ -1,0 +1,43 @@
+{% if links or widgets %}
+<div class="py-1 max-h-96 overflow-y-auto">
+
+    {% if links %}
+    <div class="px-3 py-1 text-xs font-semibold text-gray-500 uppercase tracking-wider">Liens</div>
+    {% for link in links %}
+        {% if link.url and link.url|slice:":4" == "http" %}
+        <a href="{{ link.url }}" target="_blank"
+           class="flex items-center gap-3 px-4 py-2 hover:bg-gray-700 transition-colors cursor-pointer"
+           onclick="document.getElementById('search-results').innerHTML=''">
+            <img src="https://www.google.com/s2/favicons?domain={{ link.url }}" class="w-4 h-4 flex-shrink-0" loading="lazy">
+            <span class="flex-1 text-sm text-white truncate">{{ link.title }}</span>
+            <span class="text-xs text-gray-500 flex-shrink-0 ml-2">{{ link.widget.page.name }} / {{ link.widget.title }}</span>
+        </a>
+        {% else %}
+        <div class="flex items-center gap-3 px-4 py-2 hover:bg-gray-700 transition-colors cursor-pointer"
+             hx-get="{% url 'open_local_file' link.id %}" hx-swap="none"
+             onclick="document.getElementById('search-results').innerHTML=''">
+            <span class="w-4 h-4 flex-shrink-0 text-yellow-400 text-xs">📁</span>
+            <span class="flex-1 text-sm text-white truncate">{{ link.title }}</span>
+            <span class="text-xs text-gray-500 flex-shrink-0 ml-2">{{ link.widget.page.name }} / {{ link.widget.title }}</span>
+        </div>
+        {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    {% if widgets %}
+    <div class="px-3 py-1 text-xs font-semibold text-gray-500 uppercase tracking-wider {% if links %}mt-1 border-t border-gray-700 pt-2{% endif %}">Catégories</div>
+    {% for widget in widgets %}
+    <a href="{% url 'index' widget.page.slug %}"
+       class="flex items-center gap-3 px-4 py-2 hover:bg-gray-700 transition-colors cursor-pointer"
+       onclick="document.getElementById('search-results').innerHTML=''">
+        <span class="w-4 h-4 flex-shrink-0 text-blue-400 text-xs">▦</span>
+        <span class="flex-1 text-sm text-white truncate">{{ widget.title }}</span>
+        <span class="text-xs text-gray-500 flex-shrink-0 ml-2">{{ widget.page.name }}</span>
+    </a>
+    {% endfor %}
+    {% endif %}
+
+</div>
+{% elif query %}
+<div class="px-4 py-3 text-sm text-gray-500 text-center">Aucun résultat pour « {{ query }} »</div>
+{% endif %}

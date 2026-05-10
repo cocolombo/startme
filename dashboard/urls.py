@@ -46,6 +46,7 @@ urlpatterns = [
     # =================================
     # UTILITAIRES
     # =================================
+    path('api/search/', views.search, name='search'),
     path('api/system-monitor/', views.system_monitor, name='system_monitor'),
     path('api/network-info/', views.get_network_info, name='get_network_info'),
     path('api/backup/', views.download_backup, name='download_backup'),
