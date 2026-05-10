@@ -1,3 +1,7 @@
+# Pour démarrer Ghostty et avoir le r/pertoire courant tapez:
+gt dans le terminal
+
+
 # Django Personal Dashboard
 
 Un tableau de bord (Dashboard) personnel, auto-hébergé et interactif, inspiré de services comme Start.me. Il permet de gérer ses signets, de les organiser par catégories (widgets) et par pages (onglets), avec une interface moderne et fluide entièrement pilotable à la souris.

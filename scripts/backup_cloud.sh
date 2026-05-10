@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
-# Sauvegarde du projet startme vers Google Drive via rclone.
-# Prérequis : rclone installé et configuré (rclone config)
+# Sauvegarde du projet startme vers Google Drive ET Proton Drive via rclone.
+# L'archive est créée une seule fois puis uploadée en parallèle vers les deux destinations.
+#
+# Prérequis : rclone installé et configuré pour les deux remotes (rclone config)
+#   - remote "gdrive"       : type Google Drive
+#   - remote "protondrive"  : type Proton Drive
 #
 # Usage :
-#   ./scripts/backup_gdrive.sh              # archive + upload vers Drive
-#   ./scripts/backup_gdrive.sh --local      # archive locale uniquement (dans /tmp)
-#   ./scripts/backup_gdrive.sh --dry-run    # liste les fichiers sans créer d'archive
+#   ./scripts/backup_cloud.sh              # archive + upload vers les deux clouds
+#   ./scripts/backup_cloud.sh --local      # archive locale uniquement (dans /tmp)
+#   ./scripts/backup_cloud.sh --dry-run    # liste les fichiers sans créer d'archive
 
 set -euo pipefail
 
@@ -16,8 +20,9 @@ DATE=$(date +%Y%m%d_%H%M%S)
 ARCHIVE_NAME="${PROJECT_NAME}_${DATE}.tar.gz"
 ARCHIVE_PATH="/tmp/${ARCHIVE_NAME}"
 
-# Destination rclone — adapter selon votre config (rclone listremotes)
-GDRIVE_DEST="gdrive:backups/${PROJECT_NAME}"
+# Destinations rclone — adapter selon votre config (rclone listremotes)
+GDRIVE_DEST="gdrive:BU_${PROJECT_NAME}"
+PROTON_DEST="protondrive:BU_${PROJECT_NAME}"
 # ───────────────────────────────────────────────────────────────────────────────
 
 MODE="upload"
@@ -26,10 +31,13 @@ case "${1:-}" in
   --dry-run)  MODE="dryrun" ;;
 esac
 
-# ── Fichiers d'exclusions ──────────────────────────────────────────────────────
+# ── Fichiers temporaires ────────────────────────────────────────────────────────
 EXCLUDE_FILE=$(mktemp)
-trap 'rm -f "${EXCLUDE_FILE}"' EXIT
+GDRIVE_LOG=$(mktemp)
+PROTON_LOG=$(mktemp)
+trap 'rm -f "${EXCLUDE_FILE}" "${GDRIVE_LOG}" "${PROTON_LOG}"' EXIT
 
+# ── Fichiers d'exclusions ──────────────────────────────────────────────────────
 cat > "${EXCLUDE_FILE}" << 'EXCLUDES'
 # Secrets et données sensibles
 startme/.env
@@ -105,19 +113,58 @@ echo "    Taille : ${SIZE}"
 if [[ "${MODE}" == "upload" ]]; then
   if ! command -v rclone &>/dev/null; then
     echo ""
-    echo "ERREUR : rclone n'est pas installé."
+    echo "ERREUR : rclone n'est pas installe."
     echo "  sudo apt install rclone"
-    echo "  rclone config   # suivre l'assistant pour configurer Google Drive"
+    echo "  rclone config   # configurer gdrive et protondrive"
     echo ""
-    echo "Archive conservée localement : ${ARCHIVE_PATH}"
+    echo "Archive conservee localement : ${ARCHIVE_PATH}"
     exit 1
   fi
 
-  echo "==> Upload vers ${GDRIVE_DEST}..."
-  rclone copy "${ARCHIVE_PATH}" "${GDRIVE_DEST}" --progress
+  echo "==> Upload en parallele vers les deux destinations..."
+  echo "    -> Google Drive : ${GDRIVE_DEST}"
+  echo "    -> Proton Drive : ${PROTON_DEST}"
 
-  rm -f "${ARCHIVE_PATH}"
-  echo "==> Terminé. Archive disponible : ${GDRIVE_DEST}/${ARCHIVE_NAME}"
+  rclone copy "${ARCHIVE_PATH}" "${GDRIVE_DEST}" \
+    --log-file="${GDRIVE_LOG}" --log-level INFO &
+  PID_GDRIVE=$!
+
+  rclone copy "${ARCHIVE_PATH}" "${PROTON_DEST}" \
+    --log-file="${PROTON_LOG}" --log-level INFO &
+  PID_PROTON=$!
+
+  wait "${PID_GDRIVE}"; STATUS_GDRIVE=$?
+  wait "${PID_PROTON}"; STATUS_PROTON=$?
+
+  echo ""
+  echo "==> Resultats :"
+  ERRORS=0
+
+  if [[ ${STATUS_GDRIVE} -eq 0 ]]; then
+    echo "    [OK]    Google Drive : ${GDRIVE_DEST}/${ARCHIVE_NAME}"
+  else
+    echo "    [ECHEC] Google Drive :"
+    cat "${GDRIVE_LOG}"
+    ERRORS=$((ERRORS + 1))
+  fi
+
+  if [[ ${STATUS_PROTON} -eq 0 ]]; then
+    echo "    [OK]    Proton Drive : ${PROTON_DEST}/${ARCHIVE_NAME}"
+  else
+    echo "    [ECHEC] Proton Drive :"
+    cat "${PROTON_LOG}"
+    ERRORS=$((ERRORS + 1))
+  fi
+
+  echo ""
+  if [[ ${ERRORS} -eq 0 ]]; then
+    rm -f "${ARCHIVE_PATH}"
+    echo "==> Termine. Archive locale supprimee."
+  else
+    # Conserver l'archive si au moins un upload a echoue
+    echo "AVERTISSEMENT : ${ERRORS} upload(s) en echec. Archive conservee : ${ARCHIVE_PATH}"
+    exit 1
+  fi
 
 else
   # --local : on déplace l'archive dans le répertoire courant
