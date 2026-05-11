@@ -15,5 +15,5 @@
 ## Plus ambitieuses
 - [ ] Widget RSS/Atom — agrégateur de flux pour suivre des sites
 - [ ] Widget TODO/checklist — liste de tâches avec cases à cocher et persistance
-- [ ] Historique des commandes — log des scripts lancés avec timestamp et résultat
+- [x] Historique des commandes — log des scripts lancés avec timestamp et résultat
 - [ ] Multi-utilisateur — chaque utilisateur a son propre dashboard (auth Django déjà en place)
