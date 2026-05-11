@@ -1,19 +1,23 @@
 <div class="col-span-1 md:col-span-2 lg:col-span-4 grid grid-cols-1 md:grid-cols-3 gap-6">
 
     <!-- 1. Météo -->
-    <div class="col-span-1 bg-gray-800 rounded-lg p-6 shadow-lg border border-gray-700 h-56 flex flex-col justify-between relative overflow-hidden">
+    <div class="col-span-1 bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-700 flex flex-col justify-between relative overflow-hidden" style="min-height:14rem">
         <div class="flex justify-between items-start z-10">
             <div>
                 <h3 class="font-bold text-white text-xl">Météo</h3>
-                <p class="text-sm text-gray-400 uppercase tracking-wider mt-1">{{ weather_city }}</p>
+                <p class="text-sm text-gray-400 uppercase tracking-wider mt-0.5">{{ weather_city }}</p>
             </div>
             <div class="text-right">
                 <div id="current-temp" class="text-4xl font-bold text-white">--°</div>
-                <div id="current-desc" class="text-xs text-gray-400 capitalize">Chargement...</div>
+                <div id="current-desc" class="text-xs text-gray-400 capitalize mt-0.5">Chargement...</div>
+                <div id="current-feels" class="text-xs text-gray-500 mt-0.5"></div>
             </div>
         </div>
-        <div id="forecast-grid" class="grid grid-cols-3 gap-2 mt-4 z-10">
-           </div>
+        <div class="flex gap-4 z-10 mt-2">
+            <span id="current-humidity" class="text-xs text-blue-300"></span>
+            <span id="current-wind" class="text-xs text-gray-400"></span>
+        </div>
+        <div id="forecast-grid" class="grid grid-cols-3 gap-2 mt-3 z-10"></div>
         <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
         <div class="absolute -left-10 -top-10 w-40 h-40 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
     </div>
