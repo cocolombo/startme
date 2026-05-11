@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Page(models.Model):
     """Représente un onglet (une page) du tableau de bord.
@@ -81,3 +82,22 @@ class Link(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class CommandLog(models.Model):
+    """Enregistre chaque exécution d'une commande depuis un widget lanceur."""
+    link = models.ForeignKey(
+        'Link', on_delete=models.SET_NULL, null=True, blank=True, related_name='logs'
+    )
+    widget = models.ForeignKey(
+        'Widget', on_delete=models.SET_NULL, null=True, blank=True, related_name='command_logs'
+    )
+    command_title = models.CharField(max_length=200)
+    command = models.CharField(max_length=500)
+    executed_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering = ['-executed_at']
+
+    def __str__(self):
+        return f"{self.command_title} — {self.executed_at:%Y-%m-%d %H:%M}"

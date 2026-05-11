@@ -1,0 +1,30 @@
+<div class="mt-3 bg-gray-900 rounded border border-gray-700 p-3">
+    <div class="flex justify-between items-center mb-2">
+        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Historique des exécutions</span>
+        <div class="flex items-center gap-2">
+            <button hx-post="{% url 'clear_command_history' %}"
+                    hx-target="#cmd-history-{{ widget.id }}"
+                    hx-swap="innerHTML"
+                    hx-confirm="Effacer tout l'historique ?"
+                    class="text-gray-600 hover:text-red-400 text-xs px-1 transition-colors">🗑 Tout effacer</button>
+            <button onclick="document.getElementById('cmd-history-{{ widget.id }}').innerHTML=''"
+                    class="text-gray-600 hover:text-gray-300 text-xs px-1">✕</button>
+        </div>
+    </div>
+
+    {% if logs %}
+    <ul class="space-y-1 max-h-48 overflow-y-auto custom-scrollbar">
+        {% for log in logs %}
+        <li class="flex items-center gap-2 text-xs py-1 border-b border-gray-800 last:border-0">
+            <span class="text-gray-600 whitespace-nowrap flex-shrink-0" title="{{ log.executed_at }}">
+                il y a {{ log.executed_at|timesince }}
+            </span>
+            <span class="text-white font-semibold truncate flex-shrink-0 max-w-[8rem]">{{ log.command_title }}</span>
+            <span class="text-green-400 font-mono truncate text-[10px]">{{ log.command }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="text-gray-600 text-xs text-center py-2">Aucune exécution enregistrée.</p>
+    {% endif %}
+</div>

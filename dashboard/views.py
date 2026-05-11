@@ -4,7 +4,7 @@ from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.text import slugify
 from django.db.models import Q
-from .models import Page, Widget, Link
+from .models import Page, Widget, Link, CommandLog
 import psutil
 import subprocess
 import os
@@ -727,6 +727,13 @@ def run_command(request, link_id):
         # L'utilisation d'une liste pour full_cmd empêche l'injection de commande au niveau du système hôte (Python).
         subprocess.Popen(full_cmd)
 
+        CommandLog.objects.create(
+            link=link,
+            widget=link.widget,
+            command_title=link.title,
+            command=command,
+        )
+
         return HttpResponse(status=204)
 
     except Exception as e:
@@ -796,3 +803,15 @@ def search(request):
         'widgets': widgets,
         'query': q,
     })
+
+
+def command_history(request, widget_id: int):
+    widget = get_object_or_404(Widget, id=widget_id)
+    logs = CommandLog.objects.filter(widget=widget).select_related('link')[:50]
+    return render(request, 'partials/command_history.html', {'widget': widget, 'logs': logs})
+
+
+@require_POST
+def clear_command_history(request):
+    CommandLog.objects.all().delete()
+    return HttpResponse('')

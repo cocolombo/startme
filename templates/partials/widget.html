@@ -14,6 +14,14 @@
                     title="Ouvrir tous les liens">⇱</button>
             {% endif %}
 
+            {% if widget.widget_type == 'command' %}
+            <button hx-get="{% url 'command_history' widget.id %}"
+                    hx-target="#cmd-history-{{ widget.id }}"
+                    hx-swap="innerHTML"
+                    class="text-gray-500 hover:text-blue-400 font-bold text-lg px-2 transition-colors cursor-pointer"
+                    title="Historique des exécutions">🕐</button>
+            {% endif %}
+
             <button onclick="showWidgetMenu(event, '{{ widget.id }}')"
                     class="text-gray-500 hover:text-blue-400 font-bold text-lg px-2 transition-colors cursor-pointer"
                     title="Options (déplacer, largeur...)">⚙</button>
@@ -105,6 +113,7 @@
                     {% include "partials/command_item.html" %}
                 {% endfor %}
             </div>
+            <div id="cmd-history-{{ widget.id }}"></div>
 
         {% elif widget.widget_type == 'snippet' %}
 
