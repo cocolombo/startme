@@ -1,21 +1,42 @@
 #!/usr/bin/env bash
-# Sauvegarde du projet startme vers Google Drive ET Proton Drive via rclone.
-# L'archive est créée une seule fois puis uploadée en parallèle vers les deux destinations.
+# Sauvegarde d'un projet vers Google Drive, Proton Drive et un hôte SSH local.
+# L'archive est créée une seule fois puis uploadée en parallèle vers les trois destinations.
 #
-# Prérequis : rclone installé et configuré pour les deux remotes (rclone config)
+# Prérequis : rclone installé et configuré (rclone config)
 #   - remote "gdrive"       : type Google Drive
 #   - remote "protondrive"  : type Proton Drive
 #
 # Usage :
-#   ./scripts/backup_cloud.sh              # archive + upload vers les deux clouds
-#   ./scripts/backup_cloud.sh --local      # archive locale uniquement (dans /tmp)
-#   ./scripts/backup_cloud.sh --dry-run    # liste les fichiers sans créer d'archive
+#   ./scripts/backup_cloud.sh                          # sauvegarde startme (défaut)
+#   ./scripts/backup_cloud.sh /chemin/vers/projet      # sauvegarde un autre projet
+#   ./scripts/backup_cloud.sh [PROJET] --local         # archive locale uniquement
+#   ./scripts/backup_cloud.sh [PROJET] --dry-run       # liste les fichiers sans archiver
+#
+# Exclusions par projet :
+#   Créer un fichier .backup_exclude à la racine du projet pour des exclusions spécifiques.
+#   Les chemins sont relatifs à la racine du projet (ex: node_modules, dist/, secret.json).
 
 set -euo pipefail
 
+# ── Parsing des arguments ──────────────────────────────────────────────────────
+MODE="upload"
+ARG_DIR=""
+for arg in "$@"; do
+  case "$arg" in
+    --local)   MODE="local" ;;
+    --dry-run) MODE="dryrun" ;;
+    *)         ARG_DIR="$arg" ;;
+  esac
+done
+
 # ── Configuration ──────────────────────────────────────────────────────────────
-PROJECT_DIR="/media/120gb/python/startme"
-PROJECT_NAME="startme"
+if [[ -n "${ARG_DIR}" ]]; then
+  PROJECT_DIR="$(realpath "${ARG_DIR}")"
+else
+  PROJECT_DIR="/media/120gb/python/startme"
+fi
+
+PROJECT_NAME="$(basename "${PROJECT_DIR}")"
 DATE=$(date +%Y%m%d_%H%M%S)
 ARCHIVE_NAME="${PROJECT_NAME}_${DATE}.tar.gz"
 ARCHIVE_PATH="/tmp/${ARCHIVE_NAME}"
@@ -30,11 +51,12 @@ SSH_USER="nimzo"
 SSH_DEST_DIR="~/BU_${PROJECT_NAME}"
 # ───────────────────────────────────────────────────────────────────────────────
 
-MODE="upload"
-case "${1:-}" in
-  --local)    MODE="local" ;;
-  --dry-run)  MODE="dryrun" ;;
-esac
+if [[ ! -d "${PROJECT_DIR}" ]]; then
+  echo "ERREUR : répertoire introuvable : ${PROJECT_DIR}"
+  exit 1
+fi
+
+echo "==> Projet : ${PROJECT_NAME} (${PROJECT_DIR})"
 
 # ── Fichiers temporaires ────────────────────────────────────────────────────────
 EXCLUDE_FILE=$(mktemp)
@@ -44,37 +66,33 @@ SSH_LOG=$(mktemp)
 trap 'rm -f "${EXCLUDE_FILE}" "${GDRIVE_LOG}" "${PROTON_LOG}" "${SSH_LOG}"' EXIT
 
 # ── Fichiers d'exclusions ──────────────────────────────────────────────────────
-cat > "${EXCLUDE_FILE}" << 'EXCLUDES'
+# Exclusions génériques (tout projet Python/Django)
+cat > "${EXCLUDE_FILE}" << EXCLUDES
 # Secrets et données sensibles
-startme/.env
+${PROJECT_NAME}/.env
 
 # Environnement virtuel (regen : pip install -r requirements.txt)
-startme/venv
+${PROJECT_NAME}/venv
 
 # Historique Git — supprimer cette ligne si pas de dépôt distant
-startme/.git
+${PROJECT_NAME}/.git
 
-# Config IDE locale (peut contenir des credentials DB)
-startme/.idea
+# Config IDE locale
+${PROJECT_NAME}/.idea
+${PROJECT_NAME}/.vscode
 
-# Base de données SQLite — préférer un export JSON via :
-#   python manage.py dumpdata --indent 2 > data_export.json
-# Décommenter la ligne suivante pour exclure la BDD :
-# startme/db.sqlite3
+# Base de données SQLite
+# ${PROJECT_NAME}/db.sqlite3
 
-# Export de données statique (régénérable avec dumpdata)
-startme/data_export.json
+# Fichiers statiques Django collectés (regen : collectstatic)
+# ${PROJECT_NAME}/static
 
-# Fichiers statiques Django collectés (regen : python manage.py collectstatic)
-# Décommenter si static/ ne contient que des fichiers collectés :
-# startme/static
-
-# Bytecode Python (régénéré automatiquement)
+# Bytecode Python
 */__pycache__
 *.pyc
 *.pyo
 
-# Archives (évite les doublons dans la sauvegarde)
+# Archives (évite les doublons)
 *.tar.gz
 *.zip
 
@@ -83,10 +101,25 @@ startme/data_export.json
 *.jpg
 *.jpeg
 
-# Logs (transitoires, sans valeur de restauration)
+# Logs
 *.log
-startme/startup.log
 EXCLUDES
+
+# Exclusions spécifiques au projet (optionnel)
+PROJECT_EXCLUDE="${PROJECT_DIR}/.backup_exclude"
+if [[ -f "${PROJECT_EXCLUDE}" ]]; then
+  echo "    Exclusions projet : ${PROJECT_EXCLUDE}"
+  # Préfixer les chemins relatifs avec le nom du projet
+  while IFS= read -r line || [[ -n "${line}" ]]; do
+    [[ "${line}" =~ ^#.*$ || -z "${line}" ]] && echo "${line}" >> "${EXCLUDE_FILE}" && continue
+    # Si la ligne ne commence pas par * ou /, préfixer avec le nom du projet
+    if [[ "${line}" != /* && "${line}" != \** ]]; then
+      echo "${PROJECT_NAME}/${line}" >> "${EXCLUDE_FILE}"
+    else
+      echo "${line}" >> "${EXCLUDE_FILE}"
+    fi
+  done < "${PROJECT_EXCLUDE}"
+fi
 
 # ── Mode dry-run ───────────────────────────────────────────────────────────────
 if [[ "${MODE}" == "dryrun" ]]; then
@@ -98,8 +131,8 @@ if [[ "${MODE}" == "dryrun" ]]; then
     --verbose \
     "${PROJECT_NAME}" 2>&1 | grep -v "^tar:" || true
   echo ""
-  echo "Pour créer l'archive : $0"
-  echo "Pour archive locale  : $0 --local"
+  echo "Pour créer l'archive : $0 ${PROJECT_DIR}"
+  echo "Pour archive locale  : $0 ${PROJECT_DIR} --local"
   exit 0
 fi
 
@@ -195,7 +228,6 @@ if [[ "${MODE}" == "upload" ]]; then
     rm -f "${ARCHIVE_PATH}"
     echo "==> Termine. Archive locale supprimee."
   else
-    # Conserver l'archive si au moins un upload a echoue
     echo "AVERTISSEMENT : ${ERRORS} upload(s) en echec. Archive conservee : ${ARCHIVE_PATH}"
     exit 1
   fi
