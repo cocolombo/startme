@@ -73,6 +73,7 @@ ${PROJECT_NAME}/.env
 
 # Environnement virtuel (regen : pip install -r requirements.txt)
 ${PROJECT_NAME}/venv
+${PROJECT_NAME}/.venv
 
 # Historique Git — supprimer cette ligne si pas de dépôt distant
 ${PROJECT_NAME}/.git
