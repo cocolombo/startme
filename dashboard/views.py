@@ -4,7 +4,7 @@ from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.text import slugify
 from django.db.models import Q
-from .models import Page, Widget, Link, CommandLog
+from .models import Page, Widget, Link, CommandLog, TodoItem
 import psutil
 import subprocess
 import os
@@ -563,6 +563,42 @@ def open_local_file(request, link_id):
     else:
         logger.warning("Fichier introuvable : %s", path)
         return HttpResponse(status=404)
+
+
+@require_POST
+def todo_add(request, widget_id: int) -> HttpResponse:
+    """Ajoute un item à la liste de tâches d'un widget."""
+    widget = get_object_or_404(Widget, id=widget_id)
+    text = request.POST.get('text', '').strip()
+    if not text:
+        return HttpResponse(status=400)
+    item = TodoItem.objects.create(widget=widget, text=text, order=999)
+    return render(request, 'partials/todo_item.html', {'item': item})
+
+
+@require_POST
+def todo_toggle(request, item_id: int) -> HttpResponse:
+    """Bascule l'état done/undone d'un item de todo."""
+    item = get_object_or_404(TodoItem, id=item_id)
+    item.done = not item.done
+    item.save()
+    return render(request, 'partials/todo_item.html', {'item': item})
+
+
+@require_POST
+def todo_delete(request, item_id: int) -> HttpResponse:
+    """Supprime un item de la liste de tâches."""
+    item = get_object_or_404(TodoItem, id=item_id)
+    item.delete()
+    return HttpResponse('')
+
+
+@require_POST
+def todo_clear_done(request, widget_id: int) -> HttpResponse:
+    """Supprime tous les items terminés d'un widget todo."""
+    widget = get_object_or_404(Widget, id=widget_id)
+    widget.todos.filter(done=True).delete()
+    return render(request, 'partials/todo_items_fragment.html', {'widget': widget})
 
 
 @csrf_exempt

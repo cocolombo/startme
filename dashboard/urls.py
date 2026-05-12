@@ -46,6 +46,14 @@ urlpatterns = [
     # =================================
     # UTILITAIRES
     # =================================
+    # =================================
+    # ACTIONS SUR LES TODO
+    # =================================
+    path('widget/<int:widget_id>/todo/add/', views.todo_add, name='todo_add'),
+    path('widget/<int:widget_id>/todo/clear-done/', views.todo_clear_done, name='todo_clear_done'),
+    path('todo/<int:item_id>/toggle/', views.todo_toggle, name='todo_toggle'),
+    path('todo/<int:item_id>/delete/', views.todo_delete, name='todo_delete'),
+
     path('api/search/', views.search, name='search'),
     path('widget/<int:widget_id>/history/', views.command_history, name='command_history'),
     path('api/command-history/clear/', views.clear_command_history, name='clear_command_history'),

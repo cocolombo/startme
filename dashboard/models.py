@@ -43,6 +43,7 @@ class Widget(models.Model):
         ('note', 'Bloc-notes'),
         ('command', 'Lanceur de scripts'),
         ('snippet', 'Bloc de commandes'),
+        ('todo', 'Liste de tâches'),
     ]
 
     title = models.CharField(max_length=100)
@@ -82,6 +83,21 @@ class Link(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class TodoItem(models.Model):
+    """Un item d'une liste de tâches associée à un widget de type 'todo'."""
+    widget = models.ForeignKey(Widget, on_delete=models.CASCADE, related_name='todos')
+    text = models.CharField(max_length=500)
+    done = models.BooleanField(default=False)
+    order = models.IntegerField(default=0)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering = ['done', 'order', 'created_at']
+
+    def __str__(self) -> str:
+        return self.text
 
 
 class CommandLog(models.Model):

@@ -30,7 +30,7 @@
                     class="text-gray-500 hover:text-red-500 font-bold text-lg px-2 transition-colors cursor-pointer"
                     title="Supprimer">🗑</button>
 
-            {% if widget.widget_type != 'note' %}
+            {% if widget.widget_type != 'note' and widget.widget_type != 'todo' %}
             <button onclick="toggleForm('form-{{ widget.id }}')"
                     class="text-gray-500 hover:text-green-400 font-bold text-2xl leading-none px-2 transition-colors cursor-pointer"
                     title="Ajouter">+</button>
@@ -138,6 +138,38 @@
                     {% include "partials/snippet_item.html" %}
                 {% endfor %}
             </ul>
+
+        {% elif widget.widget_type == 'todo' %}
+
+            <ul id="todo-list-{{ widget.id }}" class="space-y-0.5 flex-1 overflow-y-auto custom-scrollbar min-h-[20px] mb-2">
+                {% for item in widget.todos.all %}
+                    {% include "partials/todo_item.html" %}
+                {% endfor %}
+            </ul>
+
+            <div class="border-t border-gray-700 pt-2">
+                <form hx-post="{% url 'todo_add' widget.id %}"
+                      hx-target="#todo-list-{{ widget.id }}"
+                      hx-swap="beforeend"
+                      hx-on::after-request="if(event.detail.successful){this.reset();}"
+                      class="flex gap-2"
+                      onkeydown="if(event.key==='Escape'){event.preventDefault();}">
+                    {% csrf_token %}
+                    <input type="text" name="text" placeholder="Nouvelle tâche..." required
+                           class="flex-1 bg-gray-900 text-white px-2 py-1 rounded border border-gray-700 text-sm focus:border-blue-500 focus:outline-none">
+                    <button type="submit"
+                            class="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded text-sm font-bold">+</button>
+                </form>
+                <div class="flex justify-end mt-1">
+                    <button hx-post="{% url 'todo_clear_done' widget.id %}"
+                            hx-target="#todo-list-{{ widget.id }}"
+                            hx-swap="innerHTML"
+                            hx-confirm="Effacer toutes les tâches terminées ?"
+                            class="text-xs text-gray-600 hover:text-red-400 transition-colors cursor-pointer">
+                        Effacer les terminées
+                    </button>
+                </div>
+            </div>
 
         {% endif %}
 

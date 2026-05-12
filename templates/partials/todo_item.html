@@ -1,0 +1,23 @@
+<li id="todo-item-{{ item.id }}"
+    class="flex items-center gap-2 group/todo py-1 px-1 rounded hover:bg-gray-700/50 transition-colors">
+
+    <button hx-post="{% url 'todo_toggle' item.id %}"
+            hx-target="#todo-item-{{ item.id }}"
+            hx-swap="outerHTML"
+            class="flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center text-white text-xs transition-colors
+                   {% if item.done %}bg-green-600 border-green-600 hover:bg-green-700{% else %}border-gray-500 hover:border-blue-400{% endif %}">
+        {% if item.done %}✓{% endif %}
+    </button>
+
+    <span class="flex-1 text-sm select-text
+                 {% if item.done %}line-through text-gray-500{% else %}text-gray-200{% endif %}">
+        {{ item.text }}
+    </span>
+
+    <button hx-post="{% url 'todo_delete' item.id %}"
+            hx-target="#todo-item-{{ item.id }}"
+            hx-swap="outerHTML"
+            class="opacity-0 group-hover/todo:opacity-100 text-gray-500 hover:text-red-400 text-xs transition-opacity flex-shrink-0 cursor-pointer">
+        ✕
+    </button>
+</li>
