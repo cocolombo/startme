@@ -155,7 +155,7 @@
                       class="flex gap-2"
                       onkeydown="if(event.key==='Escape'){event.preventDefault();}">
                     {% csrf_token %}
-                    <input type="text" name="text" placeholder="Nouvelle tâche..." required
+                    <input type="text" name="text" placeholder="Nouvelle tâche..." required autocomplete="off"
                            class="flex-1 bg-gray-900 text-white px-2 py-1 rounded border border-gray-700 text-sm focus:border-blue-500 focus:outline-none">
                     <button type="submit"
                             class="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded text-sm font-bold">+</button>
@@ -165,7 +165,7 @@
                             hx-target="#todo-list-{{ widget.id }}"
                             hx-swap="innerHTML"
                             hx-confirm="Effacer toutes les tâches terminées ?"
-                            class="text-xs text-gray-600 hover:text-red-400 transition-colors cursor-pointer">
+                            class="text-xs text-gray-400 hover:text-red-400 transition-colors cursor-pointer">
                         Effacer les terminées
                     </button>
                 </div>
