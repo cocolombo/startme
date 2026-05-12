@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffre</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0d0d0d;
+      color: #ddd;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2c2c2c;
+      border-radius: 12px;
+      padding: 2rem;
+      width: 100%;
+    }
+
+    #screen-lock  { max-width: 420px; }
+    #screen-vault { max-width: 860px; display: none; }
+
+    h1 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.82rem;
+      color: #888;
+      margin-bottom: 0.35rem;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #e0e0e0;
+      padding: 0.6rem 0.8rem;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="password"]:focus { border-color: #555; }
+
+    textarea {
+      width: 100%;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #e0e0e0;
+      padding: 0.75rem 0.9rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      min-height: 460px;
+      resize: vertical;
+      line-height: 1.6;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    textarea:focus { border-color: #555; }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn:hover  { opacity: 0.82; }
+    .btn:active { opacity: 0.65; }
+
+    .btn-primary   { background: #3b82f6; color: #fff; }
+    .btn-secondary { background: #242424; color: #ccc; border: 1px solid #3a3a3a; }
+    .btn-danger    { background: #dc2626; color: #fff; }
+
+    .row {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .toolbar h1 { margin-bottom: 0; }
+
+    .toolbar-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .msg-error { color: #f87171; font-size: 0.83rem; margin-top: 0.55rem; }
+    .msg-ok    { color: #4ade80; font-size: 0.83rem; margin-top: 0.55rem; }
+
+    .hint {
+      font-size: 0.78rem;
+      color: #555;
+      margin-top: 1rem;
+    }
+
+    #vault-status { min-height: 1.2em; }
+
+    details.help {
+      margin-top: 1.5rem;
+      border-top: 1px solid #2c2c2c;
+      padding-top: 1rem;
+    }
+
+    details.help summary {
+      font-size: 0.82rem;
+      color: #666;
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+    }
+
+    details.help summary::before {
+      content: '▶ ';
+      font-size: 0.65rem;
+    }
+
+    details[open].help summary::before { content: '▼ '; }
+
+    details.help summary:hover { color: #999; }
+
+    .help-body {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .help-body p {
+      font-size: 0.83rem;
+      color: #888;
+      line-height: 1.55;
+    }
+
+    .help-body strong { color: #bbb; }
+
+    .help-body table {
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      color: #888;
+      width: 100%;
+    }
+
+    .help-body th, .help-body td {
+      padding: 0.35rem 0.7rem;
+      border: 1px solid #2c2c2c;
+      text-align: left;
+    }
+
+    .help-body th { color: #666; font-weight: 500; background: #161616; }
+  </style>
+</head>
+<body>
+
+<!-- ── Écran verrouillé ─────────────────────────────────────────── -->
+<div class="card" id="screen-lock">
+  <h1>🔒 Coffre</h1>
+
+  <label for="password">Mot de passe</label>
+  <input type="password" id="password" autofocus autocomplete="off" placeholder="···">
+
+  <div id="lock-msg"></div>
+
+  <div class="row">
+    <button class="btn btn-primary"   id="btn-unlock">Ouvrir</button>
+    <button class="btn btn-secondary" id="btn-import-trigger">Importer .vault</button>
+  </div>
+
+  <input type="file" id="file-import" accept=".vault,.json" style="display:none">
+
+  <p class="hint" id="lock-hint"></p>
+</div>
+
+<!-- ── Coffre ouvert ────────────────────────────────────────────── -->
+<div class="card" id="screen-vault">
+  <div class="toolbar">
+    <h1>🔓 Coffre</h1>
+    <div class="toolbar-actions">
+      <button class="btn btn-secondary" id="btn-export">Exporter .vault</button>
+      <button class="btn btn-secondary" id="btn-lock">Verrouiller</button>
+    </div>
+  </div>
+
+  <textarea id="content" placeholder="Notes, mots de passe, informations sensibles…" spellcheck="false"></textarea>
+
+  <div class="row">
+    <button class="btn btn-primary" id="btn-save">Sauvegarder</button>
+    <span id="vault-status" class="msg-ok"></span>
+  </div>
+
+  <p class="hint">Sauvegarde automatique après chaque modification — Ctrl+S pour forcer. Exporte un .vault régulièrement.</p>
+
+  <details class="help">
+    <summary>À quoi sert l'export .vault ?</summary>
+    <div class="help-body">
+      <p>La sauvegarde automatique utilise le <strong>localStorage</strong> du navigateur — pratique au quotidien, mais fragile dans certains cas. Le fichier <strong>.vault</strong> est ton filet de sécurité portable.</p>
+      <table>
+        <thead>
+          <tr><th></th><th>localStorage</th><th>Fichier .vault</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Usage quotidien</td><td>✅ automatique</td><td>—</td></tr>
+          <tr><td>Déplacement de coffre.html</td><td>❌ données perdues</td><td>✅</td></tr>
+          <tr><td>Nettoyage du navigateur</td><td>❌ données effacées</td><td>✅</td></tr>
+          <tr><td>Autre ordinateur / navigateur</td><td>❌</td><td>✅ copie le fichier</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Bonne pratique :</strong> exporte un .vault de temps en temps et conserve-le dans un dossier chiffré ou une clé USB.</p>
+    </div>
+  </details>
+</div>
+
+<script>
+  // ── Utilitaires ──────────────────────────────────────────────────────────
+
+  const b64encode = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+  const b64decode = str => Uint8Array.from(atob(str), c => c.charCodeAt(0));
+
+  // ── Crypto ───────────────────────────────────────────────────────────────
+
+  const STORAGE_KEY  = 'coffre_v1';
+  const PBKDF2_ITER  = 200_000;
+
+  async function deriveKey(password, salt) {
+    const raw = await crypto.subtle.importKey(
+      'raw',
+      new TextEncoder().encode(password),
+      'PBKDF2',
+      false,
+      ['deriveKey']
+    );
+    return crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt, iterations: PBKDF2_ITER, hash: 'SHA-256' },
+      raw,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['encrypt', 'decrypt']
+    );
+  }
+
+  async function encryptContent(key, salt, plaintext) {
+    const iv         = crypto.getRandomValues(new Uint8Array(12));
+    const ciphertext = await crypto.subtle.encrypt(
+      { name: 'AES-GCM', iv },
+      key,
+      new TextEncoder().encode(plaintext)
+    );
+    return JSON.stringify({ v: 1, salt: b64encode(salt), iv: b64encode(iv), data: b64encode(ciphertext) });
+  }
+
+  async function decryptContent(key, payload) {
+    const { iv, data } = JSON.parse(payload);
+    const plain = await crypto.subtle.decrypt(
+      { name: 'AES-GCM', iv: b64decode(iv) },
+      key,
+      b64decode(data)
+    );
+    return new TextDecoder().decode(plain);
+  }
+
+  // ── État ─────────────────────────────────────────────────────────────────
+
+  let activeKey  = null;
+  let activeSalt = null;
+
+  // ── UI helpers ───────────────────────────────────────────────────────────
+
+  function setLockMsg(text, type = '') {
+    const el = document.getElementById('lock-msg');
+    el.className = type === 'error' ? 'msg-error' : type === 'ok' ? 'msg-ok' : '';
+    el.textContent = text;
+  }
+
+  let statusTimer = null;
+  function setVaultStatus(text) {
+    const el = document.getElementById('vault-status');
+    el.textContent = text;
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(() => el.textContent = '', 3000);
+  }
+
+  function openVault(plaintext) {
+    document.getElementById('screen-lock').style.display  = 'none';
+    document.getElementById('screen-vault').style.display = 'block';
+    document.getElementById('content').value = plaintext;
+    document.getElementById('content').focus();
+  }
+
+  async function closVault() {
+    await save(); // auto-save avant de verrouiller
+    document.getElementById('screen-vault').style.display = 'none';
+    document.getElementById('screen-lock').style.display  = 'block';
+    document.getElementById('password').value = '';
+    document.getElementById('content').value  = '';
+    activeKey  = null;
+    activeSalt = null;
+    document.getElementById('password').focus();
+  }
+
+  // ── Actions ──────────────────────────────────────────────────────────────
+
+  async function unlock() {
+    const password = document.getElementById('password').value;
+    if (!password) { setLockMsg('Mot de passe requis.', 'error'); return; }
+
+    setLockMsg('Déchiffrement…');
+    const stored = localStorage.getItem(STORAGE_KEY);
+
+    if (!stored) {
+      // Premier lancement : initialiser le coffre
+      const salt    = crypto.getRandomValues(new Uint8Array(16));
+      const key     = await deriveKey(password, salt);
+      const payload = await encryptContent(key, salt, '');
+      localStorage.setItem(STORAGE_KEY, payload);
+      activeKey  = key;
+      activeSalt = salt;
+      openVault('');
+      return;
+    }
+
+    const parsed = JSON.parse(stored);
+    const salt   = b64decode(parsed.salt);
+    const key    = await deriveKey(password, salt);
+
+    try {
+      const plaintext = await decryptContent(key, stored);
+      activeKey  = key;
+      activeSalt = salt;
+      openVault(plaintext);
+    } catch {
+      setLockMsg('Mot de passe incorrect.', 'error');
+      document.getElementById('password').select();
+    }
+  }
+
+  async function save() {
+    if (!activeKey) return;
+    const plaintext = document.getElementById('content').value;
+    const payload   = await encryptContent(activeKey, activeSalt, plaintext);
+    localStorage.setItem(STORAGE_KEY, payload);
+    setVaultStatus('✓ Sauvegardé');
+  }
+
+  function exportVault() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) { setVaultStatus('Rien à exporter.'); return; }
+    const date = new Date().toISOString().slice(0, 10);
+    const blob = new Blob([stored], { type: 'application/json' });
+    const a    = Object.assign(document.createElement('a'), {
+      href:     URL.createObjectURL(blob),
+      download: `coffre_${date}.vault`
+    });
+    a.click();
+    setVaultStatus('✓ Export téléchargé');
+  }
+
+  // ── Événements ───────────────────────────────────────────────────────────
+
+  document.getElementById('btn-unlock').addEventListener('click', unlock);
+  document.getElementById('password').addEventListener('keydown', e => {
+    if (e.key === 'Enter') unlock();
+  });
+
+  document.getElementById('btn-save').addEventListener('click', save);
+  document.getElementById('btn-export').addEventListener('click', exportVault);
+  document.getElementById('btn-lock').addEventListener('click', closVault);
+
+  // Auto-save 1,5s après la dernière frappe
+  let autoSaveTimer = null;
+  document.getElementById('content').addEventListener('input', () => {
+    clearTimeout(autoSaveTimer);
+    autoSaveTimer = setTimeout(() => { if (activeKey) save(); }, 1500);
+  });
+
+  document.getElementById('btn-import-trigger').addEventListener('click', () => {
+    document.getElementById('file-import').click();
+  });
+
+  document.getElementById('file-import').addEventListener('change', async e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      JSON.parse(text); // validation basique
+      localStorage.setItem(STORAGE_KEY, text);
+      setLockMsg('Fichier importé — entrez votre mot de passe.', 'ok');
+      document.getElementById('lock-hint').textContent = '';
+      updateHint();
+    } catch {
+      setLockMsg('Fichier .vault invalide.', 'error');
+    }
+    e.target.value = '';
+  });
+
+  document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+      e.preventDefault();
+      if (activeKey) save();
+    }
+  });
+
+  // ── Init ─────────────────────────────────────────────────────────────────
+
+  function updateHint() {
+    const hint = document.getElementById('lock-hint');
+    hint.textContent = localStorage.getItem(STORAGE_KEY)
+      ? 'Coffre existant trouvé dans ce navigateur.'
+      : 'Aucun coffre trouvé — un nouveau sera créé au premier lancement.';
+  }
+
+  updateHint();
+</script>
+
+</body>
+</html>
