@@ -23,6 +23,11 @@ ARCHIVE_PATH="/tmp/${ARCHIVE_NAME}"
 # Destinations rclone — adapter selon votre config (rclone listremotes)
 GDRIVE_DEST="gdrive:BU_${PROJECT_NAME}"
 PROTON_DEST="protondrive:BU_${PROJECT_NAME}"
+
+# Sauvegarde SSH locale (ignorée si l'hôte est hors ligne)
+SSH_HOST="10.0.0.29"
+SSH_USER="nimzo"
+SSH_DEST_DIR="~/BU_${PROJECT_NAME}"
 # ───────────────────────────────────────────────────────────────────────────────
 
 MODE="upload"
@@ -35,7 +40,8 @@ esac
 EXCLUDE_FILE=$(mktemp)
 GDRIVE_LOG=$(mktemp)
 PROTON_LOG=$(mktemp)
-trap 'rm -f "${EXCLUDE_FILE}" "${GDRIVE_LOG}" "${PROTON_LOG}"' EXIT
+SSH_LOG=$(mktemp)
+trap 'rm -f "${EXCLUDE_FILE}" "${GDRIVE_LOG}" "${PROTON_LOG}" "${SSH_LOG}"' EXIT
 
 # ── Fichiers d'exclusions ──────────────────────────────────────────────────────
 cat > "${EXCLUDE_FILE}" << 'EXCLUDES'
@@ -121,7 +127,7 @@ if [[ "${MODE}" == "upload" ]]; then
     exit 1
   fi
 
-  echo "==> Upload en parallele vers les deux destinations..."
+  echo "==> Upload en parallele vers les destinations..."
   echo "    -> Google Drive : ${GDRIVE_DEST}"
   echo "    -> Proton Drive : ${PROTON_DEST}"
 
@@ -133,8 +139,24 @@ if [[ "${MODE}" == "upload" ]]; then
     --log-file="${PROTON_LOG}" --log-level INFO &
   PID_PROTON=$!
 
+  # SSH : vérification connectivité (timeout 3s) puis rsync en parallèle
+  SSH_AVAILABLE=false
+  if ssh -o ConnectTimeout=3 -o BatchMode=yes \
+         "${SSH_USER}@${SSH_HOST}" "mkdir -p ${SSH_DEST_DIR}" 2>/dev/null; then
+    SSH_AVAILABLE=true
+    echo "    -> SSH  ${SSH_USER}@${SSH_HOST}:${SSH_DEST_DIR}"
+    rsync -az "${ARCHIVE_PATH}" \
+      "${SSH_USER}@${SSH_HOST}:${SSH_DEST_DIR}/" >"${SSH_LOG}" 2>&1 &
+    PID_SSH=$!
+  else
+    echo "    -> SSH  ${SSH_HOST} : hors ligne, ignoré"
+  fi
+
   wait "${PID_GDRIVE}"; STATUS_GDRIVE=$?
   wait "${PID_PROTON}"; STATUS_PROTON=$?
+  if [[ "${SSH_AVAILABLE}" == true ]]; then
+    wait "${PID_SSH}"; STATUS_SSH=$?
+  fi
 
   echo ""
   echo "==> Resultats :"
@@ -154,6 +176,18 @@ if [[ "${MODE}" == "upload" ]]; then
     echo "    [ECHEC] Proton Drive :"
     cat "${PROTON_LOG}"
     ERRORS=$((ERRORS + 1))
+  fi
+
+  if [[ "${SSH_AVAILABLE}" == true ]]; then
+    if [[ ${STATUS_SSH} -eq 0 ]]; then
+      echo "    [OK]    SSH ${SSH_USER}@${SSH_HOST}:${SSH_DEST_DIR}/${ARCHIVE_NAME}"
+    else
+      echo "    [ECHEC] SSH ${SSH_USER}@${SSH_HOST} :"
+      cat "${SSH_LOG}"
+      ERRORS=$((ERRORS + 1))
+    fi
+  else
+    echo "    [IGNORE] SSH ${SSH_HOST} : hors ligne"
   fi
 
   echo ""
