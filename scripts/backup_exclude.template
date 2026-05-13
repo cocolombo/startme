@@ -1,0 +1,33 @@
+# Template d'exclusions pour backup_cloud.sh
+# ─────────────────────────────────────────────────────────────────────────────
+# Copier ce fichier vers .backup_exclude à la racine du projet et adapter.
+# Les chemins sont relatifs à la racine du projet.
+# Les exclusions génériques (venv, .git, __pycache__, .env, *.log, etc.)
+# sont déjà gérées par le script — ne pas les répéter ici.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Base de données SQLite (restaurer depuis un dump SQL ou dumpdata)
+# nomduprojet.sqlite3
+
+# Dumps SQL (transitoires, régénérables)
+# backup.sql
+# dump_local.sql
+
+# Export Django (regen : python manage.py dumpdata)
+# data_export.json
+
+# Fichiers statiques collectés (regen : python manage.py collectstatic)
+# staticfiles/
+
+# Dépendances JS (regen : npm install)
+# theme/static_src/node_modules/
+
+# Médias uploadés par les utilisateurs (envisager une sauvegarde séparée)
+# media/
+
+# Fichiers de build front-end (regen : npm run build)
+# dist/
+# build/
+
+# Fichiers temporaires ou de debug spécifiques au projet
+#

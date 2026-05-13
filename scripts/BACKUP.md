@@ -107,12 +107,16 @@ Règles de syntaxe :
 
 ## Ajouter un nouveau projet
 
-1. Créer le fichier `.backup_exclude` à la racine du projet (optionnel)
-2. Lancer le dry-run pour vérifier le contenu :
+1. Copier le template d'exclusions à la racine du projet :
+   ```bash
+   cp startme/scripts/backup_exclude.template /chemin/vers/projet/.backup_exclude
+   ```
+2. Éditer `.backup_exclude` — décommenter ce qui s'applique, supprimer le reste
+3. Vérifier le contenu qui sera archivé :
    ```bash
    ./scripts/backup_cloud.sh /chemin/vers/projet --dry-run
    ```
-3. Lancer la sauvegarde :
+4. Lancer la sauvegarde :
    ```bash
    ./scripts/backup_cloud.sh /chemin/vers/projet
    ```
