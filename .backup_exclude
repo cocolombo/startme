@@ -1,0 +1,6 @@
+# Exclusions spécifiques à startme
+# Les exclusions génériques (venv, .git, __pycache__, .env, *.log, etc.)
+# sont déjà gérées par le script — elles ne sont pas répétées ici.
+
+# Base de données SQLite (restaurer depuis un dumpdata)
+# db.sqlite3

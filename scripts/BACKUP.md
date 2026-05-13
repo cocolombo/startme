@@ -11,7 +11,7 @@ Crée une archive `.tar.gz` et l'envoie en parallèle vers trois destinations.
 |---|---|---|
 | Google Drive | rclone remote `gdrive` | Toujours tentée |
 | Proton Drive | rclone remote `protondrive` | Toujours tentée |
-| `nimzo@10.0.0.29` | rsync via SSH | Ignorée si hors ligne |
+|`nimzo@10.0.0.29` | rsync via SSH | Ignorée si hors ligne |
 
 ---
 
