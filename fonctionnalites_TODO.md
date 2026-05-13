@@ -24,3 +24,5 @@
 ## Scripts (scripts/)
 - [x] Sauvegarde cloud — `scripts/backup_cloud.sh` vers Google Drive, Proton Drive et SSH `nimzo@10.0.0.29` en parallèle
 - [x] Sauvegarde multi-projets — argument optionnel `[PROJECT_DIR]`, exclusions par projet via `.backup_exclude`
+- [x] Template `.backup_exclude` — `scripts/backup_exclude.template` pour standardiser les exclusions par projet
+- [x] Documentation sauvegarde — `scripts/BACKUP.md` (prérequis, usage, exclusions, procédure nouveau projet)
