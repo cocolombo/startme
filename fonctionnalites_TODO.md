@@ -26,3 +26,4 @@
 - [x] Sauvegarde multi-projets — argument optionnel `[PROJECT_DIR]`, exclusions par projet via `.backup_exclude`
 - [x] Template `.backup_exclude` — `scripts/backup_exclude.template` pour standardiser les exclusions par projet
 - [x] Documentation sauvegarde — `scripts/BACKUP.md` (prérequis, usage, exclusions, procédure nouveau projet)
+- [x] `.backup_exclude` startme — fichier d'exclusions créé pour cohérence avec les autres projets
