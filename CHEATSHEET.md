@@ -82,3 +82,15 @@ Le fichier `.env` (à la racine) contrôle la configuration sans toucher au code
 *   **Réordonner les pages :** Ouvrez la sidebar (☰), saisissez la poignée `⠿` à gauche d'une page et glissez-la à la position souhaitée.
 *   **Passer un widget en 2 colonnes :** Clic sur l'icône ⚙ (en-tête du widget) ➔ `↔ Largeur 2 colonnes`. Le widget occupe alors toute la largeur de la page. Recliquer pour revenir à 1 colonne.
 *   **Éditer un lien existant :** Survolez la ligne du lien et cliquez sur l'icône de crayon `✎` qui apparaît.
+
+---
+
+## 💾 6. Sauvegardes
+
+```bash
+./scripts/backup_cloud.sh           # startme (projet par défaut)
+./scripts/backup_cloud.sh /chemin   # autre projet
+./scripts/backup_cloud.sh /chemin --dry-run  # vérifier sans archiver
+```
+
+Doc complète → `scripts/BACKUP.md`
