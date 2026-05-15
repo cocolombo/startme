@@ -4,6 +4,17 @@ Ce document rassemble les commandes utiles, les astuces d'utilisation et les syn
 
 ---
 
+## Table des matières
+
+1. [Commandes d'Administration (Django)](#-1-commandes-dadministration-django)
+2. [Syntaxe des Liens (Widget Type "Liste")](#-2-syntaxe-des-liens-widget-type-liste)
+3. [Syntaxe des Commandes (Widget Type "Lanceur")](#-3-syntaxe-des-commandes-widget-type-lanceur)
+4. [Variables d'Environnement (`.env`)](#-4-les-variables-denvironnement-env)
+5. [Raccourcis UI (Interface)](#-5-raccourcis-ui-interface)
+6. [Sauvegardes](#-6-sauvegardes)
+
+---
+
 ## 💻 1. Commandes d'Administration (Django)
 
 Ces commandes sont à exécuter dans le terminal, à la racine du projet, avec l'environnement virtuel activé (`source venv/bin/activate`).
