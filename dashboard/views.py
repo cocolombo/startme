@@ -804,6 +804,7 @@ def get_network_info(request):
 
 
 def search(request):
+    """Recherche des liens et widgets par titre ou URL (min 2 caractères), retourne un partial HTML."""
     q = request.GET.get('q', '').strip()
     if len(q) < 2:
         return HttpResponse('')
@@ -842,6 +843,7 @@ def search(request):
 
 
 def command_history(request, widget_id: int):
+    """Retourne les 50 dernières entrées du journal de commandes pour un widget donné."""
     widget = get_object_or_404(Widget, id=widget_id)
     logs = CommandLog.objects.filter(widget=widget).select_related('link')[:50]
     return render(request, 'partials/command_history.html', {'widget': widget, 'logs': logs})
@@ -849,5 +851,6 @@ def command_history(request, widget_id: int):
 
 @require_POST
 def clear_command_history(request):
+    """Supprime tous les enregistrements CommandLog et retourne une réponse vide pour HTMX."""
     CommandLog.objects.all().delete()
     return HttpResponse('')

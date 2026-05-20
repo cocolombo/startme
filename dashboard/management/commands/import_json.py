@@ -9,6 +9,7 @@ class Command(BaseCommand):
     help = 'Importe les liens depuis un fichier data_export.json'
 
     def handle(self, *args, **kwargs):
+        """Importe les pages, widgets et liens depuis data_export.json à la racine du projet."""
         # Chemin du fichier
         file_path = 'data_export.json'
 

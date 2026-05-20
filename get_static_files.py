@@ -13,6 +13,7 @@ TARGET_DIR = os.path.join("static", "js")
 
 
 def download_files():
+    """Télécharge htmx, Sortable et Tailwind dans static/js/ pour un fonctionnement hors-ligne."""
     # 1. Créer le dossier s'il n'existe pas
     if not os.path.exists(TARGET_DIR):
         os.makedirs(TARGET_DIR)

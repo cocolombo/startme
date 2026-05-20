@@ -7,6 +7,7 @@ IGNORE_DIRS = {'.venv', '__pycache__', '.git', '.idea', 'migrations'}
 INCLUDE_EXTS = {'.py', '.html', '.js', '.css'}
 
 def export_code():
+    """Concatène tous les fichiers .py/.html/.js/.css du projet dans projet_context.txt pour analyse par un LLM."""
     output_file = 'projet_context.txt'
 
     with open(output_file, 'w', encoding='utf-8') as outfile:

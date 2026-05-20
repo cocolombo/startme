@@ -6,6 +6,7 @@ class Command(BaseCommand):
     help = 'Remplit la DB'
 
     def handle(self, *args, **kwargs):
+        """Vide la base de données et la remplit avec des données de démonstration."""
         Page.objects.all().delete()
         data = {
             "Start Page": {
