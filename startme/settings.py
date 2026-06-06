@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 import mimetypes
+from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv
 
 # Charge les variables d'environnement depuis le fichier .env
@@ -28,13 +29,26 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-uqd+a$v0es@6o_l2at*7vp^un-n9)(va2%at2$@&_2z@ftxcm@')
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'True') == 'True'
+# Défaut sécurisé : False. Activer DEBUG=True dans .env uniquement en développement.
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+# SECURITY WARNING: keep the secret key used in production secret!
+# Aucune clé en dur : elle doit venir du .env. En dev, une clé jetable est
+# tolérée ; hors DEBUG, l'absence de clé fait échouer le démarrage volontairement.
+SECRET_KEY = os.getenv('SECRET_KEY')
+if not SECRET_KEY:
+    if DEBUG:
+        SECRET_KEY = 'django-insecure-dev-key-uniquement-pour-le-developpement'
+    else:
+        raise ImproperlyConfigured(
+            "SECRET_KEY est absent. Définissez-le dans votre fichier .env "
+            "(voir .env.example)."
+        )
+
+# Défaut restrictif : l'app n'écoute que localhost. Élargir via ALLOWED_HOSTS
+# dans .env seulement si un accès réseau est réellement souhaité.
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
 # Disques surveillés par le widget système — format : "Nom:/chemin|Nom:/chemin"
 _raw_disks = os.getenv('MONITOR_DISKS', 'Système:/')

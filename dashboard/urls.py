@@ -59,5 +59,4 @@ urlpatterns = [
     path('api/command-history/clear/', views.clear_command_history, name='clear_command_history'),
     path('api/system-monitor/', views.system_monitor, name='system_monitor'),
     path('api/network-info/', views.get_network_info, name='get_network_info'),
-    path('api/backup/', views.download_backup, name='download_backup'),
 ]

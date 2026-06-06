@@ -12,12 +12,8 @@ import shutil
 import socket
 import requests
 
-import zipfile
-import io
 import logging
-from datetime import datetime
 from django.conf import settings
-from django.http import FileResponse
 
 logger = logging.getLogger(__name__)
 
@@ -623,61 +619,6 @@ def update_page_order(request):
             continue
 
     return HttpResponse(status=200)
-
-
-def download_backup(request):
-    """Crée une archive ZIP du projet complet et la renvoie pour téléchargement.
-
-    Exclut les dossiers lourds ou inutiles (.venv, .git, __pycache__, etc.).
-
-    Args:
-        request (HttpRequest): L'objet de requête.
-
-    Returns:
-        FileResponse: Le fichier ZIP en téléchargement (attachment).
-    """
-
-    # 1. Préparation du fichier en mémoire (pas d'écriture sur le disque du serveur)
-    buffer = io.BytesIO()
-
-    # 2. Nom du fichier avec la date (ex: backup_startme_2025-12-02_14h30.zip)
-    timestamp = datetime.now().strftime('%Y-%m-%d_%Hh%M')
-    filename = f"backup_startme_{timestamp}.zip"
-
-    # 3. Dossiers à ignorer absolument
-    # .venv / venv : L'environnement virtuel (très lourd et recréable)
-    # .git : L'historique de version (lourd et déjà sur Github)
-    # __pycache__ : Fichiers compilés python inutiles
-    # .idea : Configuration PyCharm (optionnel, souvent perso)
-    EXCLUDE_DIRS = {'.venv', 'venv', '.git', '__pycache__', '.idea'}
-
-    # 4. Création du ZIP
-    with zipfile.ZipFile(buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
-        # On parcourt tout le dossier du projet (BASE_DIR)
-        for root, dirs, files in os.walk(settings.BASE_DIR):
-            # Filtrage des dossiers interdits (modification de la liste 'dirs' en place)
-            dirs[:] = [d for d in dirs if d not in EXCLUDE_DIRS]
-
-            for file in files:
-                # On ignore aussi les fichiers compilés individuels et la db si elle est verrouillée (optionnel)
-                if file.endswith(('.pyc', '.pyo', '.log')):
-                    continue
-
-                # Chemin complet sur le disque
-                file_path = os.path.join(root, file)
-
-                # Chemin relatif à l'intérieur du ZIP (pour garder la structure)
-                # ex: /home/nimzo/.../startme/manage.py devient startme/manage.py
-                archive_name = os.path.relpath(file_path, settings.BASE_DIR)
-
-                try:
-                    zip_file.write(file_path, archive_name)
-                except PermissionError:
-                    continue  # On saute les fichiers qu'on n'a pas le droit de lire
-
-    # 5. Envoi du fichier
-    buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename=filename)
 
 
 @require_POST
