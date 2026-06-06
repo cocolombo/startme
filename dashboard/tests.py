@@ -1,0 +1,196 @@
+"""Tests verrouillant les correctifs de la revue de sécurité.
+
+Chaque classe cible une faille corrigée :
+- AuthenticationTests        → #1  (LoginRequiredMiddleware)
+- CsrfProtectionTests        → #5  (retrait de @csrf_exempt)
+- EditLinkValidationTests    → #6  (edit_link ne doit plus écrire None)
+- ReorderTests               → #7 + #8 (filter(id__in) + bulk_update)
+- SafeRefererTests           → #10 (_safe_referer contre l'open-redirect)
+"""
+
+from django.contrib.auth.models import User
+from django.test import Client, TestCase
+from django.urls import reverse
+
+from .models import Link, Page, Widget
+
+
+class BaseTestCase(TestCase):
+    """Fixtures communes : un utilisateur connecté, une page et un widget."""
+
+    def setUp(self) -> None:
+        self.user = User.objects.create_user(username='tester', password='secret123')
+        self.client.force_login(self.user)
+
+        self.page = Page.objects.create(name='Accueil', slug='accueil', order=0)
+        self.widget = Widget.objects.create(
+            title='Liens', page=self.page, order=0, widget_type='list'
+        )
+
+
+class AuthenticationTests(TestCase):
+    """#1 — LoginRequiredMiddleware protège toutes les vues."""
+
+    def setUp(self) -> None:
+        self.page = Page.objects.create(name='Accueil', slug='accueil', order=0)
+
+    def test_anonyme_redirige_vers_login(self) -> None:
+        response = self.client.get(reverse('index_root'))
+        self.assertEqual(response.status_code, 302)
+        self.assertIn(reverse('login'), response.url)
+
+    def test_page_login_accessible_sans_connexion(self) -> None:
+        response = self.client.get(reverse('login'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_utilisateur_connecte_accede_au_dashboard(self) -> None:
+        user = User.objects.create_user(username='tester', password='secret123')
+        self.client.force_login(user)
+        response = self.client.get(reverse('index_root'))
+        self.assertEqual(response.status_code, 200)
+
+
+class CsrfProtectionTests(BaseTestCase):
+    """#5 — sans @csrf_exempt, un POST sans token est rejeté (403)."""
+
+    def setUp(self) -> None:
+        super().setUp()
+        # Client qui applique réellement la vérification CSRF.
+        self.csrf_client = Client(enforce_csrf_checks=True)
+        self.csrf_client.force_login(self.user)
+
+    def test_post_sans_token_csrf_est_rejete(self) -> None:
+        response = self.csrf_client.post(
+            reverse('update_order'),
+            {'widget_id': self.widget.id, 'link': []},
+        )
+        self.assertEqual(response.status_code, 403)
+
+
+class EditLinkValidationTests(BaseTestCase):
+    """#6 — edit_link valide les entrées et n'écrit jamais None."""
+
+    def test_titre_vide_sur_liste_renvoie_400_et_ne_modifie_rien(self) -> None:
+        link = Link.objects.create(
+            title='Original', url='https://exemple.com', widget=self.widget, order=0
+        )
+        response = self.client.post(
+            reverse('edit_link', args=[link.id]),
+            {'title': '', 'url': 'https://exemple.com'},
+        )
+        self.assertEqual(response.status_code, 400)
+        link.refresh_from_db()
+        self.assertEqual(link.title, 'Original')
+
+    def test_snippet_sans_url_renvoie_400(self) -> None:
+        snippet_widget = Widget.objects.create(
+            title='Commandes', page=self.page, order=1, widget_type='snippet'
+        )
+        link = Link.objects.create(
+            title='Cmd', url='ls -la', widget=snippet_widget, order=0
+        )
+        response = self.client.post(
+            reverse('edit_link', args=[link.id]),
+            {'title': 'Cmd', 'url': ''},
+        )
+        self.assertEqual(response.status_code, 400)
+        link.refresh_from_db()
+        self.assertEqual(link.url, 'ls -la')
+
+    def test_edition_valide_met_a_jour_le_lien(self) -> None:
+        link = Link.objects.create(
+            title='Original', url='https://exemple.com', widget=self.widget, order=0
+        )
+        response = self.client.post(
+            reverse('edit_link', args=[link.id]),
+            {'title': 'Nouveau', 'url': 'https://nouveau.com'},
+        )
+        self.assertEqual(response.status_code, 200)
+        link.refresh_from_db()
+        self.assertEqual(link.title, 'Nouveau')
+        self.assertEqual(link.url, 'https://nouveau.com')
+
+
+class ReorderTests(BaseTestCase):
+    """#7 + #8 — réordonnancement robuste via filter(id__in) + bulk_update."""
+
+    def test_update_link_order_applique_position_et_widget(self) -> None:
+        autre_widget = Widget.objects.create(
+            title='Autre', page=self.page, order=1, widget_type='list'
+        )
+        l1 = Link.objects.create(title='A', url='a', widget=self.widget, order=0)
+        l2 = Link.objects.create(title='B', url='b', widget=self.widget, order=1)
+
+        response = self.client.post(
+            reverse('update_order'),
+            {'widget_id': autre_widget.id, 'link': [l2.id, l1.id]},
+        )
+        self.assertEqual(response.status_code, 200)
+
+        l1.refresh_from_db()
+        l2.refresh_from_db()
+        # Nouveau parent pour les deux liens.
+        self.assertEqual(l1.widget_id, autre_widget.id)
+        self.assertEqual(l2.widget_id, autre_widget.id)
+        # Ordre = position dans la liste envoyée (l2 puis l1).
+        self.assertEqual(l2.order, 0)
+        self.assertEqual(l1.order, 1)
+
+    def test_update_link_order_ignore_les_ids_inexistants(self) -> None:
+        l1 = Link.objects.create(title='A', url='a', widget=self.widget, order=0)
+        response = self.client.post(
+            reverse('update_order'),
+            {'widget_id': self.widget.id, 'link': [l1.id, 999999]},
+        )
+        self.assertEqual(response.status_code, 200)
+        l1.refresh_from_db()
+        self.assertEqual(l1.order, 0)
+
+    def test_update_widget_order_applique_les_positions(self) -> None:
+        w2 = Widget.objects.create(
+            title='W2', page=self.page, order=1, widget_type='list'
+        )
+        response = self.client.post(
+            reverse('update_widget_order'),
+            {'widget': [w2.id, self.widget.id]},
+        )
+        self.assertEqual(response.status_code, 200)
+        w2.refresh_from_db()
+        self.widget.refresh_from_db()
+        self.assertEqual(w2.order, 0)
+        self.assertEqual(self.widget.order, 1)
+
+    def test_update_page_order_applique_les_positions(self) -> None:
+        page2 = Page.objects.create(name='Seconde', slug='seconde', order=1)
+        response = self.client.post(
+            reverse('update_page_order'),
+            {'page': [page2.id, self.page.id]},
+        )
+        self.assertEqual(response.status_code, 200)
+        page2.refresh_from_db()
+        self.page.refresh_from_db()
+        self.assertEqual(page2.order, 0)
+        self.assertEqual(self.page.order, 1)
+
+
+class SafeRefererTests(BaseTestCase):
+    """#10 — _safe_referer empêche la redirection vers un domaine externe."""
+
+    def test_referer_externe_redirige_vers_racine(self) -> None:
+        widget = Widget.objects.create(
+            title='Jetable', page=self.page, order=5, widget_type='list'
+        )
+        response = self.client.get(
+            reverse('delete_widget', args=[widget.id]),
+            HTTP_REFERER='http://evil.com/phishing',
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, '/')
+
+    def test_referer_interne_est_conserve(self) -> None:
+        response = self.client.get(
+            reverse('toggle_widget_width', args=[self.widget.id]),
+            HTTP_REFERER='/page/accueil/',
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, '/page/accueil/')
