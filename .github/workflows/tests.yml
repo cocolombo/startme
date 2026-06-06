@@ -1,0 +1,35 @@
+name: Tests
+
+# Quand déclencher : à chaque push sur main et sur chaque pull request.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      # settings.py refuse de démarrer sans SECRET_KEY (hors DEBUG).
+      # Valeur factice : aucun secret réel n'est nécessaire pour les tests.
+      SECRET_KEY: ci-cle-factice-pour-les-tests
+
+    steps:
+      # 1. Récupère le code du dépôt
+      - uses: actions/checkout@v4
+
+      # 2. Installe Python 3.12 (+ cache des paquets pip pour accélérer)
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      # 3. Installe les dépendances
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      # 4. Lance la suite de tests Django
+      - name: Lancer les tests
+        run: python manage.py test
