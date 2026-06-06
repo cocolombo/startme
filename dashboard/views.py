@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.utils.text import slugify
+from django.utils.http import url_has_allowed_host_and_scheme
 from django.db.models import Q
 from .models import Page, Widget, Link, CommandLog, TodoItem
 import psutil
@@ -15,6 +16,25 @@ import logging
 from django.conf import settings
 
 logger = logging.getLogger(__name__)
+
+
+def _safe_referer(request) -> str:
+    """Retourne le HTTP_REFERER s'il pointe vers l'hôte courant, sinon '/'.
+
+    Évite une redirection ouverte (open-redirect) : un referer falsifié ne
+    peut pas détourner l'utilisateur vers un domaine externe.
+
+    Args:
+        request (HttpRequest): La requête dont on lit l'en-tête Referer.
+
+    Returns:
+        str: Une URL de redirection interne sûre.
+    """
+    referer = request.META.get('HTTP_REFERER', '')
+    if url_has_allowed_host_and_scheme(referer, allowed_hosts={request.get_host()}):
+        return referer
+    return '/'
+
 
 def index(request, slug=None):
     """Affiche la page principale du tableau de bord.
@@ -73,18 +93,17 @@ def update_link_order(request):
     if widget_id:
         target_widget = get_object_or_404(Widget, id=widget_id)
 
-        for index, link_id in enumerate(link_ids):
-            try:
-                link = Link.objects.get(id=link_id)
+        # On associe chaque ID à sa position cible, puis on charge tous les
+        # liens en une seule requête. Les IDs inexistants sont simplement
+        # absents du queryset (pas besoin de try/except).
+        order_map = {link_id: index for index, link_id in enumerate(link_ids)}
+        links = list(Link.objects.filter(id__in=link_ids))
+        for link in links:
+            link.widget = target_widget
+            link.order = order_map[str(link.id)]
 
-                # On change le parent du lien pour le nouveau widget
-                link.widget = target_widget
-
-                # On met à jour sa position
-                link.order = index
-                link.save()
-            except Link.DoesNotExist:
-                continue
+        # Une seule écriture en base au lieu d'un save() par lien.
+        Link.objects.bulk_update(links, ['widget', 'order'])
 
     return HttpResponse(status=200)
 
@@ -104,13 +123,12 @@ def update_widget_order(request):
     """
     widget_ids = request.POST.getlist('widget')
 
-    for index, widget_id in enumerate(widget_ids):
-        try:
-            widget = get_object_or_404(Widget, id=widget_id)
-            widget.order = index
-            widget.save()
-        except Exception:
-            continue
+    order_map = {widget_id: index for index, widget_id in enumerate(widget_ids)}
+    widgets = list(Widget.objects.filter(id__in=widget_ids))
+    for widget in widgets:
+        widget.order = order_map[str(widget.id)]
+
+    Widget.objects.bulk_update(widgets, ['order'])
 
     return HttpResponse(status=200)
 
@@ -295,7 +313,7 @@ def move_widget_to_page(request, widget_id):
         widget.save()
 
     # On recharge la page actuelle pour voir le widget disparaître
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+    return redirect(_safe_referer(request))
 
 
 def toggle_widget_width(request, widget_id):
@@ -303,7 +321,7 @@ def toggle_widget_width(request, widget_id):
     widget = get_object_or_404(Widget, id=widget_id)
     widget.is_wide = not widget.is_wide
     widget.save()
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+    return redirect(_safe_referer(request))
 
 
 def delete_widget(request, widget_id):
@@ -318,7 +336,7 @@ def delete_widget(request, widget_id):
     """
     widget = get_object_or_404(Widget, id=widget_id)
     widget.delete()
-    return redirect(request.META.get('HTTP_REFERER', '/'))
+    return redirect(_safe_referer(request))
 
 
 @require_POST
@@ -404,9 +422,20 @@ def edit_link(request, pk):
     link = get_object_or_404(Link, pk=pk)
 
     if request.method == "POST":
-        # Sauvegarde
-        link.title = request.POST.get('title')
-        link.url = request.POST.get('url')
+        # Sauvegarde — on valide comme dans add_link pour ne jamais écrire
+        # None dans des champs non-null : un snippet exige une URL (son
+        # contenu), les autres types exigent un titre.
+        title = request.POST.get('title', '').strip()
+        url = request.POST.get('url', '').strip()
+
+        if link.widget.widget_type == 'snippet':
+            if not url:
+                return HttpResponse(status=400)
+        elif not title:
+            return HttpResponse(status=400)
+
+        link.title = title
+        link.url = url
         link.save()
 
         # INTELLIGENCE ICI :
@@ -605,13 +634,12 @@ def update_page_order(request):
     """
     page_ids = request.POST.getlist('page')
 
-    for index, page_id in enumerate(page_ids):
-        try:
-            page = get_object_or_404(Page, id=page_id)
-            page.order = index
-            page.save()
-        except Exception:
-            continue
+    order_map = {page_id: index for index, page_id in enumerate(page_ids)}
+    pages = list(Page.objects.filter(id__in=page_ids))
+    for page in pages:
+        page.order = order_map[str(page.id)]
+
+    Page.objects.bulk_update(pages, ['order'])
 
     return HttpResponse(status=200)
 
@@ -708,7 +736,7 @@ def run_command(request, link_id):
 
         return HttpResponse(status=204)
 
-    except Exception as e:
+    except Exception:
         logger.exception("Erreur lors du lancement du terminal")
         return HttpResponse(status=500)
 
