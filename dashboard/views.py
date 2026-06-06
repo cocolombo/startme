@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_exempt
 from django.utils.text import slugify
 from django.db.models import Q
 from .models import Page, Widget, Link, CommandLog, TodoItem
@@ -49,7 +48,6 @@ def index(request, slug=None):
     return render(request, 'dashboard/index.html', context)
 
 
-@csrf_exempt
 @require_POST
 def update_link_order(request):
     """Met à jour l'ordre et l'appartenance des liens après un glisser-déposer.
@@ -91,7 +89,6 @@ def update_link_order(request):
     return HttpResponse(status=200)
 
 
-@csrf_exempt
 @require_POST
 def update_widget_order(request):
     """Met à jour l'ordre des widgets (catégories) sur une page.
@@ -118,7 +115,6 @@ def update_widget_order(request):
     return HttpResponse(status=200)
 
 
-@csrf_exempt
 @require_POST
 def move_link_to_page(request, link_id):
     """Déplace un lien vers un widget ou une page via le menu contextuel.
@@ -597,7 +593,6 @@ def todo_clear_done(request, widget_id: int) -> HttpResponse:
     return render(request, 'partials/todo_items_fragment.html', {'widget': widget})
 
 
-@csrf_exempt
 @require_POST
 def update_page_order(request):
     """API pour réorganiser les pages (onglets) via Drag & Drop.

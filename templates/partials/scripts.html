@@ -1,4 +1,11 @@
 <script>
+    // --- CSRF : token partagé (lu sur <body hx-headers=...>) ---
+    // Les appels fetch() bruts ne passent pas par HTMX : il faut leur ajouter
+    // explicitement l'en-tête X-CSRFToken, sinon Django les rejette (403).
+    function getCsrfToken() {
+        return JSON.parse(document.body.getAttribute('hx-headers'))['X-CSRFToken'];
+    }
+
     // --- SIDEBAR MENU ---
     function toggleSidebar() {
         const sidebar = document.getElementById('sidebar-menu');
@@ -113,7 +120,7 @@
                 formData.append('widget_id', widgetId);
                 linkIds.forEach(id => formData.append('link', id));
 
-                fetch('/api/update-order/', { method: 'POST', body: formData });
+                fetch('/api/update-order/', { method: 'POST', headers: {'X-CSRFToken': getCsrfToken()}, body: formData });
             }
         });
     });
@@ -132,7 +139,7 @@
                 var formData = new FormData();
                 widgetIds.forEach(id => formData.append('widget', id));
 
-                fetch('/api/update-widget-order/', { method: 'POST', body: formData });
+                fetch('/api/update-widget-order/', { method: 'POST', headers: {'X-CSRFToken': getCsrfToken()}, body: formData });
             }
         });
     }
@@ -152,7 +159,7 @@
                 var formData = new FormData();
                 pageIds.forEach(id => formData.append('page', id));
 
-                fetch('/api/update-page-order/', { method: 'POST', body: formData });
+                fetch('/api/update-page-order/', { method: 'POST', headers: {'X-CSRFToken': getCsrfToken()}, body: formData });
             }
         });
     }
@@ -169,7 +176,7 @@
                 const widgetId = evt.item.dataset.widgetId;
                 const pageId = evt.to.dataset.pageId;
                 const pageUrl = evt.to.dataset.pageUrl;
-                const csrfToken = JSON.parse(document.body.getAttribute('hx-headers'))['X-CSRFToken'];
+                const csrfToken = getCsrfToken();
 
                 evt.item.href = pageUrl;
 
@@ -199,7 +206,7 @@
     function moveLink(widgetId, pageId) {
         if (!currentLinkId) return;
         linkMenu.style.display = 'none';
-        const csrfToken = JSON.parse(document.body.getAttribute('hx-headers'))['X-CSRFToken'];
+        const csrfToken = getCsrfToken();
         const formData = new FormData();
         if (widgetId) formData.append('target_widget_id', widgetId);
         if (pageId)   formData.append('target_page_id', pageId);
@@ -438,7 +445,7 @@
                     var formData = new FormData();
                     formData.append('widget_id', widgetId);
                     linkIds.forEach(id => formData.append('link', id));
-                    fetch('/api/update-order/', { method: 'POST', body: formData });
+                    fetch('/api/update-order/', { method: 'POST', headers: {'X-CSRFToken': getCsrfToken()}, body: formData });
                 }
             });
         });

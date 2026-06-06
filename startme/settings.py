@@ -93,10 +93,19 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # Exige une session authentifiée pour TOUTES les vues par défaut.
+    # Doit être placé après AuthenticationMiddleware. Les exceptions se
+    # déclarent avec @login_not_required (cf. la vue de login dans urls.py).
+    'django.contrib.auth.middleware.LoginRequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_htmx.middleware.HtmxMiddleware',
 ]
+
+# Authentification — où rediriger et où atterrir
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'login'
 
 ROOT_URLCONF = 'startme.urls'
 
