@@ -7,12 +7,14 @@ Tous les fichiers du projet listés par ordre alphabétique, hors `venv/`, `migr
 | `.backup_exclude` | Liste des chemins exclus lors des sauvegardes cloud (via `backup_cloud.sh`) |
 | `.env` | Variables d'environnement locales (non versionnées) — voir `.env.example` |
 | `.env.example` | Modèle documenté des variables d'environnement nécessaires au projet |
+| `.github/workflows/tests.yml` | Workflow CI GitHub Actions : lance les tests à chaque push/PR (voir `GITHUB_ACTIONS.md`) |
 | `.gitignore` | Fichiers et dossiers ignorés par Git |
 | `AI_CONTEXT.md` | Résumé du contexte technique du projet à destination des assistants IA |
 | `APPARENCE.md` | Guide de personnalisation de l'interface (Tailwind CSS, templates) |
 | `CHEATSHEET.md` | Aide-mémoire des commandes et opérations courantes du projet |
 | `CLAUDE.md` | Instructions de comportement pour Claude Code (style, raisonnement, commits) |
 | `changelog` | Historique des modifications notables du projet |
+| `dashboard/__init__.py` | Marqueur de package Python pour l'application `dashboard` |
 | `dashboard/admin.py` | Configuration de l'interface d'administration Django pour les modèles |
 | `dashboard/management/__init__.py` | Marqueur de package Python pour le module `management` |
 | `dashboard/management/commands/__init__.py` | Marqueur de package Python pour les commandes de management |
@@ -22,12 +24,16 @@ Tous les fichiers du projet listés par ordre alphabétique, hors `venv/`, `migr
 | `dashboard/templates/dashboard/index.html` | Template principal de la page dashboard |
 | `dashboard/templatetags/__init__.py` | Marqueur de package Python pour les template tags |
 | `dashboard/templatetags/dashboard_extras.py` | Filtres et tags Jinja/Django personnalisés (ex. `get_item`) |
+| `dashboard/tests.py` | Tests verrouillant les correctifs de la revue de sécurité (auth, CSRF, validation, réordonnancement, open-redirect) |
 | `dashboard/urls.py` | Routes URL de l'application `dashboard` |
 | `dashboard/views.py` | Vues Django : rendu des pages, gestion HTMX, CRUD des widgets/liens/todos |
+| `data_export.json` | Export de données du dashboard (sauvegarde/échantillon au format JSON) |
 | `DEVELOPMENT.md` | Guide du développeur : stack, architecture, conventions, workflow |
 | `export_project.py` | Script utilitaire qui concatène les fichiers source du projet pour partage IA |
+| `FICHIERS.md` | Cet index : liste alphabétique de tous les fichiers du projet avec description |
 | `fonctionnalites_TODO.md` | Liste des fonctionnalités envisagées ou en cours de réflexion |
 | `get_static_files.py` | Script de téléchargement des librairies JS statiques (HTMX, Sortable, Tailwind) |
+| `GITHUB_ACTIONS.md` | Explication du fonctionnement de la CI GitHub Actions (workflow `tests.yml`) |
 | `goal.png` | Capture d'écran de référence de l'interface cible |
 | `grilleAcces.png` | Diagramme ou maquette de la grille d'accès rapide |
 | `manage.py` | Point d'entrée CLI Django (migrations, serveur, commandes custom) |
@@ -68,6 +74,7 @@ Tous les fichiers du projet listés par ordre alphabétique, hors `venv/`, `migr
 | `templates/partials/widget_title.html` | Fragment HTMX : affichage du titre d'un widget |
 | `templates/partials/widget_title_form.html` | Fragment HTMX : formulaire d'édition du titre d'un widget |
 | `templates/partials/widgets_infos.html` | Fragment : section "Infos" avec les widgets spéciaux (météo, bourse…) |
+| `templates/registration/login.html` | Page de connexion (authentification Django, voir revue de sécurité) |
 | `TODO.md` | Tâches immédiates et bugs connus à traiter |
 | `tools/coffre.html` | Page HTML autonome (hors Django) : coffre-fort de notes chiffrées local |
 | `TROUBLESHOOTING.md` | Guide de dépannage : problèmes courants et solutions |
