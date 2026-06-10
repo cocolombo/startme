@@ -14,7 +14,7 @@
         </a>
         {% else %}
         <div class="flex items-center gap-3 px-4 py-2 hover:bg-gray-700 transition-colors cursor-pointer"
-             hx-get="{% url 'open_local_file' link.id %}" hx-swap="none"
+             hx-post="{% url 'open_local_file' link.id %}" hx-swap="none"
              onclick="document.getElementById('search-results').innerHTML=''">
             <span class="w-4 h-4 flex-shrink-0 text-yellow-400 text-xs">📁</span>
             <span class="flex-1 text-sm text-white truncate">{{ link.title }}</span>

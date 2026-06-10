@@ -197,6 +197,7 @@ def add_link(request, widget_id):
     else:
         return render(request, 'partials/link_item.html', {'link': link})
 
+@require_POST
 def delete_link(request, link_id):
     """Supprime un lien spécifique.
 
@@ -276,6 +277,7 @@ def rename_page(request, page_id):
     return redirect('index', slug=page.slug)
 
 
+@require_POST
 def delete_page(request, page_id):
     """Supprime une page complète et tout son contenu (widgets/liens).
 
@@ -316,6 +318,7 @@ def move_widget_to_page(request, widget_id):
     return redirect(_safe_referer(request))
 
 
+@require_POST
 def toggle_widget_width(request, widget_id):
     """Bascule le widget entre 1 colonne et 2 colonnes."""
     widget = get_object_or_404(Widget, id=widget_id)
@@ -324,6 +327,7 @@ def toggle_widget_width(request, widget_id):
     return redirect(_safe_referer(request))
 
 
+@require_POST
 def delete_widget(request, widget_id):
     """Supprime un widget (catégorie) et tous les liens ou notes qu'il contient.
 
@@ -554,6 +558,7 @@ def save_note_content(request, widget_id):
     return HttpResponse(status=200)
 
 
+@require_POST
 def open_local_file(request, link_id):
     """Ouvre un fichier ou dossier local sur le serveur (l'ordinateur de l'utilisateur).
 
@@ -746,12 +751,12 @@ def get_network_info(request):
     Returns:
         HttpResponse: Fragment HTML avec les IPs.
     """
-    # 1. IP Locale
+    # 1. IP Locale — le gestionnaire de contexte garantit la fermeture du
+    # socket même si connect() échoue (avant, il restait ouvert en cas d'erreur).
     try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(("8.8.8.8", 80))
-        local_ip = s.getsockname()[0]
-        s.close()
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+            s.connect(("8.8.8.8", 80))
+            local_ip = s.getsockname()[0]
     except Exception:
         local_ip = "127.0.0.1"
 

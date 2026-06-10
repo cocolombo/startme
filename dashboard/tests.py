@@ -174,13 +174,16 @@ class ReorderTests(BaseTestCase):
 
 
 class SafeRefererTests(BaseTestCase):
-    """#10 — _safe_referer empêche la redirection vers un domaine externe."""
+    """#10 — _safe_referer empêche la redirection vers un domaine externe.
+
+    Ces vues exigent désormais POST (@require_POST), d'où les self.client.post.
+    """
 
     def test_referer_externe_redirige_vers_racine(self) -> None:
         widget = Widget.objects.create(
             title='Jetable', page=self.page, order=5, widget_type='list'
         )
-        response = self.client.get(
+        response = self.client.post(
             reverse('delete_widget', args=[widget.id]),
             HTTP_REFERER='http://evil.com/phishing',
         )
@@ -188,9 +191,42 @@ class SafeRefererTests(BaseTestCase):
         self.assertEqual(response.url, '/')
 
     def test_referer_interne_est_conserve(self) -> None:
-        response = self.client.get(
+        response = self.client.post(
             reverse('toggle_widget_width', args=[self.widget.id]),
             HTTP_REFERER='/page/accueil/',
         )
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, '/page/accueil/')
+
+
+class HttpMethodTests(BaseTestCase):
+    """Revue d'amélioration #1 — les vues mutatives refusent GET (405).
+
+    Un GET mutatif est vulnérable au CSRF même derrière LoginRequiredMiddleware :
+    les cookies SameSite=Lax partent avec une navigation GET de premier niveau,
+    et la protection CSRF de Django ne couvre que les méthodes non sûres (POST).
+    """
+
+    def test_get_refuse_sur_les_vues_mutatives(self) -> None:
+        link = Link.objects.create(
+            title='Local', url='/tmp/fichier.txt', widget=self.widget, order=0
+        )
+        urls = [
+            reverse('delete_link', args=[link.id]),
+            reverse('delete_page', args=[self.page.id]),
+            reverse('delete_widget', args=[self.widget.id]),
+            reverse('toggle_widget_width', args=[self.widget.id]),
+            reverse('open_local_file', args=[link.id]),
+        ]
+        for url in urls:
+            with self.subTest(url=url):
+                response = self.client.get(url)
+                self.assertEqual(response.status_code, 405)
+
+    def test_get_sur_delete_ne_supprime_rien(self) -> None:
+        """Le 405 doit être sans effet : l'objet survit au GET."""
+        link = Link.objects.create(
+            title='Survivant', url='https://exemple.com', widget=self.widget, order=0
+        )
+        self.client.get(reverse('delete_link', args=[link.id]))
+        self.assertTrue(Link.objects.filter(id=link.id).exists())

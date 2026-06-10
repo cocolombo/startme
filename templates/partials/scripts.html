@@ -73,14 +73,16 @@
 
     // --- PRÉPARATION SUPPRESSION ---
     function confirmDeleteWidget(widgetId) {
-        const confirmBtn = document.getElementById('btn-confirm-delete-widget');
-        confirmBtn.href = "/widget/delete/" + widgetId + "/";
+        // Formulaire POST (csrf_token inclus dans modals.html) : on règle
+        // seulement l'action vers le widget ciblé.
+        const confirmForm = document.getElementById('confirm-delete-widget-form');
+        confirmForm.action = "/widget/delete/" + widgetId + "/";
         toggleModal('modal-delete-widget');
     }
 
     function confirmDeleteLink(linkId) {
         const confirmBtn = document.getElementById('btn-confirm-delete-link');
-        confirmBtn.setAttribute('hx-get', `/link/delete/${linkId}/`);
+        confirmBtn.setAttribute('hx-post', `/link/delete/${linkId}/`);
         confirmBtn.setAttribute('hx-target', `#link-${linkId}`);
         confirmBtn.setAttribute('hx-swap', 'delete');
         htmx.process(confirmBtn);
