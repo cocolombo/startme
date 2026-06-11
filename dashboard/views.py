@@ -4,7 +4,7 @@ from django.views.decorators.http import require_POST
 from django.utils.text import slugify
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.db.models import Q
-from .models import Page, Widget, Link, CommandLog, TodoItem
+from .models import Page, Widget, Link, CommandLog, TodoItem, next_order
 import psutil
 import subprocess
 import os
@@ -35,6 +35,58 @@ def _safe_referer(request) -> str:
     if url_has_allowed_host_and_scheme(referer, allowed_hosts={request.get_host()}):
         return referer
     return '/'
+
+
+# Template du fragment HTML d'un lien selon le type de son widget parent.
+_ITEM_TEMPLATES = {
+    'command': 'partials/command_item.html',
+    'snippet': 'partials/snippet_item.html',
+}
+
+
+def _render_link_item(request, link: Link) -> HttpResponse:
+    """Rend le fragment HTML d'un lien selon le type de son widget parent.
+
+    Centralise le choix du template (bouton de commande, snippet ou ligne
+    de liste) utilisé par add_link, edit_link et cancel_edit_link.
+
+    Args:
+        request (HttpRequest): La requête en cours.
+        link (Link): Le lien à rendre.
+
+    Returns:
+        HttpResponse: Le fragment HTML adapté au type du widget.
+    """
+    template = _ITEM_TEMPLATES.get(link.widget.widget_type, 'partials/link_item.html')
+    return render(request, template, {'link': link})
+
+
+def _unique_slug(name: str, exclude_pk: int | None = None) -> str:
+    """Génère un slug unique pour une Page à partir de son nom.
+
+    En cas de collision, ajoute un suffixe numérique incrémental
+    (ma-page, ma-page-1, ma-page-2, …).
+
+    Args:
+        name: Le nom de la page.
+        exclude_pk: PK à exclure de la vérification d'unicité — utile au
+            renommage, pour qu'une page puisse conserver son propre slug.
+
+    Returns:
+        str: Un slug unique parmi les pages existantes.
+    """
+    base_slug = slugify(name)
+    slug = base_slug
+    counter = 1
+
+    queryset = Page.objects.all()
+    if exclude_pk is not None:
+        queryset = queryset.exclude(pk=exclude_pk)
+
+    while queryset.filter(slug=slug).exists():
+        slug = f"{base_slug}-{counter}"
+        counter += 1
+    return slug
 
 
 def index(request, slug=None):
@@ -189,19 +241,18 @@ def add_link(request, widget_id):
     link = None
     if widget.widget_type == 'snippet':
         if url:
-            link = Link.objects.create(title=title, url=url, widget=widget, order=999)
+            link = Link.objects.create(
+                title=title, url=url, widget=widget, order=next_order(widget.links)
+            )
     elif title:
-        link = Link.objects.create(title=title, url=url, widget=widget, order=999)
+        link = Link.objects.create(
+            title=title, url=url, widget=widget, order=next_order(widget.links)
+        )
 
     if link is None:
         return HttpResponse(status=400)
 
-    if widget.widget_type == 'command':
-        return render(request, 'partials/command_item.html', {'link': link})
-    elif widget.widget_type == 'snippet':
-        return render(request, 'partials/snippet_item.html', {'link': link})
-    else:
-        return render(request, 'partials/link_item.html', {'link': link})
+    return _render_link_item(request, link)
 
 @require_POST
 def delete_link(request, link_id):
@@ -234,17 +285,10 @@ def create_page(request):
     name = request.POST.get('name')
     if name:
         # On génère un slug unique (ex: "Ma Page" -> "ma-page")
-        base_slug = slugify(name)
-        slug = base_slug
-        counter = 1
+        slug = _unique_slug(name)
 
-        # Gestion des doublons de slug
-        while Page.objects.filter(slug=slug).exists():
-            slug = f"{base_slug}-{counter}"
-            counter += 1
-
-        # On crée la page (à la fin de la liste par défaut)
-        Page.objects.create(name=name, slug=slug, order=999)
+        # On crée la page à la fin de la liste
+        Page.objects.create(name=name, slug=slug, order=next_order(Page.objects))
 
         # On redirige immédiatement vers la nouvelle page
         return redirect('index', slug=slug)
@@ -270,13 +314,7 @@ def rename_page(request, page_id):
 
     if new_name:
         page.name = new_name
-        base_slug = slugify(new_name)
-        slug = base_slug
-        counter = 1
-        while Page.objects.filter(slug=slug).exclude(id=page.id).exists():
-            slug = f"{base_slug}-{counter}"
-            counter += 1
-        page.slug = slug
+        page.slug = _unique_slug(new_name, exclude_pk=page.id)
         page.save()
         return redirect('index', slug=page.slug)
 
@@ -317,7 +355,7 @@ def move_widget_to_page(request, widget_id):
         target_page = get_object_or_404(Page, id=target_page_id)
         widget.page = target_page
         # On place le widget à la fin de la nouvelle page
-        widget.order = 999
+        widget.order = next_order(target_page.widgets)
         widget.save()
 
     # On recharge la page actuelle pour voir le widget disparaître
@@ -372,7 +410,7 @@ def add_widget(request, page_id):
         Widget.objects.create(
             title=title,
             page=page,
-            order=999,
+            order=next_order(page.widgets),
             widget_type=w_type  # On enregistre le type en base de données
         )
 
@@ -448,15 +486,9 @@ def edit_link(request, pk):
         link.url = url
         link.save()
 
-        # INTELLIGENCE ICI :
-        # Si le widget parent est de type 'command', on renvoie un BOUTON.
-        # Sinon, on renvoie une LIGNE DE LISTE.
-        if link.widget.widget_type == 'command':
-            return render(request, 'partials/command_item.html', {'link': link})
-        elif link.widget.widget_type == 'snippet':
-            return render(request, 'partials/snippet_item.html', {'link': link})
-        else:
-            return render(request, 'partials/link_item.html', {'link': link})
+        # Le fragment renvoyé dépend du type du widget parent
+        # (bouton de commande, snippet ou ligne de liste).
+        return _render_link_item(request, link)
 
     # Si GET, on renvoie le formulaire d'édition
     return render(request, 'partials/link_form.html', {'link': link})
@@ -465,11 +497,7 @@ def edit_link(request, pk):
 def cancel_edit_link(request, pk):
     """Annulation de l'édition : retourne le link_item sans modification."""
     link = get_object_or_404(Link, pk=pk)
-    if link.widget.widget_type == 'command':
-        return render(request, 'partials/command_item.html', {'link': link})
-    elif link.widget.widget_type == 'snippet':
-        return render(request, 'partials/snippet_item.html', {'link': link})
-    return render(request, 'partials/link_item.html', {'link': link})
+    return _render_link_item(request, link)
 
 
 # dashboard/views.py
@@ -604,7 +632,7 @@ def todo_add(request, widget_id: int) -> HttpResponse:
     text = request.POST.get('text', '').strip()
     if not text:
         return HttpResponse(status=400)
-    item = TodoItem.objects.create(widget=widget, text=text, order=999)
+    item = TodoItem.objects.create(widget=widget, text=text, order=next_order(widget.todos))
     return render(request, 'partials/todo_item.html', {'item': item})
 
 

@@ -163,7 +163,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# Fuseau local pour l'AFFICHAGE des horodatages (ex. historique de commandes).
+# Le stockage en base reste en UTC grâce à USE_TZ = True.
+TIME_ZONE = 'America/Toronto'
 
 USE_I18N = True
 
@@ -181,3 +183,35 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Journalisation : sortie console uniquement (suffisant pour une app locale).
+# Sans ce bloc, les logger.debug(...) de dashboard/views.py sont invisibles.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '[{asctime}] {levelname} {name} : {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        # En développement, on veut voir les logger.debug du code applicatif.
+        # Le logger 'dashboard' n'a pas de handler propre : il propage vers
+        # le handler console de root.
+        'dashboard': {
+            'level': 'DEBUG' if DEBUG else 'INFO',
+        },
+    },
+}

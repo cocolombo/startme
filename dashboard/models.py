@@ -1,6 +1,24 @@
 from django.db import models
 from django.utils import timezone
 
+
+def next_order(objects) -> int:
+    """Calcule la position suivante dans une liste ordonnée (Max('order') + 1).
+
+    Remplace l'ancien hack `order=999` : deux ajouts successifs recevaient
+    la même position, rendant l'ordre final imprévisible.
+
+    Args:
+        objects: Un queryset ou un manager d'objets possédant un champ 'order'
+            (Page, Widget, Link, TodoItem).
+
+    Returns:
+        int: 0 si la liste est vide, sinon max(order) + 1.
+    """
+    max_order = objects.aggregate(max_order=models.Max('order'))['max_order']
+    return 0 if max_order is None else max_order + 1
+
+
 class Page(models.Model):
     """Représente un onglet (une page) du tableau de bord.
 

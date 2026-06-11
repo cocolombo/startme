@@ -17,7 +17,7 @@ from django.test import Client, TestCase
 from django.urls import reverse
 
 from . import views
-from .models import Link, Page, Widget
+from .models import Link, Page, Widget, next_order
 
 
 class BaseTestCase(TestCase):
@@ -235,6 +235,45 @@ class HttpMethodTests(BaseTestCase):
         )
         self.client.get(reverse('delete_link', args=[link.id]))
         self.assertTrue(Link.objects.filter(id=link.id).exists())
+
+
+class UniqueSlugTests(BaseTestCase):
+    """Revue d'amélioration #6 — _unique_slug gère les collisions de slug."""
+
+    def test_collision_ajoute_un_suffixe(self) -> None:
+        # Le slug 'accueil' existe déjà (BaseTestCase) → suffixe -1 attendu.
+        self.assertEqual(views._unique_slug('Accueil'), 'accueil-1')
+
+    def test_sans_collision_retourne_le_slug_de_base(self) -> None:
+        self.assertEqual(views._unique_slug('Projets Python'), 'projets-python')
+
+    def test_renommage_conserve_son_propre_slug(self) -> None:
+        # exclude_pk permet à une page de garder son slug lors du renommage.
+        self.assertEqual(
+            views._unique_slug('Accueil', exclude_pk=self.page.id), 'accueil'
+        )
+
+
+class NextOrderTests(BaseTestCase):
+    """Revue d'amélioration #7 — next_order remplace le hack order=999."""
+
+    def test_liste_vide_retourne_zero(self) -> None:
+        self.assertEqual(next_order(self.widget.links), 0)
+
+    def test_retourne_max_plus_un(self) -> None:
+        Link.objects.create(title='A', url='a', widget=self.widget, order=4)
+        self.assertEqual(next_order(self.widget.links), 5)
+
+    def test_deux_ajouts_successifs_ont_des_ordres_distincts(self) -> None:
+        """Via la vue add_widget : l'ancien hack donnait 999 aux deux."""
+        for titre in ('W-a', 'W-b'):
+            self.client.post(
+                reverse('add_widget', args=[self.page.id]),
+                {'title': titre, 'widget_type': 'list'},
+            )
+        wa = Widget.objects.get(title='W-a')
+        wb = Widget.objects.get(title='W-b')
+        self.assertNotEqual(wa.order, wb.order)
 
 
 class PublicIpCacheTests(TestCase):
