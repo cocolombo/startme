@@ -10,6 +10,7 @@ import subprocess
 import os
 import shutil
 import socket
+import time
 import requests
 
 import logging
@@ -50,11 +51,16 @@ def index(request, slug=None):
     Returns:
         HttpResponse: La page HTML du tableau de bord rendue avec le contexte.
     """
-    pages = Page.objects.all()
+    # prefetch_related évite le N+1 : les templates itèrent
+    # pages → widgets → links/todos ; tout est chargé en 4 requêtes
+    # au lieu d'une requête par widget.
+    pages = Page.objects.prefetch_related('widgets__links', 'widgets__todos')
     if not slug:
         active_page = pages.first()
     else:
-        active_page = get_object_or_404(Page, slug=slug)
+        # On passe le queryset préchargé (et non le modèle Page) pour
+        # qu'active_page bénéficie aussi du prefetch.
+        active_page = get_object_or_404(pages, slug=slug)
 
     context = {
         'pages': pages,
@@ -745,6 +751,36 @@ def run_command(request, link_id):
         logger.exception("Erreur lors du lancement du terminal")
         return HttpResponse(status=500)
 
+# Cache module-level pour l'IP publique : l'adresse change rarement, inutile
+# d'appeler api.ipify.org à chaque polling HTMX du widget réseau.
+_PUBLIC_IP_TTL = 600  # secondes (10 min)
+_public_ip_cache: dict = {'ip': None, 'expires': 0.0}
+
+
+def _get_public_ip() -> str:
+    """Retourne l'IP publique, mise en cache pendant _PUBLIC_IP_TTL secondes.
+
+    time.monotonic() est utilisé car il est insensible aux changements
+    d'horloge système. Un échec réseau n'est PAS mis en cache : on
+    retentera au prochain polling plutôt que d'afficher "Indisponible"
+    pendant 10 minutes.
+
+    Returns:
+        str: L'adresse IP publique, ou "Indisponible" en cas d'échec.
+    """
+    now = time.monotonic()
+    if _public_ip_cache['ip'] is not None and now < _public_ip_cache['expires']:
+        return _public_ip_cache['ip']
+
+    try:
+        ip = requests.get('https://api.ipify.org', timeout=2).text
+    except requests.RequestException:
+        return "Indisponible"
+
+    _public_ip_cache.update(ip=ip, expires=now + _PUBLIC_IP_TTL)
+    return ip
+
+
 def get_network_info(request):
     """Récupère les informations réseau (IP locale et publique).
 
@@ -760,11 +796,8 @@ def get_network_info(request):
     except Exception:
         local_ip = "127.0.0.1"
 
-    # 2. IP Publique (via API externe rapide)
-    try:
-        public_ip = requests.get('https://api.ipify.org', timeout=2).text
-    except Exception:
-        public_ip = "Indisponible"
+    # 2. IP Publique (API externe, avec cache TTL — cf. _get_public_ip)
+    public_ip = _get_public_ip()
 
     return render(request, 'partials/network_info.html', {
         'local_ip': local_ip,

@@ -8,10 +8,15 @@ Chaque classe cible une faille corrigée :
 - SafeRefererTests           → #10 (_safe_referer contre l'open-redirect)
 """
 
+from unittest.mock import Mock, patch
+
+import requests
+
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
 
+from . import views
 from .models import Link, Page, Widget
 
 
@@ -230,3 +235,33 @@ class HttpMethodTests(BaseTestCase):
         )
         self.client.get(reverse('delete_link', args=[link.id]))
         self.assertTrue(Link.objects.filter(id=link.id).exists())
+
+
+class PublicIpCacheTests(TestCase):
+    """Revue d'amélioration #4 — cache TTL de l'IP publique.
+
+    On teste le helper _get_public_ip directement, en simulant requests.get :
+    aucun appel réseau réel n'est effectué.
+    """
+
+    def setUp(self) -> None:
+        # Chaque test repart d'un cache vide (état module-level partagé).
+        views._public_ip_cache.update(ip=None, expires=0.0)
+
+    def test_le_cache_evite_les_appels_repetes(self) -> None:
+        fake_response = Mock(text='203.0.113.7')
+        with patch('dashboard.views.requests.get', return_value=fake_response) as mocked:
+            self.assertEqual(views._get_public_ip(), '203.0.113.7')
+            self.assertEqual(views._get_public_ip(), '203.0.113.7')
+        # Deux lectures, mais une seule requête HTTP : le cache a servi.
+        self.assertEqual(mocked.call_count, 1)
+
+    def test_un_echec_reseau_n_est_pas_mis_en_cache(self) -> None:
+        with patch(
+            'dashboard.views.requests.get',
+            side_effect=requests.RequestException,
+        ) as mocked:
+            self.assertEqual(views._get_public_ip(), 'Indisponible')
+            self.assertEqual(views._get_public_ip(), 'Indisponible')
+        # L'échec n'est pas caché : chaque lecture retente la requête.
+        self.assertEqual(mocked.call_count, 2)
