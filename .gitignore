@@ -20,5 +20,6 @@ env/
 # Archives et fichiers générés
 *.tar.gz
 *.zip
+*.bak
 startup.log
 data_export.json
