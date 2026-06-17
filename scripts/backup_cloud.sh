@@ -93,6 +93,17 @@ ${PROJECT_NAME}/.vscode
 *.pyc
 *.pyo
 
+# Artefacts ML lourds (régénérables par ré-entraînement)
+# Poids, checkpoints et états d'optimiseur — souvent plusieurs Go par fichier.
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.onnx
+*.gguf
+*.h5
+
 # Archives (évite les doublons)
 *.tar.gz
 *.zip
