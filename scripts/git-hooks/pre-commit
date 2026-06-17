@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# Garde-fou pre-commit : refuse de committer des secrets, des artefacts
+# locaux ou des fichiers trop volumineux.
+#
+# Contournement ponctuel (en connaissance de cause) :
+#   git commit --no-verify
+#
+# Source versionnee : startme/scripts/git-hooks/pre-commit
+# Installation : startme/scripts/install-git-hooks.sh [/chemin/projet]
+set -euo pipefail
+
+MAX_MB=50
+MAX_BYTES=$(( MAX_MB * 1024 * 1024 ))
+
+# Noms interdits (regex POSIX etendue, testee sur le chemin complet).
+# Couvre : .env et variantes, sauvegardes, cles/certificats, base SQLite, logs.
+BLOCK_REGEX='(^|/)\.env($|\.(local|prod|production|dev|development|secret))|\.bak($|\.)|\.pem$|\.key$|(^|/)db\.sqlite3$|\.log$'
+# Exceptions tolerees : exemples de configuration sans secret.
+ALLOW_REGEX='\.env\.(example|template|sample)$'
+
+violations=()
+
+# Fichiers ajoutes/copies/modifies et mis en scene (les suppressions sont ignorees).
+while IFS= read -r file; do
+  [[ -z "$file" ]] && continue
+
+  # 1) Nom interdit (sauf exception toleree)
+  if [[ "$file" =~ $BLOCK_REGEX ]] && ! [[ "$file" =~ $ALLOW_REGEX ]]; then
+    violations+=("  [nom]    $file")
+    continue
+  fi
+
+  # 2) Taille de la version mise en scene
+  size=$(git cat-file -s ":$file" 2>/dev/null || echo 0)
+  if (( size > MAX_BYTES )); then
+    mb=$(( size / 1024 / 1024 ))
+    violations+=("  [taille] $file (${mb} Mo > ${MAX_MB} Mo)")
+  fi
+done < <(git diff --cached --name-only --diff-filter=ACM)
+
+if (( ${#violations[@]} > 0 )); then
+  echo "" >&2
+  echo "pre-commit : COMMIT REFUSE. Fichiers problematiques :" >&2
+  printf '%s\n' "${violations[@]}" >&2
+  echo "" >&2
+  echo "  - Retirer de l'index   : git restore --staged <fichier>" >&2
+  echo "  - Ignorer durablement  : ajouter au .gitignore" >&2
+  echo "  - Forcer (a vos risques): git commit --no-verify" >&2
+  echo "" >&2
+  exit 1
+fi
+
+exit 0
