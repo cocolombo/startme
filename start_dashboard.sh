@@ -1,14 +1,9 @@
 #!/bin/bash
 
-# 1. Se déplacer dans le dossier du projet
-cd /media/120gb/python/startme
+# Le serveur startme est desormais gere par le service systemd (startme.service).
+# Ce script ne fait plus qu'ouvrir le navigateur au login.
 
-# 2. Lancer le serveur avec le chemin ABSOLU vers le python du venv
-# On redirige les erreurs (stderr) et la sortie (stdout) vers un fichier log pour déboguer
-/media/120gb/python/startme/venv/bin/python manage.py runserver 8800 > startup.log 2>&1 &
+# Petit delai pour laisser le service ecouter le port apres le boot
+sleep 3
 
-# 3. Attendre que le serveur démarre
-sleep 5
-
-# 4. Ouvrir le navigateur
 xdg-open http://127.0.0.1:8800
