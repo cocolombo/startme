@@ -23,3 +23,4 @@ env/
 *.bak
 startup.log
 data_export.json
+dump_*.json
