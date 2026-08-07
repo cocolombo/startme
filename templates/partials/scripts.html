@@ -36,7 +36,9 @@
 
         document.querySelectorAll('.widget-move-form, .widget-width-form').forEach(form => {
             let baseAction = form.getAttribute('action');
-            let newAction = baseAction.replace(/\/\d+\/$/, '/' + widgetId + '/');
+            // On remplace uniquement le premier segment numerique (l'ID du widget),
+            // sans toucher au segment de largeur eventuel qui suit (set-width/<id>/<span>/).
+            let newAction = baseAction.replace(/\/\d+/, '/' + widgetId);
             form.setAttribute('action', newAction);
         });
     }

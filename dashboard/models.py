@@ -68,10 +68,17 @@ class Widget(models.Model):
     page = models.ForeignKey(Page, on_delete=models.CASCADE, related_name='widgets')
     order = models.IntegerField(default=0)
 
+    # Choix de largeur d'affichage (nombre de colonnes occupees dans la grille)
+    COL_SPAN_CHOICES = [
+        (1, '1 colonne'),
+        (2, '2 colonnes'),
+        (4, 'Pleine largeur'),
+    ]
+
     # Nouveaux champs
     widget_type = models.CharField(max_length=10, choices=TYPE_CHOICES, default='list')
     content = models.TextField(blank=True, null=True)
-    is_wide = models.BooleanField(default=False)
+    col_span = models.IntegerField(default=1, choices=COL_SPAN_CHOICES)
 
     class Meta:
         ordering = ['order']

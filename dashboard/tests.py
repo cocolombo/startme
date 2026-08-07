@@ -197,7 +197,7 @@ class SafeRefererTests(BaseTestCase):
 
     def test_referer_interne_est_conserve(self) -> None:
         response = self.client.post(
-            reverse('toggle_widget_width', args=[self.widget.id]),
+            reverse('set_widget_width', args=[self.widget.id, 2]),
             HTTP_REFERER='/page/accueil/',
         )
         self.assertEqual(response.status_code, 302)
@@ -220,7 +220,7 @@ class HttpMethodTests(BaseTestCase):
             reverse('delete_link', args=[link.id]),
             reverse('delete_page', args=[self.page.id]),
             reverse('delete_widget', args=[self.widget.id]),
-            reverse('toggle_widget_width', args=[self.widget.id]),
+            reverse('set_widget_width', args=[self.widget.id, 2]),
             reverse('open_local_file', args=[link.id]),
         ]
         for url in urls:

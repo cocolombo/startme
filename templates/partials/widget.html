@@ -1,4 +1,4 @@
-<div class="bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-700 flex flex-col group/widget mb-6 transition-all duration-300 h-full relative {% if widget.is_wide %}col-span-2{% endif %}"
+<div class="bg-gray-800 rounded-lg p-4 shadow-lg border border-gray-700 flex flex-col group/widget mb-6 transition-all duration-300 h-full relative {% if widget.col_span == 2 %}lg:col-span-2{% elif widget.col_span == 4 %}md:col-span-2 lg:col-span-4{% endif %}"
      id="widget-{{ widget.id }}"
      data-id="{{ widget.id }}">
 

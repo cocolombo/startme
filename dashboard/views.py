@@ -363,10 +363,20 @@ def move_widget_to_page(request, widget_id):
 
 
 @require_POST
-def toggle_widget_width(request, widget_id):
-    """Bascule le widget entre 1 colonne et 2 colonnes."""
+def set_widget_width(request, widget_id, span):
+    """Regle la largeur d'un widget a 1, 2 ou 4 colonnes.
+
+    Args:
+        request (HttpRequest): L'objet de requete.
+        widget_id (int): L'ID du widget cible.
+        span (int): Nombre de colonnes souhaite (1, 2 ou 4). Toute autre
+            valeur est ramenee a 1 pour eviter une largeur invalide.
+
+    Returns:
+        HttpResponseRedirect: Redirige vers la page precedente.
+    """
     widget = get_object_or_404(Widget, id=widget_id)
-    widget.is_wide = not widget.is_wide
+    widget.col_span = span if span in (1, 2, 4) else 1
     widget.save()
     return redirect(_safe_referer(request))
 
