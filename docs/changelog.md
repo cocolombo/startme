@@ -24,8 +24,16 @@ Toutes les modifications notables de ce projet seront documentées dans ce fichi
 
 ## [Non publié] - En cours de développement
 ### Ajouté
+- **Largeur des catégories** réglable à **1, 2 ou 4 colonnes** (pleine largeur)
+  via l'icône engrenage `⚙` d'un widget (section « Largeur », boutons `▮`/`▮▮`/`▮▮▮▮`).
 - Fichier `CHANGELOG.md` pour le suivi de l'historique.
 - Séparation de la documentation technique vers `DEVELOPMENT.md` (recommandé).
+
+### Modifié
+- Modèle `Widget` : le booléen `is_wide` est remplacé par l'entier `col_span`
+  (valeurs `1`/`2`/`4`). Migration `0014` réversible (`is_wide=True → col_span=2`).
+- Vue `toggle_widget_width` remplacée par `set_widget_width(widget_id, span)`
+  (route `widget/set-width/<id>/<span>/`).
 
 ## [2025-11-26] - Mise à jour UI & Fonctionnalités dynamiques
 ### Fonctionnalités

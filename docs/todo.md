@@ -58,6 +58,7 @@
 - [-] **Authentification** : Non nécessaire (usage local uniquement sur 127.0.0.1).
 - [-] **Import de favoris** : Importer un fichier HTML d'export de navigateur (Chrome/Firefox) pour peupler les liens en masse.
 - [x] **Choix du widget cible** lors d'un déplacement de lien vers une autre page (voir bug ci-dessus).
+- [x] **Largeur des catégories 1 / 2 / 4 colonnes** : champ `Widget.col_span` (remplace `is_wide`), vue `set_widget_width` (`views.py`), boutons `▮`/`▮▮`/`▮▮▮▮` dans le menu engrenage `⚙` (`menus.html`). Migration `0014_widget_col_span`.
 - [x] **Sidebar hamburger** : Arborescence hiérarchique Pages → Catégories pour navigation rapide. Ouverte via bouton ☰ dans la nav.
 - [x] **Réordonner les pages via la sidebar** : Drag-and-drop sur la poignée `⠿` de chaque page. Appelle `POST /api/update-page-order/`.
 - [x] **Déplacer un widget entre pages via la sidebar** : Drag-and-drop dans la sidebar hamburger (SortableJS `group: sidebar-widgets`). Appelle `POST /widget/move/<id>/` avec CSRF. Le `href` est mis à jour sans rechargement.

@@ -47,3 +47,36 @@ Journal chronologique des décisions et étapes. À chaque étape validée : ce 
   qui supprime les pages « vides » la re-supprimera. Protéger le slug ou
   garantir sa présence au démarrage si le cas se représente.
 - **État : correctif de données, pas de test ajouté (comportement front inchangé).**
+
+## 2026-08-07 — Largeur des catégories réglable à 1, 2 ou 4 colonnes
+
+- **But** : pouvoir afficher une catégorie (widget) sur 1 colonne, 2 colonnes,
+  ou pleine largeur (4 colonnes), là où seul un mode « 2 colonnes » existait.
+- **Décision de modèle** : le booléen `Widget.is_wide` (2 états) ne suffisait
+  plus. Remplacé par un entier `col_span` avec choix `1 / 2 / 4`
+  (`dashboard/models.py`). Migration `0014_widget_col_span` réversible : ajout
+  du champ, conversion `is_wide=True → col_span=2`, puis suppression de
+  `is_wide`.
+- **Vue** : `toggle_widget_width` (bascule booléenne) devient
+  `set_widget_width(widget_id, span)` avec validation `span ∈ {1, 2, 4}`
+  (toute autre valeur retombe à 1). Route :
+  `widget/set-width/<id>/<span>/`.
+- **Front** :
+  - `templates/partials/widget.html` mappe `col_span` vers les classes Tailwind
+    `lg:col-span-2` (2 col) et `md:col-span-2 lg:col-span-4` (pleine largeur,
+    en tenant compte des points de rupture md/lg).
+  - `templates/partials/menus.html` : le bouton unique « ↔ Largeur 2 colonnes »
+    devient une section **Largeur** à trois boutons (`▮` / `▮▮` / `▮▮▮▮`),
+    accessible via l'icône engrenage `⚙` de l'en-tête du widget (clic gauche,
+    `showWidgetMenu`), **pas** le clic droit.
+  - `templates/partials/scripts.html` : le regex qui injecte l'ID du widget dans
+    l'action des formulaires vise désormais le **premier** segment numérique
+    (l'ID), pour ne pas écraser le segment de largeur qui le suit.
+- **Point de vigilance** : la grille utilise `grid-flow-dense`, qui comble les
+  trous en réordonnant visuellement les tuiles ; un widget pleine largeur peut
+  donc laisser de petites tuiles « remonter » au-dessus de lui. Comportement
+  jugé acceptable après test manuel de l'utilisateur.
+- **Vérification** : deux tests adaptés à la nouvelle route ; migration
+  appliquée ; service systemd rechargé sans erreur ; validation visuelle par
+  l'utilisateur (« ça semble bien fonctionner »). Commit `fb493b4`.
+- **État : 23 tests verts.**
